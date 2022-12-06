@@ -188,39 +188,3 @@ ALTER TABLE `review` ADD CONSTRAINT `PK_REVIEW` PRIMARY KEY (
 ALTER TABLE `store_type` ADD CONSTRAINT `PK_STORE_TYPE` PRIMARY KEY (
 	`food_category_cd`
 );
-
-ALTER TABLE `order_menu` ADD CONSTRAINT `FK_order_TO_order_menu_1` FOREIGN KEY (
-	`order_id`
-)
-REFERENCES `order` (
-	`order_id`
-);
-
-ALTER TABLE `order_menu` ADD CONSTRAINT `FK_order_TO_order_menu_2` FOREIGN KEY (
-	`food_category_cd`
-)
-REFERENCES `order` (
-	`food_category_cd`
-);
-
-ALTER TABLE `order_menu` ADD CONSTRAINT `FK_menu_TO_order_menu_1` FOREIGN KEY (
-	`menu_id`
-)
-REFERENCES `menu` (
-	`menu_id`
-);
-
-ALTER TABLE `order_menu` ADD CONSTRAINT `FK_menu_option_TO_order_menu_1` FOREIGN KEY (
-	`menu_option_ID`
-)
-REFERENCES `menu_option` (
-	`menu_option_ID`
-);
-
-ALTER TABLE `store` ADD CONSTRAINT `FK_store_type_TO_store_1` FOREIGN KEY (
-	`food_category_cd`
-)
-REFERENCES `store_type` (
-	`food_category_cd`
-);
-
