@@ -1,4 +1,4 @@
-package web.baemin.dto;
+package web.baemin.board.dto;
 
 import lombok.Getter;
 import lombok.Setter;

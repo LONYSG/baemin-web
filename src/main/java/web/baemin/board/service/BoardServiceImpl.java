@@ -1,10 +1,10 @@
-package web.baemin.service;
+package web.baemin.board.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import web.baemin.dto.Board;
-import web.baemin.mapper.BoardMapper;
+import web.baemin.board.dto.Board;
+import web.baemin.board.mapper.BoardMapper;
 
 import java.util.List;
 

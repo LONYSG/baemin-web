@@ -1,12 +1,11 @@
-package web.baemin.mapper;
+package web.baemin.board.service;
 
-import org.apache.ibatis.annotations.Mapper;
-import web.baemin.dto.Board;
+import web.baemin.board.dto.Board;
 
 import java.util.List;
 
-@Mapper
-public interface BoardMapper {
+public interface BoardService {
+
 
     List<Board> boardList();
 
