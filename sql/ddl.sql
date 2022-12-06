@@ -6,18 +6,19 @@ CREATE TABLE `board` (
      PRIMARY KEY (`id`) USING BTREE
 )
 ;
+
 CREATE TABLE `users` (
 	`user_id`	bigint(20)	NOT NULL,
 	`login_id`	varchar(100)	NOT NULL,
 	`password`	varchar(255)	NOT NULL,
 	`phone`	varchar(11)	NOT NULL,
 	`email`	varchar(100)	NOT NULL,
-	`grade`	varchar(100)	NOT NULL	DEFAULT 고마운분	COMMENT '고마운분/귀한분/더귀한분/천생연분',
-	`role`	varchar(100)	NOT NULL	DEFAULT 회원	COMMENT '회원/사장',
+	`grade`	varchar(100)	NOT NULL	DEFAULT '고마운분'	COMMENT '고마운분/귀한분/더귀한분/천생연분',
+	`role`	varchar(100)	NOT NULL	DEFAULT '회원'	COMMENT '회원/사장',
 	`current_address`	varchar(255)	NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반	COMMENT '일반/휴면/탈퇴/정지'
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반'	COMMENT '일반/휴면/탈퇴/정지'
 );
 
 CREATE TABLE `address` (
@@ -26,10 +27,10 @@ CREATE TABLE `address` (
 	`address`	varchar(255)	NOT NULL,
 	`created_date`	date	NOT NULL,
 	`modified_date`	date	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반'
 );
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
 	`order_id`	bigint(20)	NOT NULL,
 	`user_id`	bigint(20)	NOT NULL,
 	`store_id`	bigint(20)	NOT NULL,
@@ -38,7 +39,7 @@ CREATE TABLE `order` (
 	`requests`	varchar(255)	NULL,
 	`reated_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 정상,
+	`status`	varchar(255)	NOT NULL	DEFAULT '정상',
 	`food_category_cd`	int(20)	NOT NULL
 );
 
@@ -60,7 +61,7 @@ CREATE TABLE `menu` (
 	`popularity`	tinyint(1)	NOT NULL	DEFAULT 0,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반,
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반',
 	`food_category_cd`	int(20)	NOT NULL
 );
 
@@ -72,7 +73,7 @@ CREATE TABLE `menu_option` (
 	`price`	int(11)	NOT NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반,
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반',
 	`food_category_cd`	int(20)	NOT NULL
 );
 
@@ -96,7 +97,7 @@ CREATE TABLE `store` (
 	`delivery_address`	varchar(255)	NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반'
 );
 
 CREATE TABLE `coupon` (
@@ -109,7 +110,7 @@ CREATE TABLE `coupon` (
 	`created_date`	timestamp	NOT NULL,
 	`expired_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 가능
+	`status`	varchar(255)	NOT NULL	DEFAULT '가능'
 );
 
 CREATE TABLE `dibs` (
@@ -118,7 +119,7 @@ CREATE TABLE `dibs` (
 	`store_id`	bigint(20)	NOT NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modifided_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반,
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반',
 	`food_category_cd`	int(20)	NOT NULL
 );
 
@@ -132,7 +133,7 @@ CREATE TABLE `review` (
 	`picture_url`	text	NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT 일반,
+	`status`	varchar(255)	NOT NULL	DEFAULT '일반',
 	`food_category_cd`	int(20)	NOT NULL
 );
 
@@ -149,7 +150,7 @@ ALTER TABLE `address` ADD CONSTRAINT `PK_ADDRESS` PRIMARY KEY (
 	`address_id`
 );
 
-ALTER TABLE `order` ADD CONSTRAINT `PK_ORDER` PRIMARY KEY (
+ALTER TABLE `orders` ADD CONSTRAINT `PK_ORDERS` PRIMARY KEY (
 	`order_id`
 );
 
