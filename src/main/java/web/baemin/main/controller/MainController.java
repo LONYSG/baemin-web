@@ -27,4 +27,8 @@ public class MainController {
         model.addAttribute("storeTypeList", storeTypeList);
     }
 
+    @GetMapping("/storeApi")
+    public void storeApi(Model model) {
+    }
+
 }
