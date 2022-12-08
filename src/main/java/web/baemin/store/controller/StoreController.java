@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.baemin.main.dto.StoreType;
 import web.baemin.main.service.MainService;
+import web.baemin.store.dto.Menu;
 import web.baemin.store.dto.Store;
 import web.baemin.store.service.StoreService;
 
@@ -24,7 +25,7 @@ public class StoreController {
     private final MainService mainService;
 
     @GetMapping("/list")
-    public void index(Model model, @RequestParam String food_category_cd) {
+    public void list(Model model, @RequestParam String food_category_cd) {
         List<StoreType> storeTypeList = mainService.storeTypeList();
         List<Store> storeList = storeService.storeList(food_category_cd);
         System.out.println("storeList = " + storeList);
@@ -32,6 +33,16 @@ public class StoreController {
         model.addAttribute("storeTypeList", storeTypeList);
         model.addAttribute("storeList", storeList);
         model.addAttribute("food_category_cd", food_category_cd);
+    }
+
+    @GetMapping("/read")
+    public void read(Model model, @RequestParam String store_id) {
+        Store store = storeService.storeRead(store_id);
+        List<Menu> menuList = storeService.menuList(store_id);
+        System.out.println("menuList = " + menuList);
+
+        model.addAttribute("store", store);
+        model.addAttribute("menuList", menuList);
     }
 
 

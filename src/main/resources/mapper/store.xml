@@ -7,4 +7,12 @@
         SELECT * FROM store WHERE food_category_cd = #{food_category_cd} ORDER BY store_id ASC
     </select>
 
+    <select id="storeRead" parameterType="string" resultType="web.baemin.store.dto.Store">
+        SELECT * FROM store WHERE store_id = #{store_id}
+    </select>
+
+    <select id="menuList" parameterType="string" resultType="web.baemin.store.dto.Menu">
+        SELECT * FROM menu WHERE store_id = #{food_category_cd} ORDER BY menu_id ASC
+    </select>
+
 </mapper>
