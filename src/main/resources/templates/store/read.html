@@ -42,17 +42,38 @@
 
             <div style="float:right; width:500px; border:1px solid gray; text-align:center; margin-top:20px;">
                 <div>장바구니</div>
-                <div>asd</div>
                 <hr />
-                <div>합계 : <span>20,000</span>원</div>
+                <div class="order-menu-list">
+                </div>
+                <hr />
+                <div>합계 : <span class="total-price">0</span>원</div>
                 <button>주문하기</button>
             </div>
         </div>
 
         <script th:inline="javascript">
             $(function() {
+                // 메뉴 추가
+                $(".menu-list").click(function() {
+                    let name = $(this).find("input[name=name]").val();
+                    let price = $(this).find("input[name=price]").val();
+                    let orderMenuList = "<ul><li>"+name+" <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>"+price+"</span>원</li></ul>";
+                    $(".order-menu-list").append(orderMenuList);
 
+                    let totalPrice = Number($(".total-price").text()) + Number(price);
+                    $(".total-price").text(totalPrice);
+
+                });
             });
+
+            // 메뉴 삭제
+            function deleteMenu(obj) {
+                let price = $(obj).parents("li").next().find(".price").text();
+                let totalPrice = Number($(".total-price").text()) - Number(price);
+
+                $(".total-price").text(totalPrice);
+                $(obj).parents("ul").remove();
+            }
 
         </script>
 
