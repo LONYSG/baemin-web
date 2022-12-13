@@ -49,7 +49,7 @@
                 <div>
                     <button type="button" data-toggle="modal" class="btn btn-danger coupon-list" data-target="#couponModal">쿠폰</button>
                     합계 : <span class="total-price">0</span>원</div>
-                <button class="btn btn-success">주문하기</button>
+                <button class="btn btn-success order-button">주문하기</button>
             </div>
         </div>
 
@@ -62,6 +62,7 @@
                 $(".menu-list").click(function() {
                     let name = $(this).find("input[name=name]").val();
                     let price = $(this).find("input[name=price]").val();
+                    let menu_id = $(this).find("input[name=menu_id]").val();
                     let orderMenuList = "<ul><li>"+name+" <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>"+price+"</span>원</li></ul>";
                     $(".order-menu-list").append(orderMenuList);
 
@@ -72,6 +73,16 @@
 
                 // 쿠폰 적용 버튼 클릭 이벤트
                 $(".use-coupon").click(function() {
+                    if (!$("input[name=coupon]:checked").val()) {
+                        alert("쿠폰을 선택해주세요.");
+                        return;
+                    }
+                    if ($(".total-price").text() == 0) {
+                        alert("메뉴를 먼저 선택해주세요.");
+                        $("#couponModal").modal("hide");
+                        return;
+                    }
+
                     let coupon = $("input[name=coupon]:checked").val();
                     $("input[name=temp-coupon-id]").val(coupon);
                     $("#couponModal").modal("hide");
@@ -96,6 +107,17 @@
                             $(this).prop("checked", true);
                         }
                     });
+                });
+
+                $(".order-button").click(function() {
+                    if ($(".total-price").text() == 0) {
+                        alert("메뉴를 먼저 선택해주세요.");
+                        $("#couponModal").modal("hide");
+                        return;
+                    }
+                    if (!confirm("주문 하시겠습니까?")) return;
+                    alert("주문이 완료되었습니다.");
+                    location.href = "/main/index";
                 });
             });
 
