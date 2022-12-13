@@ -83,14 +83,30 @@
                         return;
                     }
 
-                    let coupon = $("input[name=coupon]:checked").val();
-                    $("input[name=temp-coupon-id]").val(coupon);
-                    $("#couponModal").modal("hide");
+                    let deductedPrice = Number($("input[name=coupon]:checked").siblings("input[name=coupon-deducted_price]").val()); // 할인금액
+                    let min_delivery_price = Number($("input[name=coupon]:checked").siblings("input[name=min_delivery_price]").val()); // 쿠폰 사용 조건
+                    let totalPrice = $(".total-price").text(); // 합계
 
-                    let deductedPrice = $("input[name=coupon]:checked").next("input[name=coupon-deducted_price]").val();
-                    let totalPrice = Number($(".total-price").text()) - Number(deductedPrice);
-                    $(".total-price").text(totalPrice);
-                    $(".coupon-list").hide();
+                    console.log(min_delivery_price);
+                    // 주문금액과 쿠폰의 사용조건 비교
+                    if (min_delivery_price > totalPrice) {
+                        alert(min_delivery_price+"원 이상 구매시 사용이 가능합니다.");
+                        return;
+                    }
+
+                    // 할인이 많이 들어가서 0원 이하일 경우 0원으로 처리
+                    if (totalPrice <= 0) {
+                        totalPrice = 0;
+                    }
+
+                    totalPrice = totalPrice - Number(deductedPrice); // 쿠폰이 적용된 합계
+
+                    let coupon = $("input[name=coupon]:checked").val();
+                    $("input[name=temp-coupon-id]").val(coupon); // 사용하는 쿠폰번호 세팅
+                    $("#couponModal").modal("hide"); // 모달 닫기
+
+                    $(".total-price").text(totalPrice); // 합계 가격 변경
+                    $(".coupon-list").hide(); // 쿠폰 버튼 감추기
 
                     alert("쿠폰이 적용되었습니다.");
                 });
@@ -109,6 +125,7 @@
                     });
                 });
 
+                // 주문 버튼 클릭 이벤트
                 $(".order-button").click(function() {
                     if ($(".total-price").text() == 0) {
                         alert("메뉴를 먼저 선택해주세요.");
@@ -125,9 +142,17 @@
             function deleteMenu(obj) {
                 let price = $(obj).parents("li").next().find(".price").text();
                 let totalPrice = Number($(".total-price").text()) - Number(price);
+                if (totalPrice < 0) {
+                    totalPrice = 0;
+                }
 
                 $(".total-price").text(totalPrice);
                 $(obj).parents("ul").remove();
+
+                if ($(".order-menu-list").find("ul").length <= 0) {
+                    $(".coupon-list").show();
+                    $("input[name=temp-coupon-id]").val("");
+                }
             }
 
             // 쿠폰 목록 불러오기
@@ -145,6 +170,7 @@
                             couponHtml += '<label>';
                             couponHtml += '<span style="float:left; padding-top:25px;">';
                             couponHtml += '<input type="radio" name="coupon" value="'+val["coupon_id"]+'">';
+                            couponHtml += '<input type="hidden" name="min_delivery_price" value="'+val["min_delivery_price"]+'">';
                             couponHtml += '<input type="hidden" name="coupon-deducted_price" value="'+val["deducted_price"]+'">';
                             couponHtml += '</span>';
                             couponHtml += '<span style="float:left; margin-left:15px; cursor:pointer;">';
