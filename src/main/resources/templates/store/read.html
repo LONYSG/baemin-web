@@ -46,13 +46,18 @@
                 <div class="order-menu-list">
                 </div>
                 <hr />
-                <div>합계 : <span class="total-price">0</span>원</div>
-                <button>주문하기</button>
+                <div>
+                    <button type="button" data-toggle="modal" class="btn btn-danger coupon-list" data-target="#couponModal">쿠폰</button>
+                    합계 : <span class="total-price">0</span>원</div>
+                <button class="btn btn-success">주문하기</button>
             </div>
         </div>
 
         <script th:inline="javascript">
             $(function() {
+
+                setCouponList();
+
                 // 메뉴 추가
                 $(".menu-list").click(function() {
                     let name = $(this).find("input[name=name]").val();
@@ -63,6 +68,34 @@
                     let totalPrice = Number($(".total-price").text()) + Number(price);
                     $(".total-price").text(totalPrice);
 
+                });
+
+                // 쿠폰 적용 버튼 클릭 이벤트
+                $(".use-coupon").click(function() {
+                    let coupon = $("input[name=coupon]:checked").val();
+                    $("input[name=temp-coupon-id]").val(coupon);
+                    $("#couponModal").modal("hide");
+
+                    let deductedPrice = $("input[name=coupon]:checked").next("input[name=coupon-deducted_price]").val();
+                    let totalPrice = Number($(".total-price").text()) - Number(deductedPrice);
+                    $(".total-price").text(totalPrice);
+                    $(".coupon-list").hide();
+
+                    alert("쿠폰이 적용되었습니다.");
+                });
+
+                // 적용 쿠폰 확인
+                $(".coupon-list").click(function() {
+                    let tempCouponId = $("input[name=temp-coupon-id]").val();
+                    if (!tempCouponId) {
+                        $("input[name=coupon]").prop("checked", false);
+                        return;
+                    }
+                    $("#modalBody input").each(function () {
+                        if ($(this).val() == tempCouponId) {
+                            $(this).prop("checked", true);
+                        }
+                    });
                 });
             });
 
@@ -75,8 +108,56 @@
                 $(obj).parents("ul").remove();
             }
 
+            // 쿠폰 목록 불러오기
+            function setCouponList() {
+                $.ajax({
+                    url:"/coupon/list",
+                    method : 'GET',
+                    contentType: 'application/json',
+                    success:function(data) {
+                        //console.log(data);
+                        let couponHtml = '';
+
+                        for (let val of data) {
+                            couponHtml += '<div style="clear:both;  border-top:1px solid gray;">';
+                            couponHtml += '<label>';
+                            couponHtml += '<span style="float:left; padding-top:25px;">';
+                            couponHtml += '<input type="radio" name="coupon" value="'+val["coupon_id"]+'">';
+                            couponHtml += '<input type="hidden" name="coupon-deducted_price" value="'+val["deducted_price"]+'">';
+                            couponHtml += '</span>';
+                            couponHtml += '<span style="float:left; margin-left:15px; cursor:pointer;">';
+                            couponHtml += val["name"]+' <br />'+val["min_delivery_price"]+'원 이상 구매시 '+val["deducted_price"]+'원 할인 <br />사용기한 : '+val["expired_date"].substring(0, 10);
+                            couponHtml += '</span></label></div>';
+                            $("#modalBody").html(couponHtml);
+                        }
+                    },
+                    error:function(e) {
+                        console.log(e);
+                    }
+                });
+            }
+
         </script>
 
     </th:block>
 
 </th:block>
+
+<!-- 쿠폰 모달 -->
+<div id="couponModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">쿠폰 목록</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+            </div>
+            <div id="modalBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary use-coupon">적용</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="" name="temp-coupon-id" />
+</div>
