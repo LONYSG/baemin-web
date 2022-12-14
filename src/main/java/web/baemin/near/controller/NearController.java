@@ -19,8 +19,16 @@ public class NearController {
 
     private final NearService nearService;
 
-    @GetMapping("/index")
-    public void index(Model model) {
+    @GetMapping("/nearstore")
+    public void nearstore(Model model) {
+        List<Address> addressList = nearService.addressList();
+        System.out.println("addressList = " + addressList);
+
+        model.addAttribute("addressList", addressList);
+    }
+
+    @GetMapping("/searchstore")
+    public void searchstore(Model model) {
         List<Address> addressList = nearService.addressList();
         System.out.println("addressList = " + addressList);
 
