@@ -12,14 +12,14 @@ body{
 }
 
 /*로고*/
-.logo { position:relative; bottom:25px; left:7px; z-index:2;}
+.logo { position:relative; top:0px; left:7px; z-index:2;}
 .logo img { width:300px; }
 
 
 /*로그인 버튼 */
 .button_container{
   position: relative;
-  bottom:200px;
+  bottom:90px;
   left:450px;
   z-index:2;
 }
@@ -84,50 +84,26 @@ body{
   color: #000;
   font-size: 25px;
 }
+/* 해더 작업 */
+.cit{
+ position:relative;
+ bottom: 130px;
+ left: 650px;
+ z-index:2;
+}
+.cit img { width:50px; }
 
-/*검색*/
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
-
-  bottom:485px;
-  right: 50px;
-
+.address{
+ position:relative;
+ width: 400px;
+ bottom: 160px;
+ left: 700px;
+ z-index:2;
 }
 
-.searchTerm {
-  width: 100%;
-  border: 3px solid #00B4CC;
-  border-right: none;
-  padding: 5px;
-  height: 37px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-}
-
-.searchTerm:focus{
-  color: #00B4CC;
-}
-
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.search{
+ position:relative;
+ bottom: 190px;
+ left: 1100px;
+ z-index:2;
 }
