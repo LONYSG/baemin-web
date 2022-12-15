@@ -10,7 +10,7 @@ import lombok.ToString;
 public class Address {
     private Long store_id;
     private Long food_category_cd;
-    private String name;
+    private String store_name;
     private String address;
     private String store_picture_url;
     private Long phone;
