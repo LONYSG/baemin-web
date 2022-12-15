@@ -12,7 +12,11 @@ body{
 }
 
 /*로고*/
-.logo { position:relative; top:0px; left:7px; z-index:2;}
+.logo {
+position:relative;
+top:0px;
+left: 150px;
+z-index:2;}
 .logo img { width:300px; }
 
 
@@ -20,7 +24,7 @@ body{
 .button_container{
   position: relative;
   bottom:90px;
-  left:450px;
+  left: 500px;
   z-index:2;
 }
 
@@ -84,26 +88,49 @@ body{
   color: #000;
   font-size: 25px;
 }
-/* 해더 작업 */
+
+/* 검색 작업 */
+
+
 .cit{
  position:relative;
  bottom: 130px;
- left: 650px;
- z-index:2;
+ left: 550px;
+ z-index:1;
 }
-.cit img { width:50px; }
+.cit img {
+width:50px;
+}
 
 .address{
  position:relative;
  width: 400px;
  bottom: 160px;
- left: 700px;
- z-index:2;
+ left: 600px;
+ z-index:1;
 }
 
 .search{
  position:relative;
  bottom: 190px;
- left: 1100px;
- z-index:2;
+ left: 1000px;
+ z-index:1;
+}
+
+.body_cit{
+position:relative;
+
+}
+
+/* 메뉴 */
+.menu{
+ position:relative;
+
+ float:left;
+ left: 125px;
+ width:15%;
+ border:1px
+ solid black;
+ margin:3%;
+ height:200px;"
 }
