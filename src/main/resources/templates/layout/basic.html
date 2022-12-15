@@ -5,8 +5,12 @@
 
     <head>
 
+
         <!-- 블럭바 -->
         <div class="header">
+
+            <!-- 해더-->
+            <hc>
 
             <!--로고-->
             <a class="logo" href="/main/index"><img src="/img/logo.png" /><span class="sr-only">(current)</span></a>
@@ -20,20 +24,11 @@
         </p>-->
             </div>
 
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            </hc>
 
-                        <li>
-                            <a class="cit" th:href="@{/near/nearstore}" ><img src="/img/cit.png" /></a>
-                        </li>
-                        <li>
-                            <input class="address" type="text" id="inputAddress" onclick="setCAddress()" placeholder="주소 입력..">
-                        </li>
-                        <li>
-                            <a class="search" th:href="@{/near/searchstore}"><button>입력한 주소로 검색</button></a>
-                        </li>
-
-                    </ul>
         </div>
+
+
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,7 +55,26 @@
 
     </head>
 
+
     <body onload="checkCookie()">
+
+
+<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+    <img class="he" src="/img/body.jpg">
+
+    <li>
+        <a class="cit" th:href="@{/near/nearstore}" ><img src="/img/cit.png" /></a>
+    </li>
+    <li>
+        <input class="address" type="text" id="inputAddress" onclick="setCAddress()" placeholder="주소 입력..">
+    </li>
+    <li>
+        <a class="search" th:href="@{/near/searchstore}"><button>입력한 주소로 검색</button></a>
+    </li>
+
+</ul>
+
+
 
     <div class="d-flex" id="wrapper">
 
