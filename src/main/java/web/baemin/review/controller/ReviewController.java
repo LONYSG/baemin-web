@@ -48,8 +48,8 @@ public class ReviewController {
         return "redirect:/review/list";
     }
 
-    @GetMapping("/modify")
-    public void modify(Model model, @RequestParam String id){
+    @GetMapping("/read")
+    public void read(Model model, @RequestParam String id){
         System.out.println("id = " + id);
 
         Review review = reviewService.reviewRead(id);
@@ -58,8 +58,8 @@ public class ReviewController {
 
     }
 
-    @PostMapping("/modify")
-    public String modify(RedirectAttributes redirectAttributes, Review review){
+    @PostMapping("/read")
+    public String read(RedirectAttributes redirectAttributes, Review review){
         System.out.println("review = " + review);
 
         reviewService.reviewUpdate(review);
