@@ -56,23 +56,17 @@
 
     </head>
 
+<body onload="checkCookie()">
 
-    <body onload="checkCookie()">
+<img class="he" src="/img/body.jpg">
 
+<ul class="middle">
 
-<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-    <img class="he" src="/img/body.jpg">
-
-    <li>
         <a class="cit" th:href="@{/near/nearstore}" ><img src="/img/cit.png" /></a>
-    </li>
-    <li>
-        <input class="address" type="text" id="inputAddress" onclick="setCAddress()" placeholder="주소 입력..">
-    </li>
-    <li>
-        <a class="search" th:href="@{/near/searchstore}"><button>입력한 주소로 검색</button></a>
-    </li>
 
+        <input class="address" type="text" id="inputAddress" onclick="setCAddress()" placeholder="주소 입력..">
+
+        <a class="search" th:href="@{/near/searchstore}"><button>입력한 주소로 검색</button></a>
 </ul>
 
 
