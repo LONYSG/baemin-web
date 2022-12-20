@@ -3,7 +3,6 @@ package web.baemin.review.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import web.baemin.board.dto.Board;
 import web.baemin.review.dto.Review;
 import web.baemin.review.mapper.ReviewMapper;
 
@@ -25,9 +24,9 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Review reviewRead(String id) {
+    public Review reviewRead(String review_id) {
 
-        Review review = reviewMapper.reviewRead(id);
+        Review review = reviewMapper.reviewRead(review_id);
 
         return review;
     }
@@ -42,5 +41,10 @@ public class ReviewServiceImpl implements ReviewService{
     public void reviewUpdate(Review review) {
         reviewMapper.reviewUpdate(review);
 
+    }
+
+    @Override
+    public void reviewDelete(Review review) {
+        reviewMapper.reviewDelete(review);
     }
 }

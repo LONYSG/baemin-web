@@ -49,10 +49,10 @@ public class ReviewController {
     }
 
     @GetMapping("/read")
-    public void read(Model model, @RequestParam String id){
-        System.out.println("id = " + id);
+    public void read(Model model, @RequestParam String review_id){
+        System.out.println("review_id = " + review_id);
 
-        Review review = reviewService.reviewRead(id);
+        Review review = reviewService.reviewRead(review_id);
 
         model.addAttribute("review", review);
 

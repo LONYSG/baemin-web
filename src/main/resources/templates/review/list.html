@@ -5,7 +5,7 @@
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">내가 쓴 총 리뷰
+        <h1 class="mt-4">Review List
             <span>
                 <a th:href="@{/review/register}">
                     <button type="button" class="btn btn-outline-primary">등록
@@ -14,7 +14,7 @@
             </span>
         </h1>
 
-        <form action="/movie/list" method="get" id="searchForm">
+        <form action="/review/list" method="get" id="searchForm">
             <input type="hidden" name="page" value="1">
         </form>
 
@@ -28,16 +28,16 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="board : ${boardList}" >
+                <tr th:each="review : ${reviewList}" >
 
                     <th scope="row">
-                        <a th:href="@{/board/modify(id = ${board.id} )}">
-                          [[${board.id}]]
+                        <a th:href="@{/review/read(id = ${review.review_id} )}">
+                          [[${review.review_id}]]
                         </a>
                     </th>
-                    <td><b>[[${board.reg_date}]]</b></td>
-                    <td><b>[[${board.title}]]</b></td>
-                    <td><b>[[${board.content}]]</b></td>
+                    <td><b>[[${review.store_id}]]</b></td>
+                    <td><b>[[${review.rating}]]</b></td>
+                    <td><b>[[${review.content}]]</b></td>
 
                 </tr>
 

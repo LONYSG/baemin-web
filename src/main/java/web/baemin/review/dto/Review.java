@@ -14,6 +14,8 @@ public class Review {
 
     private Long user_id;
 
+    private Long store_id;
+
     private int rating;
 
     private String content;
