@@ -1,7 +1,7 @@
 
 
 INSERT INTO users VALUES('0001','-1714348728','pw1234','01011112222','user01@gmail.com','고마운분',null,'2022-12-06','2022-12-06','일반');
-INSERT INTO users VALUES('0002','user02','pw1234','01022223333','user02@gmail.com','귀한분',null,'2022-12-06','2022-12-06','휴면');
+INSERT INTO users VALUES('0002','-1707093011','pw1234','01022223333','user02@gmail.com','귀한분',null,'2022-12-06','2022-12-06','휴면');
 INSERT INTO users VALUES('0003','user03','pw1234','01033334444','user03@gmail.com','더귀한분',null,'2022-12-06','2022-12-06','탈퇴');
 INSERT INTO users VALUES('0004','user04','pw1234','01044445555','user04@gmail.com','천생연분',null,'2022-12-06','2022-12-06','정지');
 INSERT INTO users VALUES('0005','user05','pw1234','01055556666','user05@gmail.com','고마운분',null,'2022-12-06','2022-12-06','일반');
