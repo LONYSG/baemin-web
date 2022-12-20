@@ -19,6 +19,8 @@
                 <p class="description"></p>
                 <button th:if="${#strings.isEmpty(session.loginUserSession)}" class="btn" onclick="javascript:location.href='/login/index'">Google 로그인</button>
                 <button th:if="${session.loginUserSession}" class="btn" onclick="javascript:location.href='/login/logoutProc'">로그아웃</button>
+                <button th:if="${session.loginUserSession}" class="btn" onclick="location.href='/orders/list';">주문 내역</button>
+                <button th:if="${session.loginUserSession}" class="btn" onclick="location.href='#';">내가 쓴 리뷰 목록</button>
                 <!--<p class="link">
           Design by
           <a href="https://dribbble.com/skytrip" target="_blank">SkyTrip</a>

@@ -33,7 +33,7 @@ CREATE TABLE `orders` (
 	`store_id`	bigint(20)	NOT NULL,
 	`total_price`	int(11)	NULL	DEFAULT 0	COMMENT '주문메뉴 테이블의 주문메뉴가격을 합친 가격',
 	`requests`	varchar(255)	NULL,
-	`reated_date`	timestamp	NOT NULL,
+	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
 	`status`	varchar(255)	NOT NULL	DEFAULT '정상',
 	`order_address`	varchar(255)	NOT NULL
@@ -88,7 +88,7 @@ CREATE TABLE `dibs` (
 	`user_id`	bigint(20)	NOT NULL,
 	`store_id`	bigint(20)	NOT NULL,
 	`created_date`	timestamp	NOT NULL,
-	`modifided_date`	timestamp	NOT NULL,
+	`modified_date`	timestamp	NOT NULL,
 	`status`	varchar(255)	NOT NULL	DEFAULT '일반'
 );
 
@@ -115,9 +115,6 @@ CREATE TABLE `order_menu` (
 	`menu_id`	bigint(20)	NOT NULL
 );
 
-ALTER TABLE `users` ADD CONSTRAINT `PK_USERS` PRIMARY KEY (
-	`user_id`
-);
 
 ALTER TABLE `address` ADD CONSTRAINT `PK_ADDRESS` PRIMARY KEY (
 	`address_id`

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <div style="width:1200px; margin:0 auto;">
+            <div>주문 내역</div>
+            <div style="border:1px solid gray; float:left; margin-left:50px; margin-top:10px;" th:each="orders : ${ordersList}" >
+                <div style="float:left;">
+                    주문 일자: [[${orders.created_date}]]<br>
+                    가게명: [[${orders.store_name}]]<br>
+                    <img th:src="${orders.store_picture_url}" style="width:50px; height:50px;">
+                    주문 메뉴: [[${orders.menu_name}]]<br>
+                    총 주문 금액: [[${orders.total_price}]]<br>
+                    <a th:href="'http://localhost/store/read?store_id='+${orders.store_id}" style="color:blue">가게 상세보기</a><br>
+                    주문 주소: [[${orders.order_address}]]
+                </div>
+            </div>
+        </div>
+
+    </th:block>
+
+</th:block>

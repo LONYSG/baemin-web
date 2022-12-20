@@ -46,10 +46,10 @@ public class LoginController {
     public String logoutProc(@SessionAttribute(name = "loginUserSession", required = false) User loginUserSession, HttpSession session){
         System.out.println("loginUserSession = " + loginUserSession);
 
-//        User user = new User();
-//        user.setLogin_id(loginUserSession.getLogin_id());
-//        Optional<User> User = loginService.loginCheckUser(user);
-//        System.out.println("User = " + User);
+        User user = new User();
+        user.setLogin_id(loginUserSession.getLogin_id());
+        Optional<User> User = loginService.loginCheckUser(user);
+        System.out.println("User = " + User);
 
 
         session.invalidate();
