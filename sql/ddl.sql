@@ -5,6 +5,7 @@
 #     `content` VARCHAR(255) NULL DEFAULT NULL COMMENT '내용',
 #     PRIMARY KEY (`id`) USING BTREE
 #);
+
 CREATE TABLE `users` (
 	`user_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`login_id`	varchar(100)	NULL,
@@ -31,12 +32,13 @@ CREATE TABLE `orders` (
 	`order_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`user_id`	bigint(20)	NOT NULL,
 	`store_id`	bigint(20)	NOT NULL,
-	`total_price`	int(11)	NULL	DEFAULT 0	COMMENT '주문메뉴 테이블의 주문메뉴가격을 합친 가격',
+	`order_address`	varchar(255)	NOT NULL,
+	`detail_address`	varchar(255)	NOT NULL,
+	`total_price`	int(11)	NOT NULL	DEFAULT 0	COMMENT '주문메뉴 테이블의 주문메뉴가격을 합친 가격',
 	`requests`	varchar(255)	NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
-	`status`	varchar(255)	NOT NULL	DEFAULT '정상',
-	`order_address`	varchar(255)	NOT NULL
+	`status`	varchar(255)	NOT NULL	DEFAULT '정상'
 );
 
 CREATE TABLE `menu` (
