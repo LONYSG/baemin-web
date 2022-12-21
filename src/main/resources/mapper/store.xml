@@ -19,4 +19,8 @@
         SELECT * FROM coupon ORDER BY coupon_id ASC
     </select>
 
+<!--    <insert id="paymentInsert" parameterType="web.baemin.store.dto.Payment">-->
+<!--        INSERT INTO board(title, content) VALUES(#{title}, #{content})-->
+<!--    </insert>-->
+
 </mapper>
