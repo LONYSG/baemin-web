@@ -4,14 +4,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import web.baemin.login.dto.User;
 import web.baemin.review.dto.Review;
 import web.baemin.review.service.ReviewService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -24,22 +23,31 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/list")
-    public void index(Model model){
+    public void index(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession, HttpSession session) {
+        System.out.println("login_id1 = "+loginUserSession.getLogin_id());
 
         List<Review> reviewList = reviewService.reviewList();
-        System.out.println("boardList = " + reviewList.toString());
+        System.out.println("ReviewList = " + reviewList.toString());
 
         model.addAttribute("reviewList", reviewList);
     }
 
     @GetMapping("/register")
-    public void register(){
+    public void register(Model model,Review review){
 
+        model.addAttribute("review", review);
     }
 
     @PostMapping("/register")
     public String register(RedirectAttributes redirectAttributes, Review review){
-        System.out.println("review = " + review);
+        //review.setReview_id(8006l);
+        //review.setUser_id(2l);
+        //review.setStore_id(9002l);
+        //review.setMenu_id(4002l);
+        //review.setRating(4);
+        //review.setPicture_url("https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg");
+        //review.setStatus("일반");
+        System.out.println("review ===== " + review);
 
         reviewService.reviewInsert(review);
 

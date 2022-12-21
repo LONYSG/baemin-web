@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:color="http://www.w3.org/1999/xhtml">
 
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
 
@@ -16,9 +16,28 @@
                     총 주문 금액: [[${orders.total_price}]]<br>
                     <a th:href="'http://localhost/store/read?store_id='+${orders.store_id}" style="color:blue">가게 상세보기</a><br>
                     주문 주소: [[${orders.order_address}]]
+
+                    <form th:action="@{/review/register}" th:method="get"  >
+                    <button type=submit style="width:60%;">리뷰등록</button>
+
+                    <input type="text" name="review_id" value="" />
+                    <input type="text" name="user_id" value="" />
+                    <input type="text" name="store_id" value="" />
+                    <input type="text" name="menu_id" value="" />
+                    <input type="text" name="rating" value="" />
+                    <input type="text" name="picture_url" value="" />
+                    <input type="text" name="status" value="" />
+
+                    </form>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
 
     </th:block>
 

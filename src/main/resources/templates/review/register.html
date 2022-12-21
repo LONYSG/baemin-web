@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+<style>
+    .uploadResult {
+        width: 100%;
+        background-color: gray;
+        margin-top: 10px;
+    }
+
+    .uploadResult ul {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        vertical-align: top;
+        overflow: auto;
+    }
+
+    .uploadResult ul li {
+        list-style: none;
+        padding: 10px;
+        margin-left: 2em;
+    }
+
+    .uploadResult ul li img {
+        width: 100px;
+    }
+</style>
+
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
 
         <h1 class="mt-4">Review</h1>
 
-        <form th:action="@{/review/register}" th:method="post">
+        <form th:action="@{/review/register}" th:method="post"  >
             <div class="form-group">
-                <label>음식은 어떠셨어요?<span class="grade"></span></label>
+                <label >음식은 어떠셨어요?<span class="rating"></span></label>
                 <div class='starrr'></div>
-
-
-                <input type="text" class="form-control" name="context" style="width:100%; height:100px" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요.(선택)">
             </div>
 
+            <input type="text" name="review_id" th:value="${review.review_id}" />
+            <input type="text" name="user_id" th:value="${review.user_id}" />
+            <input type="text" name="store_id" th:value="${review.store_id}" />
+            <input type="text" name="menu_id" th:value="${review.menu_id}" />
+            <input type="text" name="rating" th:value="${review.rating}" />
+            <input type="text" name="picture_url" th:value="${review.picture_url}" />
+            <input type="text" name="status" th:value="${review.status}" />
+
             <div class="form-group fileForm">
-                <label>사진 첨부</label>
+                <label>Content</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input files" id="fileInput" multiple>
-                    <label class="custom-file-label" data-browse="사진첨부하기"></label>
+                    <textarea name="content" style="width:100%; height:100px" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요.(선택)"></textarea>
                 </div>
             </div>
 
-            <div class="box">
+            <div class="form-group fileForm">
+                    <label>사진 첨부</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input files" id="fileInput" multiple>
+                        <label class="custom-file-label" data-browse="첨부하기"></label>
+                    </div>
+                </div>
 
-            </div>
+                <div class="box">
+
+                </div>
 
             <button type="submit" class="btn btn-primary">완료</button>
         </form>
 
-        </th:block>
-</th:block>
+    </th:block>
 
-</html>
+</th:block>
