@@ -25,6 +25,7 @@ INSERT INTO dibs VALUES('3004','1004','9004','2022-12-06','2022-12-06','일반')
 INSERT INTO dibs VALUES('3005','1005','9005','2022-12-06','2022-12-06','일반');
 
 INSERT INTO menu VALUES('4001','9001','1인용 찜닭','12000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
+INSERT INTO menu VALUES('4006','9001','혼밥갈비찜','15000','https://recipe1.ezmember.co.kr/cache/recipe/2019/02/09/9377ac695a85566adfda9817b73438f31.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4002','9002','족발','22000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4003','9003','김치찌개','15000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4004','9004','왕돈까스','13000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');

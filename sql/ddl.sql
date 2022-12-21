@@ -1,10 +1,10 @@
-CREATE TABLE `board` (
-     `id` BIGINT(19) NOT NULL AUTO_INCREMENT,
-     `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록 날짜',
-     `title` VARCHAR(255) NULL DEFAULT NULL COMMENT '제목',
-     `content` VARCHAR(255) NULL DEFAULT NULL COMMENT '내용',
-     PRIMARY KEY (`id`) USING BTREE
-);
+#CREATE TABLE `board` (
+#     `id` BIGINT(19) NOT NULL AUTO_INCREMENT,
+#     `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록 날짜',
+#     `title` VARCHAR(255) NULL DEFAULT NULL COMMENT '제목',
+#     `content` VARCHAR(255) NULL DEFAULT NULL COMMENT '내용',
+#     PRIMARY KEY (`id`) USING BTREE
+#);
 CREATE TABLE `users` (
 	`user_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`login_id`	varchar(100)	NULL,
@@ -19,7 +19,7 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `address` (
-	`address_id`	bigint(20)	NOT NULL,
+	`address_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`user_id`	bigint(20)	NOT NULL,
 	`address`	varchar(255)	NOT NULL,
 	`created_date`	date	NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `address` (
 );
 
 CREATE TABLE `orders` (
-	`order_id`	bigint(20)	NOT NULL,
+	`order_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`user_id`	bigint(20)	NOT NULL,
 	`store_id`	bigint(20)	NOT NULL,
 	`total_price`	int(11)	NULL	DEFAULT 0	COMMENT '주문메뉴 테이블의 주문메뉴가격을 합친 가격',
@@ -40,7 +40,7 @@ CREATE TABLE `orders` (
 );
 
 CREATE TABLE `menu` (
-	`menu_id`	bigint(20)	NOT NULL,
+	`menu_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`store_id`	bigint(20)	NOT NULL,
 	`menu_name`	varchar(255)	NOT NULL,
 	`price`	int(11)	NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `menu` (
 );
 
 CREATE TABLE `store` (
-	`store_id`	bigint(20)	NOT NULL,
+	`store_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`food_category_cd`	int(20)	NOT NULL,
 	`store_name`	varchar(255)	NOT NULL,
 	`address`	varchar(255)	NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `store` (
 );
 
 CREATE TABLE `coupon` (
-	`coupon_id`	bigint(20)	NOT NULL,
+	`coupon_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`user_id`	bigint(20)	NOT NULL,
 	`name`	varchar(255)	NOT NULL,
 	`content`	varchar(255)	NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `coupon` (
 );
 
 CREATE TABLE `dibs` (
-	`dibs_id`	bigint(20)	NOT NULL,
+	`dibs_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`user_id`	bigint(20)	NOT NULL,
 	`store_id`	bigint(20)	NOT NULL,
 	`created_date`	timestamp	NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE `dibs` (
 );
 
 CREATE TABLE `review` (
-	`review_id`	bigint(20)	NOT NULL,
+	`review_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 	`user_id`	bigint(20)	NOT NULL,
 	`store_id`	bigint(20)	NOT NULL,
 	`menu_id`	bigint(20)	NOT NULL,
@@ -115,34 +115,6 @@ CREATE TABLE `order_menu` (
 	`menu_id`	bigint(20)	NOT NULL
 );
 
-
-ALTER TABLE `address` ADD CONSTRAINT `PK_ADDRESS` PRIMARY KEY (
-	`address_id`
-);
-
-ALTER TABLE `orders` ADD CONSTRAINT `PK_ORDERS` PRIMARY KEY (
-	`order_id`
-);
-
-ALTER TABLE `menu` ADD CONSTRAINT `PK_MENU` PRIMARY KEY (
-	`menu_id`
-);
-
-ALTER TABLE `store` ADD CONSTRAINT `PK_STORE` PRIMARY KEY (
-	`store_id`
-);
-
-ALTER TABLE `coupon` ADD CONSTRAINT `PK_COUPON` PRIMARY KEY (
-	`coupon_id`
-);
-
-ALTER TABLE `dibs` ADD CONSTRAINT `PK_DIBS` PRIMARY KEY (
-	`dibs_id`
-);
-
-ALTER TABLE `review` ADD CONSTRAINT `PK_REVIEW` PRIMARY KEY (
-	`review_id`
-);
 
 ALTER TABLE `store_type` ADD CONSTRAINT `PK_STORE_TYPE` PRIMARY KEY (
 	`food_category_cd`

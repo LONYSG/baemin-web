@@ -23,32 +23,10 @@ public class OrdersController {
     private final MainService mainService;
 
     @GetMapping("/list")
-    public void list(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession, HttpSession session) {
-        System.out.println("login_id1 = "+loginUserSession.getLogin_id());
-
-
+    public void list(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {
         List<Orders> ordersList = ordersService.ordersList(Long.parseLong(loginUserSession.getLogin_id()));
-        System.out.println("ordersList = " + ordersList);
-
 
         model.addAttribute("ordersList", ordersList);
-        model.addAttribute("loginUserSession", loginUserSession);
     }
-
-//    @GetMapping("/logoutProc")
-//    public String logoutProc(@SessionAttribute(name = "loginUserSession", required = false) User loginUserSession, HttpSession session){
-//        System.out.println("loginUserSession = " + loginUserSession);
-//
-////        User user = new User();
-////        user.setLogin_id(loginUserSession.getLogin_id());
-////        Optional<User> User = loginService.loginCheckUser(user);
-////        System.out.println("User = " + User);
-//
-//
-//        session.invalidate();
-//
-//        return "redirect:/main/index";
-//    }
-
 
 }
