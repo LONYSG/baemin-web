@@ -31,6 +31,7 @@
 
 
         <meta charset="utf-8">
+
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -53,19 +54,21 @@
         <link th:href="@{//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet" >
 
 
+
+
     </head>
 
 <body onload="checkCookie()">
 
 <img class="he" src="/img/body.jpg">
 
-<ul class="middle">
+<ul class="container">
 
         <a class="cit" th:href="@{/near/nearstore}" ><img src="/img/cit.png" /></a>
 
         <input class="address" type="text" id="inputAddress" onclick="setCAddress()" placeholder="주소 입력..">
 
-        <a class="search" th:href="@{/near/searchstore}"><button>입력한 주소로 검색</button></a>
+        <a class="search" th:href="@{/near/searchstore}"><button type="button" class="btn btn-success">입력한 주소로 검색</button></a>
 </ul>
 
 
