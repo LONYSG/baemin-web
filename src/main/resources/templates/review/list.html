@@ -5,13 +5,13 @@
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">Review List
-            <span>
+        <h1 class="mt-4">내가 쓴 총 리뷰
+            <!-- <span>
                 <a th:href="@{/review/register}">
                     <button type="button" class="btn btn-outline-primary">등록
                     </button>
                 </a>
-            </span>
+            </span> -->
         </h1>
 
         <form action="/review/list" method="get" id="searchForm">
@@ -21,23 +21,31 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">번호</th>
                 <th scope="col">가게명</th>
+                <th scope="col">주문 메뉴</th>
                 <th scope="col">별점</th>
+                <th scope="col">사진</th>
                 <th scope="col">내용</th>
+                <th scope="col">등록일</th>
+
+
             </tr>
             </thead>
             <tbody>
-                <tr th:each="review : ${reviewList}" >
+                <tr th:each="review : ${reviewList}">
 
-                    <th scope="row">
-                        <a th:href="@{/review/read(id = ${review.review_id} )}">
-                          [[${review.review_id}]]
+                    <!-- th scope="row">
+                        <a th:href="@{/review/read(id = ${review.user_id} )}">
+                          [[${review.user_id}]]
                         </a>
-                    </th>
-                    <td><b>[[${review.store_id}]]</b></td>
+                    </th> -->
+                    <td><b>[[${review.store_name}]]</b></td>
+                    <td><b>[[${review.menu_name}]]</b></td>
                     <td><b>[[${review.rating}]]</b></td>
+                    <td><b>[[${review.store_picture_url}]]</b></td>
                     <td><b>[[${review.content}]]</b></td>
+                    <td><b>[[${review.created_date}]]</b></td>
+
 
                 </tr>
 

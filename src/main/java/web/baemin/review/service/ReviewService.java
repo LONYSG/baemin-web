@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ReviewService {
 
-    List<Review> reviewList();
+    List<Review> reviewList(Long login_id);
 
     Review reviewRead(String review_id);
 

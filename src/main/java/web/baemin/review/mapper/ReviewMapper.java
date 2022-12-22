@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface ReviewMapper {
 
-    List<Review> reviewList();
+    List<Review> reviewList(Long login_id);
 
     Review reviewRead(String review_id);
 

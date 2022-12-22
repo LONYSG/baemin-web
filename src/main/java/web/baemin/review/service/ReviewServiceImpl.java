@@ -16,8 +16,8 @@ public class ReviewServiceImpl implements ReviewService{
     private final ReviewMapper reviewMapper;
 
     @Override
-    public List<Review> reviewList() {
-        List<Review> reviewList = reviewMapper.reviewList();
+    public List<Review> reviewList(Long login_id) {
+        List<Review> reviewList = reviewMapper.reviewList(login_id);
         log.info("reviewList : {}", reviewList.toString());
 
         return reviewList;
