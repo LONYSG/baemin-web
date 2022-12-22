@@ -34,6 +34,7 @@ CREATE TABLE `orders` (
 	`store_id`	bigint(20)	NOT NULL,
 	`order_address`	varchar(255)	NOT NULL,
 	`detail_address`	varchar(255)	NOT NULL,
+	`order_phone`	varchar(11)	NOT NULL,
 	`total_price`	int(11)	NOT NULL	DEFAULT 0	COMMENT '주문메뉴 테이블의 주문메뉴가격을 합친 가격',
 	`requests`	varchar(255)	NULL,
 	`created_date`	timestamp	NOT NULL,
