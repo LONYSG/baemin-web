@@ -40,7 +40,7 @@ z-index:2;}
 .cit{
  position:relative;
  bottom: 90px;
- left: 550px;
+ left: 250px;
  z-index:1;
 }
 
@@ -52,14 +52,14 @@ width:50px;
  position:relative;
  width: 400px;
  bottom: 90px;
- left: 560px;
+ left: 260px;
  z-index:1;
 }
 
 .search{
  position:relative;
  bottom: 90px;
- left: 570px;
+ left: 270px;
  z-index:1;
 }
 

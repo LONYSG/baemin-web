@@ -17,10 +17,10 @@
 
             <div class="button_container">
                 <p class="description"></p>
-                <button th:if="${#strings.isEmpty(session.loginUserSession)}" class="btn" onclick="javascript:location.href='/login/index'">Google 로그인</button>
-                <button th:if="${session.loginUserSession}" class="btn" onclick="javascript:location.href='/login/logoutProc'">로그아웃</button>
-                <button th:if="${session.loginUserSession}" class="btn" onclick="location.href='/orders/list';">주문 내역</button>
-                <button th:if="${session.loginUserSession}" class="btn" onclick="location.href='/review/list';">내가 쓴 리뷰 목록</button>
+                <button th:if="${#strings.isEmpty(session.loginUserSession)}" class="btn btn-info" onclick="javascript:location.href='/login/index'"  >Google 로그인</button>
+                <button th:if="${session.loginUserSession}" class="btn btn-info" onclick="javascript:location.href='/login/logoutProc'">로그아웃</button>
+                <button th:if="${session.loginUserSession}" class="btn btn-info" onclick="location.href='/orders/list';">주문 내역</button>
+                <button th:if="${session.loginUserSession}" class="btn btn-info" onclick="location.href='/review/list';">내가 쓴 리뷰 목록</button>
 
             </div>
 
@@ -52,9 +52,6 @@
         <link th:href="@{/css/style.css?after}" rel="stylesheet">
         <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet">
         <link th:href="@{//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet" >
-
-
-
 
     </head>
 
