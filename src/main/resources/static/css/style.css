@@ -22,11 +22,15 @@ left: 150px;
 z-index:2;}
 .logo img { width:300px; }
 
+
+.min img { width:50px; }
+
+
 /*로그인 버튼 */
 .button_container {
   position: absolute;
   top: 25px;
-  left: 1500px;
+  left: 1250px;
   z-index:2;
 }
 
@@ -74,10 +78,6 @@ position:relative;
  height:200px;
 }
 
-.letter{
-
-}
-
 @font-face {
   font-family: "ha";
   src: url("@{font/BMDOHYEON_ttf.ttf}");
@@ -93,3 +93,4 @@ font-size: 20px;
 font-family: "ha";
 font-size: 20px;
 }
+

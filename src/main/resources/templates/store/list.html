@@ -25,6 +25,8 @@
 
             <div style="clear:both;"></div>
 
+
+
             <div style="border:1px solid gray; float:left; margin-left:50px; margin-top:10px;" th:each="store : ${storeList}" >
                 <div style="float:left;">
                     <img th:src="${store.store_picture_url}" alt="첨부이미지" th:if="${store.store_picture_url != null}" />
@@ -36,6 +38,8 @@
                         [[${store.address}]]
                     </a>
                 </div>
+
+
             </div>
         </div>
 
