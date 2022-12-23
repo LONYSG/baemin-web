@@ -6,7 +6,7 @@
     <th:block th:fragment="content">
 
         <div style="width:1200px; margin:0 auto;">
-            <div>주문 내역</div>
+            <div class="ju">주문 내역</div>
             <div style="border:1px solid gray; float:left; margin-left:50px; margin-top:10px;" th:each="ordersHistory : ${ordersHistoryList}" >
                 <div style="float:left;">
                     주문 일자: [[${ordersHistory.created_date}]]<br>
@@ -18,7 +18,7 @@
                     주문 주소: [[${ordersHistory.order_address}]]
 
                     <form th:action="@{/review/register}" th:method="get"  >
-                    <button type=submit style="width:60%;">리뷰등록</button>
+                    <button type=submit style="width:60%;" class="btn btn-success">리뷰등록</button>
 
                     <!--<input type="text" name="review_id" value="" />
                     <input type="text" name="user_id" value="" />
