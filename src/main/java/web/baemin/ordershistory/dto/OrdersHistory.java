@@ -1,4 +1,4 @@
-package web.baemin.orders.dto;
+package web.baemin.ordershistory.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Orders {
+public class OrdersHistory {
 
     private Long order_id;
 

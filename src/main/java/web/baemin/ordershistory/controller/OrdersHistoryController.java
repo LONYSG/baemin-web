@@ -1,4 +1,4 @@
-package web.baemin.orders.controller;
+package web.baemin.ordershistory.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,26 +7,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.baemin.login.dto.User;
 import web.baemin.main.service.MainService;
-import web.baemin.orders.dto.Orders;
-import web.baemin.orders.service.OrdersService;
+import web.baemin.ordershistory.dto.OrdersHistory;
+import web.baemin.ordershistory.service.OrdersHistoryService;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/orders/")
+@RequestMapping("/ordershistory/")
 @RequiredArgsConstructor
-public class OrdersController {
+public class OrdersHistoryController {
 
-    private final OrdersService ordersService;
+    private final OrdersHistoryService ordersHistoryService;
     private final MainService mainService;
 
     @GetMapping("/list")
     public void list(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {
-        List<Orders> ordersList = ordersService.ordersList(Long.parseLong(loginUserSession.getLogin_id()));
+        List<OrdersHistory> ordersHistoryList = ordersHistoryService.ordersHistoryList(Long.parseLong(loginUserSession.getLogin_id()));
 
-        model.addAttribute("ordersList", ordersList);
+        model.addAttribute("ordersHistoryList", ordersHistoryList);
     }
 
 }
