@@ -97,15 +97,24 @@ font-size: 20px;
 
 .min
 {
-
 font-family: "ha";
 font-size: 20px;
 }
 
 .ju
 {
-
 font-family: "ha";
-font-size: 100px;
+font-size: 50px;
 }
 
+.modal-header
+{
+font-family: "ha";
+font-size: 25px;
+}
+
+.bea
+{
+font-family: "ha";
+font-size: 15px;
+}
