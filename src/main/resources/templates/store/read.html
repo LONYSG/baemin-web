@@ -61,24 +61,27 @@
 
                 setCouponList();
                 /*<![CDATA[*/
-                var store_id2 = /*[[ ${menuList[0].store_id} ]]*/;
+                var storeId = /*[[ ${menuList[0].store_id} ]]*/;
                 /*]]*/
-                var menu_id2;
-                $("#storeId").val(store_id2);
+                var menuId;
+                $("#storeId").val(storeId);
+                var orderMenuArr = new Array();
+                var menuCnt = 0;
 
                 // 메뉴 추가
                 $(".menu-list").click(function () {
                     let name = $(this).find("input[name=menu_name]").val();
                     let price = $(this).find("input[name=price]").val();
-                    menu_id2 = $(this).find("input[name=menu_id]").val();
+                    menuId = $(this).find("input[name=menu_id]").val();
                     let orderMenuList = "<ul><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>" + price + "</span>원</li></ul>";
+                    let formMenuList = "<input type='hidden' name='orderMenuList[" + menuCnt + "].fileName' value='" + menuId + "'>";
                     $(".order-menu-list").append(orderMenuList);
 
                     let totalPrice = Number($(".totalPrice").text()) + Number(price);
                     $(".totalPrice").text(totalPrice);
                     $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
                     $("#orderMenu").val(name);
-                    $("#menuId").val(menu_id2);
+                    $("#menuId").val(menuId);
 
                 });
 
@@ -297,7 +300,7 @@
                             </div>
                             <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
                             <input type="hidden" id="storeId" name="store_id" value="" />
-<!--                            <input type="hidden" id="menuId" name="menu_id" value="" />-->
+                            <!--                            <input type="hidden" id="menuId" name="menu_id" value="" />-->
                         </div>
 
                     </div>
