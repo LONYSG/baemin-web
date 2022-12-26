@@ -14,8 +14,6 @@ public class Orders {
     private Long login_id;
     private Long store_id;
 
-    private Long menu_id;
-
     private String order_address;
     private String detail_address;
     private Long order_phone;

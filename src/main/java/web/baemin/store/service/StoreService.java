@@ -1,9 +1,6 @@
 package web.baemin.store.service;
 
-import web.baemin.store.dto.Coupon;
-import web.baemin.store.dto.Menu;
-import web.baemin.store.dto.Orders;
-import web.baemin.store.dto.Store;
+import web.baemin.store.dto.*;
 
 import java.util.List;
 
@@ -18,5 +15,5 @@ public interface StoreService {
 
     void ordersInsert(Orders orders);
 
-
+    void ordersMenuInsert(OrdersMenu ordersMenu);
 }

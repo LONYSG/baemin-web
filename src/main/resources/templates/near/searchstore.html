@@ -153,7 +153,10 @@
 
                                     }
                                     // 지도 중심좌표를 검색위치로 변경합니다
-                                    map.setCenter(locPosition);
+
+                                    setTimeout(function () {
+                                        map.setCenter(locPosition);
+                                    }, 310);
                                     resolve();
                                     //reject('setMarker fail');
                                 }, 200);

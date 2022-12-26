@@ -57,16 +57,19 @@
         </div>
 
         <script th:inline="javascript">
+            var orderMenuMap = new Map();
+            var menuCnt = 0;
+            var menuId;
+
             $(function () {
 
                 setCouponList();
                 /*<![CDATA[*/
                 var storeId = /*[[ ${menuList[0].store_id} ]]*/;
                 /*]]*/
-                var menuId;
+
                 $("#storeId").val(storeId);
-                var orderMenuMap = new Map();
-                var menuCnt = 0;
+
 
                 // 메뉴 추가
                 $(".menu-list").click(function () {
@@ -74,13 +77,12 @@
                     let price = $(this).find("input[name=price]").val();
                     menuId = $(this).find("input[name=menu_id]").val();
                     let orderMenuList = "<ul><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>" + price + "</span>원</li><li><span class='menuId'>" + menuId + "</span></li></ul>";
-                    let formMenuList = "<input type='hidden' name='orderMenuList[" + menuCnt + "].fileName' value='" + menuId + "'>";
                     $(".order-menu-list").append(orderMenuList);
 
                     if (orderMenuMap.has(menuId)) {
                         orderMenuMap.set(menuId, orderMenuMap.get(menuId) + 1);
                     } else {
-                        orderMenuMap.set(menuId, 0);
+                        orderMenuMap.set(menuId, 1);
                     }
 
                     let totalPrice = Number($(".totalPrice").text()) + Number(price);
@@ -167,18 +169,38 @@
 
                     let menuHtml = '';
 
+                    $(".orderMenuList").empty();
+
+                    let mapIndex = 0;
+
+                    console.log("뭐냐 대체" + orderMenuMap.size);
 
                     for (const [key, value] of Object.entries(orderMenuMap)) {
                         console.log(`${key}: ${value}`);
-                        menuHtml += '<input type="hidden"'
-                        menuHtml += 'name=menu_id"'
-                        menuHtml += '" value="'
-                        menuHtml += key, value
-                        menuHtml += '" />'
                     }
-                    //name에 인덱스 추가해서 등록하자
-                    $(".orderMenuList").html(menuHtml);
 
+
+                    for (const [key, value] of Object.entries(orderMenuMap)) {
+                        console.log(`${key}: ${value}`);
+                        console.log("여기 왜 안탐?");
+                        menuHtml += '<input type="hidden"'
+                        menuHtml += 'name=menu_id["'
+                        menuHtml += mapIndex;
+                        menuHtml += ']" value="'
+                        menuHtml += key
+                        menuHtml += '" />'
+                        menuHtml += '<input type="hidden"'
+                        menuHtml += 'name=menu_count["'
+                        menuHtml += mapIndex;
+                        menuHtml += ']" value="'
+                        menuHtml += value
+                        menuHtml += '" />'
+                        mapIndex++;
+                    }
+
+                    console.log(menuHtml);
+                    $(".orderMenuList").html(menuHtml);
+                    console.log(orderMenuMap);
                     $('#orderModal').modal('show');
 
                 });
@@ -187,16 +209,21 @@
             // 메뉴 삭제
             function deleteMenu(obj) {
                 let price = $(obj).parents("li").next().find(".price").text();
-                let spanMenuId = $(obj).parents("li").next().find(".menuId").text();
+                let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
                 let totalPrice = Number($(".totalPrice").text()) - Number(price);
                 if (totalPrice < 0) {
                     totalPrice = 0;
                 }
 
-                if (orderMenuMap.get(spanMenuId) > 0) {
+                if (orderMenuMap.get(spanMenuId) > 1) {
+                    console.log("1");
                     orderMenuMap.set(menuId, orderMenuMap.get(menuId) - 1);
+                    console.log(orderMenuMap);
                 } else {
+                    console.log("2");
                     orderMenuMap.delete(spanMenuId);
+                    console.log(spanMenuId);
+                    console.log(orderMenuMap);
                 }
 
                 $(".totalPrice").text(totalPrice);
@@ -255,6 +282,7 @@
         console.log("login_id: " + $("input[name=login_id]").val());
         console.log("$(input[name=storeId]).val() storeId: " + $("input[name=storeId]").val() + "$(#storeId).val()) storeId: " + $("#storeId").val());
         console.log("$(input[name=menuId]).val() menuId: " + $("input[name=menuId]").val() + "$(#menuId).val()) menuId: " + $("#menuId").val());
+        console.log($(".orderMenuList").html);
     }
 </script>
 

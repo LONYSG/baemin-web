@@ -3,8 +3,6 @@
 INSERT INTO users VALUES('0001','-1714348728','pw1234','01011112222','user01@gmail.com','고마운분',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO users VALUES('0002','-1707093011','pw1234','01022223333','user02@gmail.com','귀한분',null,'2022-12-06','2022-12-06','휴면');
 INSERT INTO users VALUES('0003','-1704484449','pw1234','01033334444','user03@gmail.com','더귀한분',null,'2022-12-06','2022-12-06','탈퇴');
-INSERT INTO users VALUES('0004','user04','pw1234','01044445555','user04@gmail.com','천생연분',null,'2022-12-06','2022-12-06','정지');
-INSERT INTO users VALUES('0005','user05','pw1234','01055556666','user05@gmail.com','고마운분',null,'2022-12-06','2022-12-06','일반');
 
 INSERT INTO address VALUES('1001','0001','서울 영등포구 당산로 지하 121','2022-12-06','2022-12-06','일반');
 INSERT INTO address VALUES('1002','0002','서울 영등포구 당산로31길 33','2022-12-06','2022-12-06','일반');
@@ -38,11 +36,12 @@ INSERT INTO orders VALUES('6003','0003','9003','서울 영등포구 선유로 13
 INSERT INTO orders VALUES('6004','0004','9004','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO orders VALUES('6005','0005','9005','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
 
-INSERT INTO order_menu VALUES('6001','4001');
-INSERT INTO order_menu VALUES('6002','4002');
-INSERT INTO order_menu VALUES('6003','4003');
-INSERT INTO order_menu VALUES('6004','4004');
-INSERT INTO order_menu VALUES('6005','4005');
+INSERT INTO order_menu VALUES('6001','4001','2');
+INSERT INTO order_menu VALUES('6001','4006','3');
+INSERT INTO order_menu VALUES('6002','4002','1');
+INSERT INTO order_menu VALUES('6003','4003','1');
+INSERT INTO order_menu VALUES('6004','4004','1');
+INSERT INTO order_menu VALUES('6005','4005','3');
 
 INSERT INTO review VALUES('8001','0001','9001','4001','4.0','맛있었어요!','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO review VALUES('8002','0002','9002','4002','4.5','족발 맛있네요','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');

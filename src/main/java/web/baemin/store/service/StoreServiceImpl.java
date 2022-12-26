@@ -3,10 +3,7 @@ package web.baemin.store.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import web.baemin.store.dto.Coupon;
-import web.baemin.store.dto.Menu;
-import web.baemin.store.dto.Orders;
-import web.baemin.store.dto.Store;
+import web.baemin.store.dto.*;
 import web.baemin.store.mapper.StoreMapper;
 
 import java.util.List;
@@ -42,6 +39,11 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public void ordersInsert(Orders orders) {
         storeMapper.ordersInsert(orders);
+    }
+
+    @Override
+    public void ordersMenuInsert(OrdersMenu ordersMenu) {
+        storeMapper.ordersMenuInsert(ordersMenu);
     }
 
 }

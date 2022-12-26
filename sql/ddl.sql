@@ -115,7 +115,8 @@ CREATE TABLE `store_type` (
 
 CREATE TABLE `order_menu` (
 	`order_id`	bigint(20)	NOT NULL,
-	`menu_id`	bigint(20)	NOT NULL
+	`menu_id`	bigint(20)	NOT NULL,
+	`menu_count`	bigint(20)	NOT NULL
 );
 
 

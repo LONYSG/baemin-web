@@ -1,10 +1,7 @@
 package web.baemin.store.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import web.baemin.store.dto.Coupon;
-import web.baemin.store.dto.Menu;
-import web.baemin.store.dto.Orders;
-import web.baemin.store.dto.Store;
+import web.baemin.store.dto.*;
 
 import java.util.List;
 
@@ -20,5 +17,7 @@ public interface StoreMapper {
     List<Coupon> couponList();
 
     void ordersInsert(Orders orders);
+
+    void ordersMenuInsert(OrdersMenu ordersMenu);
 
 }

@@ -13,6 +13,7 @@ import web.baemin.main.dto.StoreType;
 import web.baemin.main.service.MainService;
 import web.baemin.store.dto.Menu;
 import web.baemin.store.dto.Orders;
+import web.baemin.store.dto.OrdersMenu;
 import web.baemin.store.dto.Store;
 import web.baemin.store.service.StoreService;
 
@@ -49,11 +50,11 @@ public class StoreController {
     }
 
     @PostMapping("/orders")
-    public String modify(RedirectAttributes redirectAttributes, Orders orders){
+    public String modify(RedirectAttributes redirectAttributes, Orders orders, OrdersMenu ordersMenu){
         System.out.println("orders = " + orders);
 
         storeService.ordersInsert(orders);
-
+        storeService.ordersMenuInsert(ordersMenu);
         redirectAttributes.addFlashAttribute("msg", null);
 
         return "redirect:/main/index";
