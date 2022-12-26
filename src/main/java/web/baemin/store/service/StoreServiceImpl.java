@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import web.baemin.store.dto.Coupon;
 import web.baemin.store.dto.Menu;
+import web.baemin.store.dto.Orders;
 import web.baemin.store.dto.Store;
 import web.baemin.store.mapper.StoreMapper;
 
@@ -38,6 +39,9 @@ public class StoreServiceImpl implements StoreService {
         return storeMapper.couponList();
     }
 
-
+    @Override
+    public void ordersInsert(Orders orders) {
+        storeMapper.ordersInsert(orders);
+    }
 
 }

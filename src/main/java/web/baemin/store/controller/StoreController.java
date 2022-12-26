@@ -5,11 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import web.baemin.main.dto.StoreType;
 import web.baemin.main.service.MainService;
 import web.baemin.store.dto.Menu;
+import web.baemin.store.dto.Orders;
 import web.baemin.store.dto.Store;
 import web.baemin.store.service.StoreService;
 
@@ -43,6 +46,17 @@ public class StoreController {
 
         model.addAttribute("store", store);
         model.addAttribute("menuList", menuList);
+    }
+
+    @PostMapping("/orders")
+    public String modify(RedirectAttributes redirectAttributes, Orders orders){
+        System.out.println("orders = " + orders);
+
+        storeService.ordersInsert(orders);
+
+        redirectAttributes.addFlashAttribute("msg", null);
+
+        return "redirect:/main/index";
     }
 
 

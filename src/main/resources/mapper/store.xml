@@ -19,8 +19,8 @@
         SELECT * FROM coupon ORDER BY coupon_id ASC
     </select>
 
-<!--    <insert id="paymentInsert" parameterType="web.baemin.store.dto.Payment">-->
-<!--        INSERT INTO board(title, content) VALUES(#{title}, #{content})-->
-<!--    </insert>-->
+    <insert id="ordersInsert" parameterType="web.baemin.store.dto.Orders">
+        INSERT INTO orders(user_id, store_id, order_address, detail_address, order_phone, total_price, requests, created_date, modified_date) VALUES((SELECT user_id FROM users WHERE login_id = #{login_id}), #{store_id}, #{order_address}, #{detail_address}, #{order_phone}, #{total_price}, #{requests}, NOW(), NOW())
+    </insert>
 
 </mapper>

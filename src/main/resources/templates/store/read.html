@@ -50,9 +50,9 @@
                 <div>
                     <button type="button" data-toggle="modal" class="btn btn-danger coupon-list"
                             data-target="#couponModal">쿠폰</button>
-                    합계 : <span class="total-price">0</span>원
+                    합계 : <span class="totalPrice">0</span>원
                 </div>
-                <button class="btn btn-success order-button" data-toggle="modal" data-target="payModal">주문하기</button>
+                <button class="btn btn-success order-button" data-toggle="modal" data-target="orderModal">주문하기</button>
             </div>
         </div>
 
@@ -60,18 +60,25 @@
             $(function () {
 
                 setCouponList();
+                /*<![CDATA[*/
+                var store_id2 = /*[[ ${menuList[0].store_id} ]]*/;
+                /*]]*/
+                var menu_id2;
+                $("#storeId").val(store_id2);
 
                 // 메뉴 추가
                 $(".menu-list").click(function () {
                     let name = $(this).find("input[name=menu_name]").val();
                     let price = $(this).find("input[name=price]").val();
-                    let menu_id = $(this).find("input[name=menu_id]").val();
+                    menu_id2 = $(this).find("input[name=menu_id]").val();
                     let orderMenuList = "<ul><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>" + price + "</span>원</li></ul>";
                     $(".order-menu-list").append(orderMenuList);
 
-                    let totalPrice = Number($(".total-price").text()) + Number(price);
-                    $(".total-price").text(totalPrice);
-                    $(".total-price2").text(totalPrice); // 모달 합계 가격 변경
+                    let totalPrice = Number($(".totalPrice").text()) + Number(price);
+                    $(".totalPrice").text(totalPrice);
+                    $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
+                    $("#orderMenu").val(name);
+                    $("#menuId").val(menu_id2);
 
                 });
 
@@ -81,7 +88,7 @@
                         alert("쿠폰을 선택해주세요.");
                         return;
                     }
-                    if ($(".total-price").text() == 0) {
+                    if ($(".totalPrice").text() == 0) {
                         alert("메뉴를 먼저 선택해주세요.");
                         $("#couponModal").modal("hide");
                         return;
@@ -89,7 +96,7 @@
 
                     let deductedPrice = Number($("input[name=coupon]:checked").siblings("input[name=coupon-deducted_price]").val()); // 할인금액
                     let min_delivery_price = Number($("input[name=coupon]:checked").siblings("input[name=min_delivery_price]").val()); // 쿠폰 사용 조건
-                    let totalPrice = $(".total-price").text(); // 합계
+                    let totalPrice = $(".totalPrice").text(); // 합계
 
                     console.log(min_delivery_price);
                     // 주문금액과 쿠폰의 사용조건 비교
@@ -109,8 +116,8 @@
                     $("input[name=temp-coupon-id]").val(coupon); // 사용하는 쿠폰번호 세팅
                     $("#couponModal").modal("hide"); // 모달 닫기
 
-                    $(".total-price").text(totalPrice); // 합계 가격 변경
-                    $(".total-price2").text(totalPrice); // 모달 합계 가격 변경
+                    $(".totalPrice").text(totalPrice); // 합계 가격 변경
+                    $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
                     $(".coupon-list").hide(); // 쿠폰 버튼 감추기
 
                     alert("쿠폰이 적용되었습니다.");
@@ -132,36 +139,37 @@
 
                 // 주문 버튼 클릭 이벤트
                 $(".order-button").click(function () {
-                    if ($(".total-price").text() == 0) {
+                    if ($(".totalPrice").text() == 0) {
                         alert("메뉴를 먼저 선택해주세요.");
                         $("#couponModal").modal("hide");
-                        $("#payModal").modal("hide");
+                        $("#orderModal").modal("hide");
                         return;
                     }
-                    if ($("#inputAddress").val() == null || $("#inputAddress").val() == ""){
+                    if ($("#inputAddress").val() == null || $("#inputAddress").val() == "") {
                         alert("주소를 입력해주세요.");
                         $("#couponModal").modal("hide");
-                        $("#payModal").modal("hide");
+                        $("#orderModal").modal("hide");
                         return;
                     }
                     // if (!confirm("주문 하시겠습니까?")) return;
                     // alert("주문이 완료되었습니다.");
                     // location.href = "/main/index";
-                    $(".payAddress").val($("#inputAddress").val());
-                    $('#payModal').modal('show');
+                    $("#orderAddress").val($("#inputAddress").val());
+                    $('#orderModal').modal('show');
+
                 });
             });
 
             // 메뉴 삭제
             function deleteMenu(obj) {
                 let price = $(obj).parents("li").next().find(".price").text();
-                let totalPrice = Number($(".total-price").text()) - Number(price);
+                let totalPrice = Number($(".totalPrice").text()) - Number(price);
                 if (totalPrice < 0) {
                     totalPrice = 0;
                 }
 
-                $(".total-price").text(totalPrice);
-                $(".total-price2").text(totalPrice); // 모달 합계 가격 변경
+                $(".totalPrice").text(totalPrice);
+                $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
                 $(obj).parents("ul").remove();
 
                 if ($(".order-menu-list").find("ul").length <= 0) {
@@ -206,6 +214,33 @@
 
 </th:block>
 
+<script>
+    function doAction() {
+        console.log("order_address: " + $("input[name=order_address]").val());
+        console.log("detail_address: " + $("input[name=detail_address]").val());
+        console.log("order_phone: " + $("input[name=order_phone]").val());
+        console.log("requests: " + $("input[name=requests]").val());
+        console.log("total_price: " + $("input[name=total_price]").val());
+        console.log("login_id: " + $("input[name=login_id]").val());
+        console.log("$(input[name=storeId]).val() storeId: " + $("input[name=storeId]").val() + "$(#storeId).val()) storeId: " + $("#storeId").val());
+        console.log("$(input[name=menuId]).val() menuId: " + $("input[name=menuId]").val() + "$(#menuId).val()) menuId: " + $("#menuId").val());
+    }
+</script>
+
+<script type="text/javascript">
+    function formTest() {
+        var x = document.getElementById("orderFormId");
+        for (var i = 0; i < x.length; i++) {
+            document.write(x.elements[i].id);
+            document.write(" --> ");
+            document.write(x.elements[i].value);
+            document.write("<br />");
+            document.write("<br />");
+        }
+    }
+
+</script>
+
 <!-- 쿠폰 모달 -->
 <div id="couponModal" class="modal fade">
     <div class="modal-dialog">
@@ -226,43 +261,43 @@
 </div>
 
 <!-- 결제 모달 -->
-<div class="modal fade" id="payModal" role="dialog">
+<div class="modal fade" id="orderModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 id="payModalTitle" class="modal-title">결제 화면</h4>
+                <h4 id="orderModalTitle" class="modal-title">결제 화면</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
             </div>
-            <form th:action="@{/store/payment}" th:method="post">
-                <div id="payModalBody" class="modal-body">
+            <form id="orderFormId" th:action="@{/store/orders}" th:method="post">
+                <div id="ordersModalBody" class="modal-body">
                     <div class="form-group fileForm">
                         <span class="min">결제하기 <img src="/img/lo.png"> </span>
                         <div class="bea">
                             <span>배달정보</span>
                             <div>
                                 <label>주소</label>
-                                <input class="payAddress" type="text" name="order_address"
-                                       readonly="readonly" disabled="disabled">
-                                <input type="text" placeholder="(필수)상세주소 입력" name="detail_address" required="required">
+                                <input id="orderAddress" type="text" name="order_address" readonly="readonly">
+                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address" required="required">
                             </div>
                             <div>
                                 <label>휴대전화번호</label>
-                                <input type="tel" placeholder="(필수)휴대전화 번호 입력" name="order_phone" required="required">
+                                <input id="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone" required="required">
                             </div>
                             <div>
                                 <span>주문시 요청사항</span>
-                                <textarea rows="3" name="requests" maxlength="100"
-                                          placeholder="(선택)100자 이내로 입력해주세요."></textarea>
+                                <input type="text" id="requests" name="requests" placeholder="(선택)100자 이내로 입력해주세요.">
                             </div>
                             <div>
                                 <span>주문 내역</span>
-                                <span class="payment-menu-list">후라이드 치킨</span>
+                                <input id="orderMenu" type="text" readonly="readonly" disabled="disabled">
                             </div>
                             <div>
                                 <span>총 결제 금액</span>
-                                <input class="total-price2" type="text" name="total_price"
-                                       readonly="readonly" disabled="disabled">
+                                <input id="totalPrice" class="totalPrice2" type="text" name="total_price" readonly="readonly">
                             </div>
+                            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
+                            <input type="hidden" id="storeId" name="store_id" value="" />
+<!--                            <input type="hidden" id="menuId" name="menu_id" value="" />-->
                         </div>
 
                     </div>
@@ -273,7 +308,10 @@
                     <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
                 </div>
             </form>
+            <button onclick="doAction()">입력 내용 확인</button>
+            <button onclick="formTest()">form 내용</button>
         </div>
     </div>
     <input type="hidden" value="" name="temp-coupon-id" />
 </div>
+
