@@ -65,7 +65,7 @@
                 /*]]*/
                 var menuId;
                 $("#storeId").val(storeId);
-                var orderMenuArr = new Array();
+                var orderMenuMap = new Map();
                 var menuCnt = 0;
 
                 // 메뉴 추가
@@ -73,9 +73,15 @@
                     let name = $(this).find("input[name=menu_name]").val();
                     let price = $(this).find("input[name=price]").val();
                     menuId = $(this).find("input[name=menu_id]").val();
-                    let orderMenuList = "<ul><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>" + price + "</span>원</li></ul>";
+                    let orderMenuList = "<ul><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>" + price + "</span>원</li><li><span class='menuId'>" + menuId + "</span></li></ul>";
                     let formMenuList = "<input type='hidden' name='orderMenuList[" + menuCnt + "].fileName' value='" + menuId + "'>";
                     $(".order-menu-list").append(orderMenuList);
+
+                    if (orderMenuMap.has(menuId)) {
+                        orderMenuMap.set(menuId, orderMenuMap.get(menuId) + 1);
+                    } else {
+                        orderMenuMap.set(menuId, 0);
+                    }
 
                     let totalPrice = Number($(".totalPrice").text()) + Number(price);
                     $(".totalPrice").text(totalPrice);
@@ -158,6 +164,21 @@
                     // alert("주문이 완료되었습니다.");
                     // location.href = "/main/index";
                     $("#orderAddress").val($("#inputAddress").val());
+
+                    let menuHtml = '';
+
+
+                    for (const [key, value] of Object.entries(orderMenuMap)) {
+                        console.log(`${key}: ${value}`);
+                        menuHtml += '<input type="hidden"'
+                        menuHtml += 'name=menu_id"'
+                        menuHtml += '" value="'
+                        menuHtml += key, value
+                        menuHtml += '" />'
+                    }
+                    //name에 인덱스 추가해서 등록하자
+                    $(".orderMenuList").html(menuHtml);
+
                     $('#orderModal').modal('show');
 
                 });
@@ -166,9 +187,16 @@
             // 메뉴 삭제
             function deleteMenu(obj) {
                 let price = $(obj).parents("li").next().find(".price").text();
+                let spanMenuId = $(obj).parents("li").next().find(".menuId").text();
                 let totalPrice = Number($(".totalPrice").text()) - Number(price);
                 if (totalPrice < 0) {
                     totalPrice = 0;
+                }
+
+                if (orderMenuMap.get(spanMenuId) > 0) {
+                    orderMenuMap.set(menuId, orderMenuMap.get(menuId) - 1);
+                } else {
+                    orderMenuMap.delete(spanMenuId);
                 }
 
                 $(".totalPrice").text(totalPrice);
@@ -280,11 +308,13 @@
                             <div>
                                 <label>주소</label>
                                 <input id="orderAddress" type="text" name="order_address" readonly="readonly">
-                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address" required="required">
+                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address"
+                                       required="required">
                             </div>
                             <div>
                                 <label>휴대전화번호</label>
-                                <input id="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone" required="required">
+                                <input id="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone"
+                                       required="required">
                             </div>
                             <div>
                                 <span>주문시 요청사항</span>
@@ -296,11 +326,15 @@
                             </div>
                             <div>
                                 <span>총 결제 금액</span>
-                                <input id="totalPrice" class="totalPrice2" type="text" name="total_price" readonly="readonly">
+                                <input id="totalPrice" class="totalPrice2" type="text" name="total_price"
+                                       readonly="readonly">
                             </div>
-                            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
+                            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}"
+                                   name="login_id" />
                             <input type="hidden" id="storeId" name="store_id" value="" />
-                            <!--                            <input type="hidden" id="menuId" name="menu_id" value="" />-->
+                            <div class="orderMenuList">
+
+                            </div>
                         </div>
 
                     </div>
@@ -317,4 +351,3 @@
     </div>
     <input type="hidden" value="" name="temp-coupon-id" />
 </div>
-
