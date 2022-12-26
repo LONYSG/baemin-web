@@ -25,8 +25,8 @@
     </select>
 
     <insert id="reviewInsert" parameterType="web.baemin.review.dto.Review">
-        INSERT INTO review(review_id, user_id, store_name, menu_name, rating, content, created_date
-        ) VALUES(#{review_id}, #{user_id}, #{store_name}, #{menu_name}, #{rating}, #{content}, ,NOW(),)
+        INSERT INTO review(user_id, store_id, menu_id, rating, content, picture_url, created_date, modified_date, status
+        ) VALUES((SELECT user_id FROM users WHERE login_id = #{login_id}), #{user_id}, #{store_id}, #{menu_id}, #{rating}, #{content}, #{picture_url}, NOW(), NOW(), #{status})
     </insert>
 
     <update id="reviewUpdate" parameterType="web.baemin.review.dto.Review">

@@ -21,6 +21,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">가게명</th>
                 <th scope="col">주문 메뉴</th>
                 <th scope="col">별점</th>
@@ -34,11 +35,11 @@
             <tbody>
                 <tr th:each="review : ${reviewList}">
 
-                    <!-- th scope="row">
-                        <a th:href="@{/review/read(id = ${review.user_id} )}">
-                          [[${review.user_id}]]
+                    <th scope="row">
+                        <a th:href="@{/review/read(id = ${review.review_id} )}">
+                          [[${review.review_id}]]
                         </a>
-                    </th> -->
+                    </th>
                     <td><b>[[${review.store_name}]]</b></td>
                     <td><b>[[${review.menu_name}]]</b></td>
                     <td><b>[[${review.rating}]]</b></td>

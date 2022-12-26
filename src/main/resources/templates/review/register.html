@@ -36,14 +36,17 @@
         <h1 class="mt-4">Review</h1>
 
         <form th:action="@{/review/register}" th:method="post"  >
+
             <div class="form-group">
-                <label >음식은 어떠셨어요?<span class="rating"></span></label>
-                <div class='starrr'></div>
+                <label >음식은 어떠셨어요?</label>
+                <div class='starrr' name="rating">
+
+                </div>
             </div>
 
-            <input type="text" name="store_name" th:value="${review.store_name}" />
-            <input type="text" name="menu_name" th:value="${review.menu_name}" />
-            <input type="text" name="rating" th:value="${review.rating}" />
+            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
+            <input type="hidden" id="modified_Date" th:value="${review.modified_date}" name="modified_Date" />
+            <input type="hidden" id="status" th:value="${review.status}" name="status" />
 
             <div class="form-group fileForm">
                 <label>Content</label>

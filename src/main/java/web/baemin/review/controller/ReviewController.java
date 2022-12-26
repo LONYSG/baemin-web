@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import web.baemin.login.dto.User;
 import web.baemin.review.dto.Review;
@@ -35,10 +36,11 @@ public class ReviewController {
     public void register(Model model,Review review){
 
         model.addAttribute("review", review);
+
     }
 
     @PostMapping("/register")
-    public String register(RedirectAttributes redirectAttributes, Review review){
+    public String register(RedirectAttributes redirectAttributes, Review review, MultipartFile file){
         //review.setReview_id(8006l);
         //review.setUser_id(2l);
         //review.setStore_id(9002l);
@@ -62,6 +64,7 @@ public class ReviewController {
         Review review = reviewService.reviewRead(review_id);
 
         model.addAttribute("review", review);
+
 
     }
 
