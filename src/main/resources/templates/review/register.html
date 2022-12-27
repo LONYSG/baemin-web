@@ -37,6 +37,10 @@
 
         <form th:action="@{/review/register}" th:method="post"  >
 
+
+            <input type="text" id="store_name" th:value="${review.store_name}" name="store_name" />
+            <input type="text" id="menu_name" th:value="${review.menu_name}" name="menu_name" />
+
             <div class="form-group">
                 <label >음식은 어떠셨어요?</label>
                 <div class='starrr' name="rating">
@@ -44,9 +48,13 @@
                 </div>
             </div>
 
-            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
-            <input type="hidden" id="modified_Date" th:value="${review.modified_date}" name="modified_Date" />
-            <input type="hidden" id="status" th:value="${review.status}" name="status" />
+            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="user_id" />
+            <input type="hidden" id="store_id" th:value="${review.store_id}" name="store_id" />
+            <input type="hidden" id="menu_id" th:value="${review.menu_id}" name="menu_id" />
+            <input type="type" id="rating" th:value="${review.rating}" name="rating" />
+            <input type="hidden" id="picture_url" th:value="${review.picture_url}" name="picture_url" />
+            <input type="hidden" id="status" th:value="일반" name="status" />
+
 
             <div class="form-group fileForm">
                 <label>Content</label>

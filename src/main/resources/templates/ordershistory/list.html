@@ -20,12 +20,11 @@
                     <form th:action="@{/review/register}" th:method="get"  >
                     <button type=submit style="width:60%;" class="btn btn-success">리뷰등록</button>
 
-                    <!--<input type="text" name="review_id" value="" />
-                    <input type="text" name="user_id" value="" />
-                    <input type="text" name="store_id" value="" />
-                    <input type="text" name="menu_id" value="" />
-                    <input type="text" name="rating" value="" />
-                    <input type="text" name="picture_url" value="" />-->
+                    <input type="hidden" name="store_name" th:value="${ordersHistory.store_name}" />
+                    <input type="hidden" name="menu_name" th:value="${ordersHistory.menu_name}" />
+                    <input type="hidden" name="store_id" th:value="${ordersHistory.store_id}" />
+                    <input type="hidden" name="menu_id" th:value="${ordersHistory.menu_id}" />
+                    <input type="hidden" name="picture_url" value="" />
 
                     </form>
                 </div>
