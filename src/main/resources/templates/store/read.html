@@ -168,33 +168,28 @@
                     $("#orderAddress").val($("#inputAddress").val());
 
                     let menuHtml = '';
+                    let mapIndex = 0;
 
                     $(".orderMenuList").empty();
 
-                    let mapIndex = 0;
-
-                    console.log("뭐냐 대체" + orderMenuMap.size);
-
-                    for (const [key, value] of Object.entries(orderMenuMap)) {
-                        console.log(`${key}: ${value}`);
-                    }
-
-
-                    for (const [key, value] of Object.entries(orderMenuMap)) {
-                        console.log(`${key}: ${value}`);
-                        console.log("여기 왜 안탐?");
-                        menuHtml += '<input type="hidden"'
-                        menuHtml += 'name=menu_id["'
+                    for (var key of orderMenuMap.keys()) {
+                        menuHtml += '<input type="hidden" '
+                        menuHtml += 'id="menu_id'
+                        menuHtml += mapIndex
+                        menuHtml += '" name="menu_id['
                         menuHtml += mapIndex;
                         menuHtml += ']" value="'
                         menuHtml += key
                         menuHtml += '" />'
-                        menuHtml += '<input type="hidden"'
-                        menuHtml += 'name=menu_count["'
+                        menuHtml += '<input type="hidden" '
+                        menuHtml += 'id="menu_count'
+                        menuHtml += mapIndex
+                        menuHtml += '" name="menu_count['
                         menuHtml += mapIndex;
                         menuHtml += ']" value="'
-                        menuHtml += value
+                        menuHtml += orderMenuMap.get(key);
                         menuHtml += '" />'
+
                         mapIndex++;
                     }
 
@@ -216,14 +211,9 @@
                 }
 
                 if (orderMenuMap.get(spanMenuId) > 1) {
-                    console.log("1");
                     orderMenuMap.set(menuId, orderMenuMap.get(menuId) - 1);
-                    console.log(orderMenuMap);
                 } else {
-                    console.log("2");
                     orderMenuMap.delete(spanMenuId);
-                    console.log(spanMenuId);
-                    console.log(orderMenuMap);
                 }
 
                 $(".totalPrice").text(totalPrice);
