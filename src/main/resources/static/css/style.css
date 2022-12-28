@@ -119,7 +119,32 @@ font-family: "ha";
 font-size: 15px;
 }
 
-.order-menu-list
+.shop
 {
+font-family: "ha";
+font-size: 25px;
+}
+.oder
+{
+font-family: "ha";
 
+}
+.juso
+{
+font-family: "ha";
+
+}
+
+.li
+{
+border:5px
+solid gray;
+float:left;
+margin-left:150px;
+margin-top:10px;
+}
+
+.lis img
+{
+width:110px;
 }
