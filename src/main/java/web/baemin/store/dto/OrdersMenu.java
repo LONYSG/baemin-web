@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -12,7 +13,6 @@ import java.util.List;
 public class OrdersMenu {
 
     private Long order_id;
-    private List<Long> menu_id;
-    private Long menu_count;
+    private Map<Long, Long> menu_map;
 
 }

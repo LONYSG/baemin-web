@@ -76,7 +76,8 @@
                     let name = $(this).find("input[name=menu_name]").val();
                     let price = $(this).find("input[name=price]").val();
                     menuId = $(this).find("input[name=menu_id]").val();
-                    let orderMenuList = "<ul><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li>가격:<span class='price'>" + price + "</span>원</li><li><span class='menuId'>" + menuId + "</span></li></ul>";
+
+                    let orderMenuList = "<ul style='list-style:none; padding-left:0px;'><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li><button onclick='decCount(this)'>-</button><span id='menuCnt'>1</span><button onclick='incCount(this)'>+</button></li><li>가격:<span class='price'>" + price + "</span>원</li><li style='display:none'><span class='menuId'>" + menuId + "</span></li></ul>";
                     $(".order-menu-list").append(orderMenuList);
 
                     if (orderMenuMap.has(menuId)) {
@@ -203,8 +204,8 @@
 
             // 메뉴 삭제
             function deleteMenu(obj) {
-                let price = $(obj).parents("li").next().find(".price").text();
-                let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
+                let price = $(obj).parents("li").next().next().find(".price").text();
+                let spanMenuId = $(obj).parents("li").next().next().next().find(".menuId").text();
                 let totalPrice = Number($(".totalPrice").text()) - Number(price);
                 if (totalPrice < 0) {
                     totalPrice = 0;
@@ -224,6 +225,16 @@
                     $(".coupon-list").show();
                     $("input[name=temp-coupon-id]").val("");
                 }
+            }
+
+            //수량 줄이기
+            function decCount(obj) {
+
+            }
+
+            //수량 늘리기
+            function incCount(obj) {
+
             }
 
             // 쿠폰 목록 불러오기
