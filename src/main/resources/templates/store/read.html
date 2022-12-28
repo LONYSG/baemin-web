@@ -31,7 +31,7 @@
                     <input type="hidden" name="menu_name" th:value="${menu.menu_name}" />
                     <input type="hidden" name="price" th:value="${menu.price}" />
                     <div style="float:left;">
-                        <img th:src="${menu.menu_url}" alt="첨부이미지" th:if="${menu.menu_url != null}" />
+                        <img th:src="${menu.menu_url}" alt="첨부이미지" th:if="${menu.menu_url != null}" style="width:243px; height:207px;"/>
                     </div>
                     <div style="float:left;">
                         [[${menu.menu_name}]] <br />
@@ -262,20 +262,6 @@
 
 </th:block>
 
-<script>
-    function doAction() {
-        console.log("order_address: " + $("input[name=order_address]").val());
-        console.log("detail_address: " + $("input[name=detail_address]").val());
-        console.log("order_phone: " + $("input[name=order_phone]").val());
-        console.log("requests: " + $("input[name=requests]").val());
-        console.log("total_price: " + $("input[name=total_price]").val());
-        console.log("login_id: " + $("input[name=login_id]").val());
-        console.log("$(input[name=storeId]).val() storeId: " + $("input[name=storeId]").val() + "$(#storeId).val()) storeId: " + $("#storeId").val());
-        console.log("$(input[name=menuId]).val() menuId: " + $("input[name=menuId]").val() + "$(#menuId).val()) menuId: " + $("#menuId").val());
-        console.log($(".orderMenuList").html);
-    }
-</script>
-
 <script type="text/javascript">
     function formTest() {
         var x = document.getElementById("orderFormId");
@@ -363,7 +349,6 @@
                     <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
                 </div>
             </form>
-            <button onclick="doAction()">입력 내용 확인</button>
             <button onclick="formTest()">form 내용</button>
         </div>
     </div>
