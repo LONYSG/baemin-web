@@ -9,37 +9,15 @@
         <form th:action="@{/review/read}" th:method="post" >
             <input type="hidden" name="id" th:value="${review.review_id}">
             <div class="form-group">
-            <label>리뷰 작성</label>
+            <label>Review</label>
             <input type="text" class="form-control" name="content" th:value="${dto.content}" readonly>
         </div>
 
     <div class="form-group">
-        <label>음식은 어떠셨어요?</label>
-        <div class='starrr'></div>
-
-        <script th:src="@{/starrr.js}"></script>
-        <link th:href="@{/css/starrr.css}" rel="stylesheet">
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-
-        <script>
-            $(document).ready(function(e) {
-
-                var grade = 0;
-                var mno = [[${dto.mno}]];
-
-                $('.starrr').starrr({
-                    rating: rating,
-                    change: function(e, value){
-                        if (value) {
-                            console.log(value);
-                            rating = value;
-                        }
-                    }
-                });
+        <label>음식은 어떠셨어요?<span class="grade" ></span></label>
 
 
 
-    </script>
 
     </div>
     </th:block>

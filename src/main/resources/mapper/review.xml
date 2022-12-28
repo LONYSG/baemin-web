@@ -4,7 +4,7 @@
 
 <mapper namespace="web.baemin.review.mapper.ReviewMapper">
     <select id="reviewList" parameterType="web.baemin.review.dto.Review" resultType="web.baemin.review.dto.Review">
-        SELECT T2.user_id, T5.store_name, T5.store_picture_url, T6.rating, T4.menu_name, T6.content, T6.created_date
+        SELECT T2.user_id, T5.store_name, T6.picture_url, T6.rating, T4.menu_name, T6.content, T6.created_date
         FROM orders T1
         LEFT JOIN users T2
         ON T1.user_id = T2.user_id
@@ -26,7 +26,7 @@
 
     <insert id="reviewInsert" parameterType="web.baemin.review.dto.Review">
         INSERT INTO review(user_id, store_id, menu_id, rating, content, picture_url, created_date, modified_date, status
-        ) VALUES((SELECT user_id FROM users WHERE login_id = #{user_id}), #{store_id}, #{menu_id}, #{rating}, #{content}, #{picture_url}, NOW(), NOW(), #{status})
+        ) VALUES((SELECT user_id FROM users WHERE login_id = #{login_id}), #{store_id}, #{menu_id}, #{rating}, #{content}, #{picture_url}, NOW(), NOW(), #{status})
     </insert>
 
     <update id="reviewUpdate" parameterType="web.baemin.review.dto.Review">

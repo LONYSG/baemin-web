@@ -4,7 +4,6 @@ package web.baemin.review.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 
 @Setter
 @Getter
@@ -26,6 +25,5 @@ public class Review {
     private String modified_date;
     private String status;
 
-    private MultipartFile file;
 
 }

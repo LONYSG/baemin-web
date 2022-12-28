@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<style>
-    .uploadResult {
-        width: 100%;
-        background-color: gray;
-        margin-top: 10px;
-    }
-
-    .uploadResult ul {
-        display: flex;
-        flex-flow: row;
-        justify-content: center;
-        align-items: center;
-        vertical-align: top;
-        overflow: auto;
-    }
-
-    .uploadResult ul li {
-        list-style: none;
-        padding: 10px;
-        margin-left: 2em;
-    }
-
-    .uploadResult ul li img {
-        width: 100px;
-    }
-</style>
-
-
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
@@ -38,21 +10,49 @@
         <form th:action="@{/review/register}" th:method="post"  >
 
 
-            <input type="text" id="store_name" th:value="${review.store_name}" name="store_name" />
-            <input type="text" id="menu_name" th:value="${review.menu_name}" name="menu_name" />
+            <input type="text" id="store_name" th:value="${review.store_name}" name="store_name" readonly><br>
+            <input type="text" id="menu_name" th:value="${review.menu_name}" name="menu_name" readonly>
 
             <div class="form-group">
                 <label >음식은 어떠셨어요?</label>
-                <div class='starrr' name="rating">
+                <div class='starrr'></div>
 
-                </div>
+                <script th:src="@{/starrr.js}"></script>
+                <link th:href="@{/css/starrr.css}" rel="stylesheet">
+                <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+
+                <script>
+            $(document).ready(function(e) {
+
+                var rating = 0;
+
+                $('.starrr').starrr({
+                    rating: rating,
+                    change: function(e, value){
+                        if (value) {
+                            console.log(value);
+                            rating = value;
+                            $("#rating").val(rating);
+                        }
+                    }
+                });
+
+            //modify rating
+<!--            var rating = targetReview.find('.card-title span').html();-->
+<!--                    $(".starrr a:nth-child("+rating+")").trigger('click');-->
+
+            });
+                </script>
+
+
+                <input type="hidden" id="rating" name="rating" >
+
+
             </div>
 
-            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="user_id" />
+            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
             <input type="hidden" id="store_id" th:value="${review.store_id}" name="store_id" />
             <input type="hidden" id="menu_id" th:value="${review.menu_id}" name="menu_id" />
-            <input type="type" id="rating" th:value="${review.rating}" name="rating" />
-            <input type="hidden" id="picture_url" th:value="${review.picture_url}" name="picture_url" />
             <input type="hidden" id="status" th:value="일반" name="status" />
 
 
@@ -63,17 +63,46 @@
                 </div>
             </div>
 
-            <div class="form-group fileForm">
+
+            <div class="form-group fileForm" >
                     <label>사진 첨부</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input files" id="fileInput" multiple>
+                        <input type="file" class="custom-file-input files" id="fileInput" name="picture_url" multiple>
+                        <!--<input type="hidden" id="picture_url" th:value="${review.picture_url}"  />-->
                         <label class="custom-file-label" data-browse="첨부하기"></label>
                     </div>
                 </div>
 
-                <div class="box">
+            <div class="box">
 
-                </div>
+            </div>
+
+            <style>
+                .uploadResult {
+                    width: 100%;
+                    background-color: gray;
+                    margin-top: 10px;
+                }
+
+                .uploadResult ul {
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: center;
+                    align-items: center;
+                    vertical-align: top;
+                    overflow: auto;
+                }
+
+                .uploadResult ul li {
+                    list-style: none;
+                    padding: 10px;
+                    margin-left: 2em;
+                }
+
+                .uploadResult ul li img {
+                    width: 100px;
+                }
+            </style>
 
             <button type="submit" class="btn btn-primary">완료</button>
         </form>
