@@ -148,3 +148,22 @@ margin-top:10px;
 {
 width:110px;
 }
+
+.address
+{
+font-family: "ha";
+}
+.search
+{
+font-family: "ha";
+}
+
+.jang{
+font-family: "ha";
+float:right;
+width:500px;
+border:5px
+solid gray;
+text-align:center;
+margin-top:20px;
+}
