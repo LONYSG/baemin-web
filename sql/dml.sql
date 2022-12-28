@@ -1,5 +1,3 @@
-
-
 INSERT INTO users VALUES('0001','-1714348728','pw1234','01011112222','user01@gmail.com','고마운분',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO users VALUES('0002','-1707093011','pw1234','01022223333','user02@gmail.com','귀한분',null,'2022-12-06','2022-12-06','휴면');
 INSERT INTO users VALUES('0003','-1704484449','pw1234','01033334444','user03@gmail.com','더귀한분',null,'2022-12-06','2022-12-06','탈퇴');
@@ -24,6 +22,7 @@ INSERT INTO dibs VALUES('3005','1005','9005','2022-12-06','2022-12-06','일반')
 
 INSERT INTO menu VALUES('4001','9001','1인용 찜닭','12000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4006','9001','혼밥갈비찜','15000','https://recipe1.ezmember.co.kr/cache/recipe/2019/02/09/9377ac695a85566adfda9817b73438f31.jpg','2022-12-06','2022-12-06','일반');
+INSERT INTO menu VALUES('4007','9001','김치찌개 정식','13000','https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg','2022-12-28','2022-12-28','일반');
 INSERT INTO menu VALUES('4002','9002','족발','22000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4003','9003','김치찌개','15000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4004','9004','왕돈까스','13000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
@@ -36,12 +35,12 @@ INSERT INTO orders VALUES('6003','0003','9003','서울 영등포구 선유로 13
 INSERT INTO orders VALUES('6004','0004','9004','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO orders VALUES('6005','0005','9005','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
 
-INSERT INTO order_menu VALUES('6001','4001','2');
-INSERT INTO order_menu VALUES('6001','4006','3');
-INSERT INTO order_menu VALUES('6002','4002','1');
-INSERT INTO order_menu VALUES('6003','4003','1');
-INSERT INTO order_menu VALUES('6004','4004','1');
-INSERT INTO order_menu VALUES('6005','4005','3');
+INSERT INTO order_menu VALUES('6001','4001','1');
+INSERT INTO order_menu VALUES('6001','4006','2');
+INSERT INTO order_menu VALUES('6002','4002','2');
+INSERT INTO order_menu VALUES('6003','4003','3');
+INSERT INTO order_menu VALUES('6004','4004','4');
+INSERT INTO order_menu VALUES('6005','4005','2');
 
 INSERT INTO review VALUES('8001','0001','9001','4001','4.0','맛있었어요!','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO review VALUES('8002','0002','9002','4002','4.5','족발 맛있네요','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
