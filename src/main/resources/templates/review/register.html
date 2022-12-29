@@ -5,13 +5,16 @@
 
     <th:block th:fragment="content">
 
+        <h2 class="line">
+
         <h1 class="mt-4">Review</h1>
 
-        <form th:action="@{/review/register}" th:method="post"  >
+
+        <form class="re" th:action="@{/review/register}" th:method="post"  >
 
 
-            <input type="text" id="store_name" th:value="${review.store_name}" name="store_name" readonly><br>
-            <input type="text" id="menu_name" th:value="${review.menu_name}" name="menu_name" readonly>
+            <input class="rene" type="text" id="store_name" th:value="${review.store_name}" name="store_name" readonly><br>
+            <input class="reme" type="text" id="menu_name" th:value="${review.menu_name}" name="menu_name" readonly>
 
             <div class="form-group">
                 <label >음식은 어떠셨어요?</label>
@@ -55,9 +58,8 @@
             <input type="hidden" id="menu_id" th:value="${review.menu_id}" name="menu_id" />
             <input type="hidden" id="status" th:value="일반" name="status" />
 
-
             <div class="form-group fileForm">
-                <label>Content</label>
+                <label class="con">Content</label>
                 <div class="custom-file">
                     <textarea name="content" style="width:100%; height:100px" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요.(선택)"></textarea>
                 </div>
@@ -65,7 +67,7 @@
 
 
             <div class="form-group fileForm" >
-                    <label>사진 첨부</label>
+                    <label class="sajin">사진 첨부</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input files" id="fileInput" name="picture_url" multiple>
                         <!--<input type="hidden" id="picture_url" th:value="${review.picture_url}"  />-->
@@ -102,10 +104,14 @@
                 .uploadResult ul li img {
                     width: 100px;
                 }
+
             </style>
 
-            <button type="submit" class="btn btn-primary">완료</button>
+            <a class="wan"><button type="submit" class="btn btn-primary">완료</button></a>
+
         </form>
+
+        </h2>
 
     </th:block>
 

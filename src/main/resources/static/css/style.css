@@ -172,3 +172,79 @@ margin-top:20px;
 {
 font-family: "ha";
 }
+
+.jumoon
+{
+font-family: "ha";
+border:5px
+solid gray;
+float:left;
+margin-left:50px;
+margin-top:10px;"
+}
+
+
+.line
+{
+ position:relative;
+ bottom: 500px;
+ right : 270px;
+}
+
+.mt-4
+{
+ position:relative;
+ bottom: 10px;
+ left : 800px;
+}
+
+.rene
+{
+ position:relative;
+ bottom: 10px;
+ left : 1000px;
+}
+
+.reme
+{
+ position:relative;
+ bottom: 10px;
+ left : 1000px;
+}
+
+.re
+{
+font-family: "ha";
+width:700px;
+}
+
+.form-group
+{
+ position:relative;
+ bottom: 30px;
+ left : 525px;
+}
+
+.con
+{
+ position:relative;
+ bottom: 20px;
+
+}
+.sajin
+{
+ position:relative;
+ bottom: 15px;
+
+}
+.custom-file
+{
+ position:relative;
+ bottom: 10px;
+}
+.wan
+{
+ position:relative;
+ bottom: 30px;
+ left : 800px;
+}

@@ -7,7 +7,7 @@
 
         <div style="width:1200px; margin:0 auto;">
             <div class="ju">주문 내역</div>
-            <div style="border:1px solid gray; float:left; margin-left:50px; margin-top:10px;" th:each="ordersHistory : ${ordersHistoryList}" >
+            <div class="jumoon" th:each="ordersHistory : ${ordersHistoryList}" >
                 <div style="float:left;">
                     주문 일자: [[${ordersHistory.created_date}]]<br>
                     가게명: [[${ordersHistory.store_name}]]<br>
