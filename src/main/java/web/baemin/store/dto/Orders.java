@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -13,6 +15,7 @@ public class Orders {
     private Long user_id;
     private Long login_id;
     private Long store_id;
+    private List<OrdersMenu> ordersMenuList;
 
     private String order_address;
     private String detail_address;

@@ -54,7 +54,6 @@ public class StoreController {
         System.out.println("orders = " + orders);
 
         storeService.ordersInsert(orders);
-        storeService.ordersMenuInsert(ordersMenu);
         redirectAttributes.addFlashAttribute("msg", null);
 
         return "redirect:/main/index";

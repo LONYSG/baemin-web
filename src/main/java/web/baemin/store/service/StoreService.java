@@ -15,5 +15,5 @@ public interface StoreService {
 
     void ordersInsert(Orders orders);
 
-    void ordersMenuInsert(OrdersMenu ordersMenu);
+//    void ordersMenuInsert(OrdersMenu ordersMenu);
 }

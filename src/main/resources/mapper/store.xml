@@ -23,4 +23,8 @@
         INSERT INTO orders(user_id, store_id, order_address, detail_address, order_phone, total_price, requests, created_date, modified_date) VALUES((SELECT user_id FROM users WHERE login_id = #{login_id}), #{store_id}, #{order_address}, #{detail_address}, #{order_phone}, #{total_price}, #{requests}, NOW(), NOW())
     </insert>
 
+    <insert id="ordersMenuInsert" parameterType="web.baemin.store.dto.OrdersMenu">
+        INSERT INTO order_menu(order_id, menu_id, menu_count) VALUES(LAST_INSERT_ID(),${menu_id},${menu_count})
+    </insert>
+
 </mapper>

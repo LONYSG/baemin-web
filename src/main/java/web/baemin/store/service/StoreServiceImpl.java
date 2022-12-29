@@ -3,6 +3,7 @@ package web.baemin.store.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.baemin.store.dto.*;
 import web.baemin.store.mapper.StoreMapper;
 
@@ -36,14 +37,21 @@ public class StoreServiceImpl implements StoreService {
         return storeMapper.couponList();
     }
 
+    @Transactional
     @Override
     public void ordersInsert(Orders orders) {
+
         storeMapper.ordersInsert(orders);
+        orders.getOrdersMenuList().forEach(ordersMenu -> {
+           ordersMenu.setOrder_id(orders.getOrder_id());
+           storeMapper.ordersMenuInsert(ordersMenu);
+        });
+
     }
 
-    @Override
-    public void ordersMenuInsert(OrdersMenu ordersMenu) {
-        storeMapper.ordersMenuInsert(ordersMenu);
-    }
+//    @Override
+//    public void ordersMenuInsert(OrdersMenu ordersMenu) {
+//        storeMapper.ordersMenuInsert(ordersMenu);
+//    }
 
 }
