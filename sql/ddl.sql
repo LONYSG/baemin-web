@@ -96,13 +96,10 @@ CREATE TABLE `dibs` (
 );
 
 CREATE TABLE `review` (
-	`review_id`	bigint(20)	NOT NULL  AUTO_INCREMENT PRIMARY KEY,
-	`user_id`	bigint(20)	NOT NULL,
-	`store_id`	bigint(20)	NOT NULL,
-	`menu_id`	bigint(20)	NOT NULL,
+	`review_id`	bigint(20)	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`order_id`	bigint(20)	NOT NULL,
 	`rating`	decimal(2,1)	NOT NULL	COMMENT '1점 단위',
 	`content`	text	NULL,
-	`picture_url`	text	NULL,
 	`created_date`	timestamp	NOT NULL,
 	`modified_date`	timestamp	NOT NULL,
 	`status`	varchar(255)	NOT NULL	DEFAULT '일반'
@@ -119,6 +116,10 @@ CREATE TABLE `order_menu` (
 	`menu_count`	bigint(20)	NOT NULL
 );
 
+CREATE TABLE `review_picture` (
+	`review_id`	bigint(20)	NOT NULL,
+	`picture_url`	text	NOT NULL
+);
 
 ALTER TABLE `store_type` ADD CONSTRAINT `PK_STORE_TYPE` PRIMARY KEY (
 	`food_category_cd`

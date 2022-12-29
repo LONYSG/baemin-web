@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import web.baemin.ordershistory.dto.OrdersHistory;
+import web.baemin.ordershistory.dto.OrdersMenuHistory;
 import web.baemin.ordershistory.mapper.OrdersHistoryMapper;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -18,7 +20,16 @@ public class OrdersHistoryServiceImpl implements OrdersHistoryService {
 
     @Override
     public List<OrdersHistory> ordersHistoryList(Long login_id) {
-        return ordersHistoryMapper.ordersHistoryList(login_id);
+//        ordersHistory.setOrdersMenuHistoryList(ordersHistoryMapper.ordersMenuHistoryList(login_id));
+        List<OrdersHistory> ordersMenuHistoryList = ordersHistoryMapper.ordersHistoryList(login_id);
+        for(int i = 0; i < ordersMenuHistoryList.size(); i++)
+        {
+            OrdersHistory current = ordersMenuHistoryList.get(i);
+            current.setOrdersMenuHistoryList(ordersHistoryMapper.ordersMenuHistoryList(current.getOrder_id()));
+
+        }
+        System.out.println(ordersMenuHistoryList);
+        return ordersMenuHistoryList;
     }
 
 }

@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -17,9 +19,7 @@ public class OrdersHistory {
     private String store_name;
     private String total_price;
     private String store_picture_url;
-    private Long menu_id;
-    private String menu_name;
-    private Long price;
+    private List<OrdersMenuHistory> ordersMenuHistoryList;
     private String order_address;
     private String created_date;
     private String modified_date;

@@ -6,36 +6,55 @@
     <th:block th:fragment="content">
 
         <div style="width:1200px; margin:0 auto;">
+
             <div class="ju">주문 내역</div>
             <div class="jumoon" th:each="ordersHistory : ${ordersHistoryList}" >
                 <div style="float:left;">
-                    주문 일자: [[${ordersHistory.created_date}]]<br>
-                    가게명: [[${ordersHistory.store_name}]]<br>
-                    <img th:src="${ordersHistory.store_picture_url}" style="width:50px; height:50px;">
-                    주문 메뉴: [[${ordersHistory.menu_name}]]<br>
-                    총 주문 금액: [[${ordersHistory.total_price}]]<br>
-                    <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}" style="color:blue">가게 상세보기</a><br>
-                    주문 주소: [[${ordersHistory.order_address}]]
 
-                    <form th:action="@{/review/register}" th:method="get"  >
-                    <button type=submit style="width:60%;" class="btn btn-success">리뷰등록</button>
+                    <ul style="list-style:none" >
+                        <li>
+                            주문 일자: [[${ordersHistory.created_date}]]
+                        </li>
+                        <li>
+                            가게명: [[${ordersHistory.store_name}]]
+                        </li>
+                        <li>
+                            <img th:src="${ordersHistory.store_picture_url}" style="width:50px; height:50px;">
+                        </li>
+                        <li>
 
-                    <input type="hidden" name="store_name" th:value="${ordersHistory.store_name}" />
-                    <input type="hidden" name="menu_name" th:value="${ordersHistory.menu_name}" />
-                    <input type="hidden" name="store_id" th:value="${ordersHistory.store_id}" />
-                    <input type="hidden" name="menu_id" th:value="${ordersHistory.menu_id}" />
-                    <input type="hidden" name="picture_url" value="" />
+                        </li>
+                        <li>
+                            <hr width="85%">
+                            총 주문 금액: [[${ordersHistory.total_price}]]
+                        </li>
+                        <li>
+                            <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}"
+                               style="color:blue">가게 상세보기</a>
+                        </li>
 
-                    </form>
+                        <li>
+                            주문 주소: [[${ordersHistory.order_address}]]
+                        </li>
+                    </ul>
+
                 </div>
+                <form th:action="@{/review/register}" th:method="get">
+                    <input type="hidden" name="order_id" th:value="${ordersHistory.order_id}" />
+                    <button type=submit style="width:100%;" class="btn btn-success">리뷰등록</button>
+                </form>
             </div>
+
         </div>
 
-
-
-
-
-
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var tmp = /*[[ ${ordersHistoryList} ]]*/;
+            /*]]*/
+            console.log(tmp);
+            console.log("---------------------");
+            console.log(tmp[0].ordersMenuHistoryList[0].menu_name);
+        </script>
 
     </th:block>
 

@@ -1,5 +1,3 @@
-
-
 INSERT INTO users VALUES('0001','-1714348728','pw1234','01011112222','user01@gmail.com','고마운분',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO users VALUES('0002','-1707093011','pw1234','01022223333','user02@gmail.com','귀한분',null,'2022-12-06','2022-12-06','휴면');
 INSERT INTO users VALUES('0003','-1704484449','pw1234','01033334444','user03@gmail.com','더귀한분',null,'2022-12-06','2022-12-06','탈퇴');
@@ -30,7 +28,6 @@ INSERT INTO menu VALUES('4003','9003','김치찌개','15000','https://i.pinimg.c
 INSERT INTO menu VALUES('4004','9004','왕돈까스','13000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 INSERT INTO menu VALUES('4005','9005','포테이토 피자','18000','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
 
-
 INSERT INTO orders VALUES('6001','0001','9001','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO orders VALUES('6002','0002','9002','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
 INSERT INTO orders VALUES('6003','0003','9003','서울 영등포구 선유로 130','에이스하이테크시티3차 TIS정보교육학원','01012345678','0',null,'2022-12-06','2022-12-06','일반');
@@ -44,11 +41,11 @@ INSERT INTO order_menu VALUES('6003','4003','3');
 INSERT INTO order_menu VALUES('6004','4004','4');
 INSERT INTO order_menu VALUES('6005','4005','2');
 
-INSERT INTO review VALUES('8001','0001','9001','4001','4.0','맛있었어요!','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
-INSERT INTO review VALUES('8002','0002','9002','4002','4.5','족발 맛있네요','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
-INSERT INTO review VALUES('8003','0003','9003','4003','3.5','김치가 짜요','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
-INSERT INTO review VALUES('8004','0004','9004','4004','2.5','고기가 질기네요','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
-INSERT INTO review VALUES('8005','0005','9005','4005','3.0','무난한 피자입니다..','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','2022-12-06','2022-12-06','일반');
+INSERT INTO review VALUES('8001', '4001','4.0','맛있었어요!','2022-12-06','2022-12-06','일반');
+INSERT INTO review VALUES('8002', '4002','4.5','족발 맛있네요','2022-12-06','2022-12-06','일반');
+INSERT INTO review VALUES('8003', '4003','3.5','김치가 짜요','2022-12-06','2022-12-06','일반');
+INSERT INTO review VALUES('8004', '4004','2.5','고기가 질기네요','2022-12-06','2022-12-06','일반');
+INSERT INTO review VALUES('8005', '4005','3.0','무난한 피자입니다..','2022-12-06','2022-12-06','일반');
 
 INSERT INTO store VALUES('9001','0','혼밥하기 좋은날1','서울 영등포구 영중로 125','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','021234566','안녕하세요. 맛있게 드세요!','10000',null,null,NULL,'3.5','1253','126','2022-12-06','2022-12-06','일반');
 INSERT INTO store VALUES('9006','0','혼밥하기 좋은날2','서울 영등포구 영중로 125','https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg','021234566','안녕하세요. 맛있게 드세요!','10000',null,null,NULL,'3.5','1253','126','2022-12-06','2022-12-06','일반');
@@ -87,3 +84,11 @@ INSERT INTO store_type VALUES('12','도시락');
 INSERT INTO store_type VALUES('13','분식');
 INSERT INTO store_type VALUES('14','카페/디저트');
 INSERT INTO store_type VALUES('15','패스트푸드');
+
+INSERT INTO review_picture VALUES('8001', 'picture1.jpg');
+INSERT INTO review_picture VALUES('8002', 'picture1');
+INSERT INTO review_picture VALUES('8003', 'picture1');
+INSERT INTO review_picture VALUES('8004', 'picture1');
+INSERT INTO review_picture VALUES('8005', 'picture1');
+INSERT INTO review_picture VALUES('8001', 'picture2.jpg');
+INSERT INTO review_picture VALUES('8001', 'picture3.jpg');
