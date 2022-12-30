@@ -14,9 +14,10 @@ public interface StoreMapper {
 
     List<Menu> menuList(String store_id);
 
-    List<Coupon> couponList();
+    List<Coupon> couponList(Long login_id);
 
     void ordersInsert(Orders orders);
+    void couponUpdate(Orders orders);
 
     void ordersMenuInsert(OrdersMenu ordersMenu);
 

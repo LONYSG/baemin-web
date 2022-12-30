@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import web.baemin.login.dto.User;
 import web.baemin.store.dto.Coupon;
 import web.baemin.store.service.StoreService;
 
@@ -22,8 +24,8 @@ public class CouponController {
     private final StoreService storeService;
 
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Coupon>> list() {
-        List<Coupon> couponList = storeService.couponList();
+    public ResponseEntity<List<Coupon>> list(@SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {
+        List<Coupon> couponList = storeService.couponList(Long.parseLong(loginUserSession.getLogin_id()));
 
         return new ResponseEntity<>( couponList, HttpStatus.OK);
     }

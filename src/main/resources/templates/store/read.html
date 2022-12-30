@@ -110,6 +110,7 @@
                     let min_delivery_price = Number($("input[name=coupon]:checked").siblings("input[name=min_delivery_price]").val()); // 쿠폰 사용 조건
                     let totalPrice = $(".totalPrice").text(); // 합계
 
+                    console.log($("input[name=coupon]").val());
                     console.log(min_delivery_price);
                     // 주문금액과 쿠폰의 사용조건 비교
                     if (min_delivery_price > totalPrice) {

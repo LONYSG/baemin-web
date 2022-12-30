@@ -33,8 +33,8 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public List<Coupon> couponList() {
-        return storeMapper.couponList();
+    public List<Coupon> couponList(Long login_id) {
+        return storeMapper.couponList(login_id);
     }
 
     @Transactional
@@ -48,10 +48,5 @@ public class StoreServiceImpl implements StoreService {
         });
 
     }
-
-//    @Override
-//    public void ordersMenuInsert(OrdersMenu ordersMenu) {
-//        storeMapper.ordersMenuInsert(ordersMenu);
-//    }
 
 }

@@ -11,9 +11,7 @@ public interface StoreService {
 
     List<Menu> menuList(String store_id);
 
-    List<Coupon> couponList();
+    List<Coupon> couponList(Long login_id);
 
     void ordersInsert(Orders orders);
-
-//    void ordersMenuInsert(OrdersMenu ordersMenu);
 }

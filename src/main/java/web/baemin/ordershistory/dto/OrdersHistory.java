@@ -21,6 +21,7 @@ public class OrdersHistory {
     private String store_picture_url;
     private List<OrdersMenuHistory> ordersMenuHistoryList;
     private String order_address;
+    private String detail_address;
     private String created_date;
     private String modified_date;
     private String status;

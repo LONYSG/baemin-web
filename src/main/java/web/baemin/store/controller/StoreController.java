@@ -50,10 +50,11 @@ public class StoreController {
     }
 
     @PostMapping("/orders")
-    public String modify(RedirectAttributes redirectAttributes, Orders orders, OrdersMenu ordersMenu){
+    public String modify(RedirectAttributes redirectAttributes, Orders orders){
         System.out.println("orders = " + orders);
 
         storeService.ordersInsert(orders);
+
         redirectAttributes.addFlashAttribute("msg", null);
 
         return "redirect:/main/index";

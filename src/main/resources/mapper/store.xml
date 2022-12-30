@@ -16,7 +16,12 @@
     </select>
 
     <select id="couponList" resultType="web.baemin.store.dto.Coupon">
-        SELECT * FROM coupon ORDER BY coupon_id ASC
+        SELECT *
+        FROM coupon T1
+        WHERE T1.user_id = (SELECT user_id FROM users WHERE login_id = #{login_id})
+        AND T1.status='일반'
+        AND expired_date > NOW()
+        ORDER BY expired_date ASC;
     </select>
 
     <insert id="ordersInsert" parameterType="web.baemin.store.dto.Orders">

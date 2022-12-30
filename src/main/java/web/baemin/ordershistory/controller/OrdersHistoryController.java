@@ -20,7 +20,6 @@ import java.util.List;
 public class OrdersHistoryController {
 
     private final OrdersHistoryService ordersHistoryService;
-    private final MainService mainService;
 
     @GetMapping("/list")
     public void list(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {

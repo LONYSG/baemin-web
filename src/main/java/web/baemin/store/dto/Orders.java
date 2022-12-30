@@ -15,6 +15,7 @@ public class Orders {
     private Long user_id;
     private Long login_id;
     private Long store_id;
+    private Long coupon_id;
     private List<OrdersMenu> ordersMenuList;
 
     private String order_address;

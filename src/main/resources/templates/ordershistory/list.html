@@ -13,7 +13,7 @@
 
                     <ul style="list-style:none" >
                         <li>
-                            주문 일자: [[${ordersHistory.created_date}]]
+                            주문 일시: [[${ordersHistory.created_date}]]
                         </li>
                         <li>
                             가게명: [[${ordersHistory.store_name}]]
@@ -25,11 +25,11 @@
                             주문 메뉴:
                         </li>
                         <li th:each="ordersMenuHistory : ${ordersHistory.ordersMenuHistoryList}">
-                            [[${ordersMenuHistory.menu_name}]] <br>
+                            [[${ordersMenuHistory.menu_name}]] ([[${ordersMenuHistory.price}]]원) [[${ordersMenuHistory.menu_count}]]개
                         </li>
                         <li>
                             <hr width="85%">
-                            총 주문 금액: [[${ordersHistory.total_price}]]
+                            총 주문 금액: [[${ordersHistory.total_price}]]원
                         </li>
                         <li>
                             <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}"
@@ -37,7 +37,7 @@
                         </li>
 
                         <li>
-                            주문 주소: [[${ordersHistory.order_address}]]
+                            주문 주소: [[${ordersHistory.order_address}]] [[${ordersHistory.detail_address}]]
                         </li>
                     </ul>
 
