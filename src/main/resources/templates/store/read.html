@@ -31,7 +31,8 @@
                     <input type="hidden" name="menu_name" th:value="${menu.menu_name}" />
                     <input type="hidden" name="price" th:value="${menu.price}" />
                     <div style="float:left;">
-                        <img th:src="${menu.menu_url}" alt="첨부이미지" th:if="${menu.menu_url != null}" style="width:243px; height:207px;"/>
+                        <img th:src="${menu.menu_url}" alt="첨부이미지" th:if="${menu.menu_url != null}"
+                             style="width:243px; height:207px;" />
                     </div>
                     <div style="float:left;">
                         [[${menu.menu_name}]] <br />
@@ -59,7 +60,7 @@
         <script th:inline="javascript">
             var orderMenuMap = new Map();
             var menuCnt = 0;
-            var menuId;
+
 
             $(function () {
 
@@ -75,22 +76,37 @@
                 $(".menu-list").click(function () {
                     let name = $(this).find("input[name=menu_name]").val();
                     let price = $(this).find("input[name=price]").val();
-                    menuId = $(this).find("input[name=menu_id]").val();
-
-                    let orderMenuList = "<ul style='list-style:none; padding-left:0px;'><li>" + name + " <button onclick='deleteMenu(this)'>삭제</button></li><li><button onclick='decCount(this)'>-</button><span id='menuCnt'>1</span><button onclick='incCount(this)'>+</button></li><li>가격:<span class='price'>" + price + "</span>원</li><li style='display:none'><span class='menuId'>" + menuId + "</span></li></ul>";
-                    $(".order-menu-list").append(orderMenuList);
+                    let menuId = $(this).find("input[name=menu_id]").val();
 
                     if (orderMenuMap.has(menuId)) {
                         orderMenuMap.set(menuId, orderMenuMap.get(menuId) + 1);
+                        $('#' + menuId + 'Cnt').text(Number($('#' + menuId + 'Cnt').text()) + 1);
+                        $('#' + menuId + 'Price').text(Number($('#' + menuId + 'Price').text()) + Number(price));
                     } else {
                         orderMenuMap.set(menuId, 1);
+
+                        let orderMenuList;
+
+                        orderMenuList = "<ul style='list-style:none; padding-left:0px;'><li>"
+                        orderMenuList += name;
+                        orderMenuList += " <button onclick='deleteMenu(this)'>삭제</button></li><li><button onclick='decCount(this)'>-</button><span id='";
+                        orderMenuList += menuId + "Cnt";
+                        orderMenuList += "'>1</span><button onclick='incCount(this)'>+</button></li><li>가격:<span class='price' id='";
+                        orderMenuList += menuId + "Price";
+                        orderMenuList += "'>"
+                        orderMenuList += price;
+                        orderMenuList += "</span>원</li><li style='display:none'><span class='menuId'>";
+                        orderMenuList += menuId;
+                        orderMenuList += "</span></li></ul>";
+
+                        console.log(orderMenuList);
+
+                        $(".order-menu-list").append(orderMenuList);
                     }
 
                     let totalPrice = Number($(".totalPrice").text()) + Number(price);
                     $(".totalPrice").text(totalPrice);
-                    $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
-                    $("#orderMenu").val(name);
-                    $("#menuId").val(menuId);
+                    $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
 
                 });
 
@@ -130,7 +146,7 @@
                     $("#couponModal").modal("hide"); // 모달 닫기
 
                     $(".totalPrice").text(totalPrice); // 합계 가격 변경
-                    $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
+                    $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
                     $(".coupon-list").hide(); // 쿠폰 버튼 감추기
 
                     alert("쿠폰이 적용되었습니다.");
@@ -205,21 +221,20 @@
 
             // 메뉴 삭제
             function deleteMenu(obj) {
-                let price = $(obj).parents("li").next().next().find(".price").text();
+
                 let spanMenuId = $(obj).parents("li").next().next().next().find(".menuId").text();
+                let price = $(obj).parents("li").next().next().find(".price").text();
+
                 let totalPrice = Number($(".totalPrice").text()) - Number(price);
+
                 if (totalPrice < 0) {
                     totalPrice = 0;
                 }
 
-                if (orderMenuMap.get(spanMenuId) > 1) {
-                    orderMenuMap.set(menuId, orderMenuMap.get(menuId) - 1);
-                } else {
-                    orderMenuMap.delete(spanMenuId);
-                }
+                orderMenuMap.delete(spanMenuId);
 
                 $(".totalPrice").text(totalPrice);
-                $(".totalPrice2").val(totalPrice); // 모달 합계 가격 변경
+                $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
                 $(obj).parents("ul").remove();
 
                 if ($(".order-menu-list").find("ul").length <= 0) {
@@ -230,12 +245,44 @@
 
             //수량 줄이기
             function decCount(obj) {
+                let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
+                let setPrice = $(obj).parents("li").next().find(".price");
+                let price = $(obj).parents("li").next().find(".price").text();
+                let OriginPrice = Number(price) / Number(orderMenuMap.get(spanMenuId));
 
+                let totalPrice = Number($(".totalPrice").text()) - Number(OriginPrice);
+                if (totalPrice < 0) {
+                    totalPrice = 0;
+                }
+                if (orderMenuMap.get(spanMenuId) > 1) {
+                    orderMenuMap.set(spanMenuId, orderMenuMap.get(spanMenuId) - 1);
+                    setPrice.text(Number(price) - Number(OriginPrice));
+                    $('#' + spanMenuId + 'Cnt').text(Number($('#' + spanMenuId + 'Cnt').text()) - 1);
+                } else {
+                    orderMenuMap.delete(spanMenuId);
+                    $(obj).parents("ul").remove();
+                }
+
+
+                $(".totalPrice").text(totalPrice);
+                $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
             }
 
             //수량 늘리기
             function incCount(obj) {
+                let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
+                let setPrice = $(obj).parents("li").next().find(".price");
+                let price = $(obj).parents("li").next().find(".price").text();
+                let OriginPrice = Number(price) / Number(orderMenuMap.get(spanMenuId));
 
+                let totalPrice = Number($(".totalPrice").text()) + Number(OriginPrice);
+
+                orderMenuMap.set(spanMenuId, orderMenuMap.get(spanMenuId) + 1);
+                setPrice.text(Number(price) + Number(OriginPrice));
+                $('#' + spanMenuId + 'Cnt').text(Number($('#' + spanMenuId + 'Cnt').text()) + 1);
+
+                $(".totalPrice").text(totalPrice);
+                $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
             }
 
             // 쿠폰 목록 불러오기
@@ -342,7 +389,7 @@
                             </div>
                             <div>
                                 <span>총 결제 금액</span>
-                                <input id="totalPrice" class="totalPrice2" type="text" name="total_price"
+                                <input id="totalPrice" class="inputTotalPrice" type="text" name="total_price"
                                        readonly="readonly">
                             </div>
                             <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}"
