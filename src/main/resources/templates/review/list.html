@@ -5,53 +5,43 @@
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">내가 쓴 총 리뷰
-            <!-- <span>
-                <a th:href="@{/review/register}">
-                    <button type="button" class="btn btn-outline-primary">등록
-                    </button>
-                </a>
-            </span> -->
-        </h1>
-
         <form action="/review/list" method="get" id="searchForm">
             <input type="hidden" name="page" value="1">
         </form>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">가게명</th>
-                <th scope="col">주문 메뉴</th>
-                <th scope="col">별점</th>
-                <th scope="col">사진</th>
-                <th scope="col">내용</th>
-                <th scope="col">등록일</th>
+        <div style="width:1000px; margin:0 auto;">
 
+            <div class="ju">리뷰 내역</div>
+            <div class="jumoon" th:each="review : ${reviewList}" th:if="${review.review_id != null}" style="width:80%">
+                <div style="float:left;">
 
-            </tr>
-            </thead>
-            <tbody>
-                <tr th:each="review : ${reviewList}">
+                    <ul style="list-style:none" >
+                        <li>
+                            가게명: [[${review.store_name}]]
+                        </li>
+                        <li>
+                            주문 메뉴:
+                        </li>
+                        <li>
+                            리뷰 사진:
+                        </li>
+                        <li>
+                            평점: [[${review.rating}]]
+                        </li>
 
-                    <th scope="row">
-                        <a th:href="@{/review/read(id = ${review.login_id} )}">
-                          [[${review.login_id}]]
-                        </a>
-                    </th>
-                    <td><b>[[${review.store_name}]]</b></td>
-                    <td><b>[[${review.menu_name}]]</b></td>
-                    <td><b>[[${review.rating}]]</b></td>
-                    <td><b>[[${review.picture_url}]]</b></td>
-                    <td><b>[[${review.content}]]</b></td>
-                    <td><b>[[${review.created_date}]]</b></td>
+                        <li>
+                            내용: [[${review.content}]]
+                        </li>
+                        <li>
+                            작성 일자: [[${review.created_date}]]
+                        </li>
+                    </ul>
 
+                </div>
 
-                </tr>
+            </div>
 
-            </tbody>
-        </table>
+        </div>
 
     </th:block>
 

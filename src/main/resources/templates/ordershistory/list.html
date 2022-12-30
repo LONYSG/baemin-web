@@ -5,10 +5,10 @@
 
     <th:block th:fragment="content">
 
-        <div style="width:1200px; margin:0 auto;">
+        <div style="width:1000px; margin:0 auto;">
 
             <div class="ju">주문 내역</div>
-            <div class="jumoon" th:each="ordersHistory : ${ordersHistoryList}" >
+            <div class="jumoon" th:each="ordersHistory : ${ordersHistoryList}" style="width:80%">
                 <div style="float:left;">
 
                     <ul style="list-style:none" >
@@ -22,7 +22,10 @@
                             <img th:src="${ordersHistory.store_picture_url}" style="width:50px; height:50px;">
                         </li>
                         <li>
-
+                            주문 메뉴:
+                        </li>
+                        <li th:each="ordersMenuHistory : ${ordersHistory.ordersMenuHistoryList}">
+                            [[${ordersMenuHistory.menu_name}]] <br>
                         </li>
                         <li>
                             <hr width="85%">

@@ -23,7 +23,7 @@ public class OrdersHistoryController {
     private final MainService mainService;
 
     @GetMapping("/list")
-    public void list(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession, OrdersHistory ordersHistory) {
+    public void list(Model model, @SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {
         List<OrdersHistory> ordersHistoryList = ordersHistoryService.ordersHistoryList(Long.parseLong(loginUserSession.getLogin_id()));
         model.addAttribute("ordersHistoryList", ordersHistoryList);
     }

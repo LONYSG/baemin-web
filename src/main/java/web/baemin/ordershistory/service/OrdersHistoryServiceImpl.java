@@ -20,7 +20,6 @@ public class OrdersHistoryServiceImpl implements OrdersHistoryService {
 
     @Override
     public List<OrdersHistory> ordersHistoryList(Long login_id) {
-//        ordersHistory.setOrdersMenuHistoryList(ordersHistoryMapper.ordersMenuHistoryList(login_id));
         List<OrdersHistory> ordersMenuHistoryList = ordersHistoryMapper.ordersHistoryList(login_id);
         for(int i = 0; i < ordersMenuHistoryList.size(); i++)
         {

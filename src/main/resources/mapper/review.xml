@@ -4,20 +4,16 @@
 
 <mapper namespace="web.baemin.review.mapper.ReviewMapper">
     <select id="reviewList" parameterType="web.baemin.review.dto.Review" resultType="web.baemin.review.dto.Review">
-        SELECT T2.user_id, T5.store_name, T6.picture_url, T6.rating, T4.menu_name, T6.content, T6.created_date
-        FROM orders T1
-        LEFT JOIN users T2
-        ON T1.user_id = T2.user_id
-        LEFT JOIN order_menu T3
-        ON T1.order_id = T3.order_id
-        LEFT JOIN menu T4
-        ON T3.menu_id = T4.menu_id
-        LEFT JOIN store T5
-        ON T4.store_id = T5.store_id
-        LEFT JOIN review T6
-        ON T1.user_id = T6.user_id
-        WHERE T2.login_id = #{login_id}
-        ORDER BY T6.created_date DESC;
+        SELECT T4.review_id, T1.order_id, T2.user_id, T3.store_name, T4.rating, T4.content, T4.created_date
+          FROM orders T1
+          LEFT JOIN users T2
+            ON T1.user_id = T2.user_id
+          LEFT JOIN store T3
+            ON T1.store_id = T3.store_id
+          LEFT JOIN review T4
+            ON T1.order_id = T4.order_id
+         WHERE T2.login_id = #{login_id}
+         ORDER BY T1.order_id DESC;
     </select>
 
     <select id="reviewRead" parameterType="string" resultType="web.baemin.review.dto.Review">
