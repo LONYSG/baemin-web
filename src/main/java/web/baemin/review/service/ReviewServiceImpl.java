@@ -3,6 +3,7 @@ package web.baemin.review.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.baemin.review.dto.Review;
 import web.baemin.review.mapper.ReviewMapper;
 
@@ -31,10 +32,14 @@ public class ReviewServiceImpl implements ReviewService{
         return review;
     }
 
+    @Transactional
     @Override
     public void reviewInsert(Review review) {
         reviewMapper.reviewInsert(review);
-
+        review.getReviewPictureList().forEach(reviewpicture -> {
+            reviewpicture.setReview_id(review.getReview_id());
+            reviewMapper.reviewpictureInsert(reviewpicture);
+        });
     }
 
     @Override

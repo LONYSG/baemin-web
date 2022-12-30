@@ -2,6 +2,7 @@ package web.baemin.review.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import web.baemin.review.dto.Review;
+import web.baemin.review.dto.ReviewPicture;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface ReviewMapper {
     void reviewUpdate(Review review);
 
     void reviewDelete(Review review);
+
+    void reviewpictureInsert(ReviewPicture reviewpicture);
 }
