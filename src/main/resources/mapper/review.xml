@@ -22,7 +22,7 @@
 
     <insert id="reviewInsert" parameterType="web.baemin.review.dto.Review">
         INSERT INTO review(order_id, rating, content, created_date, modified_date
-        ) VALUES(#{order_id}, '4.0', #{content}, NOW(), NOW())
+        ) VALUES(#{order_id}, #{rating}, #{content}, NOW(), NOW())
     </insert>
 
     <insert id="reviewPictureInsert" parameterType="web.baemin.review.dto.ReviewPicture">

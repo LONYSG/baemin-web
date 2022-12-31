@@ -19,6 +19,7 @@ public class OrdersHistory {
     private String store_name;
     private String total_price;
     private String store_picture_url;
+    private String requests;
     private List<OrdersMenuHistory> ordersMenuHistoryList;
     private String order_address;
     private String detail_address;

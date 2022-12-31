@@ -35,7 +35,12 @@
                             <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}"
                                style="color:blue">가게 상세보기</a>
                         </li>
-
+                        <li th:if="${ordersHistory.requests != ''}">
+                            요청 사항: [[${ordersHistory.requests}]]
+                        </li>
+                        <li th:unless="${ordersHistory.requests != ''}">
+                            요청 사항: 미입력
+                        </li>
                         <li>
                             주문 주소: [[${ordersHistory.order_address}]] [[${ordersHistory.detail_address}]]
                         </li>

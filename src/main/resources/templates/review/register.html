@@ -4,9 +4,6 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
-        <script th:inline="javascript">
-
-        </script>
 
         <h2 class="line">
 
@@ -43,11 +40,11 @@
                                 }
                             });
 
-            //modify rating
-<!--            var rating = targetReview.find('.card-title span').html();-->
-< !--$(".starrr a:nth-child(" + rating + ")").trigger('click'); -->
+                            //modify rating
+                            // var rating = targetReview.find('.card-title span').html();
+                            // $(".starrr a:nth-child(" + rating + ")").trigger('click');
 
-            });
+                        });
                     </script>
 
 
@@ -158,10 +155,6 @@
                         }
                     }); //$.ajax
                 });
-
-                $(".order-button").click(function () {
-                }
-                );
 
             </script>
 

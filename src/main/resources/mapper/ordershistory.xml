@@ -4,7 +4,7 @@
 
 <mapper namespace="web.baemin.ordershistory.mapper.OrdersHistoryMapper">
     <select id="ordersHistoryList" parameterType="long" resultType="web.baemin.ordershistory.dto.OrdersHistory">
-        SELECT T1.order_id, T1.user_id, T3.login_id, T1.store_id, T2.store_name, T1.total_price, T2.store_picture_url, T1.order_address, T1.detail_address, T1.created_date, T1.modified_date, T1.STATUS, T4.review_id
+        SELECT T1.order_id, T1.user_id, T3.login_id, T1.store_id, T2.store_name, T1.total_price, T2.store_picture_url, T1.order_address, T1.detail_address, T1.created_date, T1.modified_date, T1.STATUS, T4.review_id, T1.requests
         FROM orders T1
         LEFT OUTER JOIN store T2
         ON T1.store_id = T2.store_id
