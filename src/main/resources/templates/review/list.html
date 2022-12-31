@@ -28,9 +28,6 @@
                         <li th:each="ordersMenuHistory : ${review.ordersMenuHistoryList}">
                             [[${ordersMenuHistory.menu_name}]]
                         </li>
-                        <li>
-                            리뷰 사진:
-                        </li>
                         <li th:each="reviewPicture : ${review.reviewPictureList}">
                             [[${reviewPicture.picture_url}]]
                         </li>

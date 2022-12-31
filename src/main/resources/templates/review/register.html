@@ -10,7 +10,7 @@
             <h1 class="mt-4">리뷰 쓰기</h1>
 
 
-            <form class="re" th:action="@{/review/register}" th:method="post">
+            <form id="reviewForm" class="re" th:action="@{/review/register}" th:method="post">
 
                 <input class="rene" type="hidden" id="order_id" th:value="${review.order_id}" name="order_id"
                        readonly><br>
@@ -102,7 +102,7 @@
                     }
                 </style>
 
-                <a class="wan"><button type="submit" class="btn btn-primary registerBtn">완료</button></a>
+                <a class="wan"><button type="button" class="btn btn-primary registerBtn">완료</button></a>
 
             </form>
 
@@ -154,6 +154,16 @@
                             targetLi.remove();
                         }
                     }); //$.ajax
+                });
+
+                $(".registerBtn").click(function () {
+                    if ($("input[name=rating]").val() != "") {
+                        $("#reviewForm").submit();
+                    } else{
+                        alert("별점을 매겨주세요.")
+                        return;
+                    }
+
                 });
 
             </script>
