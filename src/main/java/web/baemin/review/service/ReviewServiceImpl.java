@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import web.baemin.ordershistory.dto.OrdersHistory;
+import web.baemin.ordershistory.mapper.OrdersHistoryMapper;
 import web.baemin.review.dto.Review;
 import web.baemin.review.mapper.ReviewMapper;
 
@@ -15,37 +17,32 @@ import java.util.List;
 public class ReviewServiceImpl implements ReviewService{
 
     private final ReviewMapper reviewMapper;
+    private final OrdersHistoryMapper ordersHistoryMapper;
 
     @Override
     public List<Review> reviewList(Long login_id) {
-        List<Review> reviewList = reviewMapper.reviewList(login_id);
-        log.info("reviewList : {}", reviewList.toString());
-
-        return reviewList;
+        List<Review> reviewPictureList = reviewMapper.reviewList(login_id);
+        for(int i = 0; i < reviewPictureList.size(); i++)
+        {
+            Review current = reviewPictureList.get(i);
+            current.setReviewPictureList(reviewMapper.reviewPictureList(current.getReview_id()));
+            current.setOrdersMenuHistoryList(ordersHistoryMapper.ordersMenuHistoryList(current.getOrder_id()));
+        }
+        System.out.println(reviewPictureList);
+        return reviewPictureList;
     }
 
-    @Override
-    public Review reviewRead(String review_id) {
-
-        Review review = reviewMapper.reviewRead(review_id);
-
-        return review;
-    }
 
     @Transactional
     @Override
     public void reviewInsert(Review review) {
         reviewMapper.reviewInsert(review);
-        review.getReviewPictureList().forEach(reviewpicture -> {
-            reviewpicture.setReview_id(review.getReview_id());
-            reviewMapper.reviewpictureInsert(reviewpicture);
-        });
-    }
-
-    @Override
-    public void reviewUpdate(Review review) {
-        reviewMapper.reviewUpdate(review);
-
+        if(review.getReviewPictureList().get(0).getPicture_url() != "") {
+            review.getReviewPictureList().forEach(reviewPicture -> {
+                reviewPicture.setReview_id(review.getReview_id());
+                reviewMapper.reviewPictureInsert(reviewPicture);
+            });
+        }
     }
 
     @Override

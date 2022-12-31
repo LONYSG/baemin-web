@@ -10,5 +10,5 @@ import lombok.ToString;
 public class ReviewPicture {
 
     private Long review_id;
-    private Long picture_url;
+    private String picture_url;
 }

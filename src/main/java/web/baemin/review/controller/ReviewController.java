@@ -57,25 +57,4 @@ public class ReviewController {
         return "redirect:/review/list";
     }
 
-    @GetMapping("/read")
-    public void read(Model model, @RequestParam String review_id){
-        System.out.println("review_id = " + review_id);
-
-        Review review = reviewService.reviewRead(review_id);
-
-        model.addAttribute("review", review);
-
-
-    }
-
-    @PostMapping("/read")
-    public String read(RedirectAttributes redirectAttributes, Review review){
-        System.out.println("review = " + review);
-
-        reviewService.reviewUpdate(review);
-
-        redirectAttributes.addFlashAttribute("msg", null);
-
-        return "redirect:/review/list";
-    }
 }

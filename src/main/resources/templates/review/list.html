@@ -17,13 +17,22 @@
 
                     <ul style="list-style:none" >
                         <li>
+                            주문번호: [[${review.order_id}]]
+                        </li>
+                        <li>
                             가게명: [[${review.store_name}]]
                         </li>
                         <li>
                             주문 메뉴:
                         </li>
+                        <li th:each="ordersMenuHistory : ${review.ordersMenuHistoryList}">
+                            [[${ordersMenuHistory.menu_name}]]
+                        </li>
                         <li>
                             리뷰 사진:
+                        </li>
+                        <li th:each="reviewPicture : ${review.reviewPictureList}">
+                            [[${reviewPicture.picture_url}]]
                         </li>
                         <li>
                             평점: [[${review.rating}]]

@@ -4,6 +4,7 @@ package web.baemin.review.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import web.baemin.ordershistory.dto.OrdersMenuHistory;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Review {
 
     private Long review_id;
     private Long user_id;
+    private Long order_id;
     private Long login_id;
     private String store_id;
     private String store_name;
@@ -21,11 +23,9 @@ public class Review {
     private String menu_name;
     private String rating;
     private String content;
-    private String picture_url;
-    private String store_picture_url;
     private String created_date;
     private String modified_date;
-    private String status;
     private List<ReviewPicture> reviewPictureList;
+    private List<OrdersMenuHistory> ordersMenuHistoryList;
 
 }

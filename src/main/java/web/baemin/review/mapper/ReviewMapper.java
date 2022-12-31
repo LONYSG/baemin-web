@@ -10,14 +10,11 @@ import java.util.List;
 public interface ReviewMapper {
 
     List<Review> reviewList(Long login_id);
-
-    Review reviewRead(String review_id);
+    List<ReviewPicture> reviewPictureList(Long review_id);
 
     void reviewInsert(Review review);
 
-    void reviewUpdate(Review review);
-
     void reviewDelete(Review review);
 
-    void reviewpictureInsert(ReviewPicture reviewpicture);
+    void reviewPictureInsert(ReviewPicture reviewPicture);
 }
