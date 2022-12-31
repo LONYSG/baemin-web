@@ -37,9 +37,11 @@
                         <li>
                             평점: [[${review.rating}]]
                         </li>
-
-                        <li>
+                        <li th:if="${review.content != ''}">
                             내용: [[${review.content}]]
+                        </li>
+                        <li th:unless="${review.content != ''}">
+                            내용: 미입력
                         </li>
                         <li>
                             작성 일자: [[${review.created_date}]]
