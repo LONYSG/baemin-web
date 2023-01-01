@@ -24,10 +24,7 @@ public class ReviewController {
 
     @GetMapping("/list")
     public void index(Model model,@SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {
-        System.out.println("login_id1 = "+loginUserSession.getLogin_id());
-
         List<Review> reviewList = reviewService.reviewList(Long.parseLong(loginUserSession.getLogin_id()));
-        System.out.println("ReviewList = " + reviewList.toString());
 
         model.addAttribute("reviewList", reviewList);
     }

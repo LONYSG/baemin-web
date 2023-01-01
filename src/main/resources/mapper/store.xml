@@ -32,4 +32,17 @@
         INSERT INTO order_menu(order_id, menu_id, menu_count) VALUES(LAST_INSERT_ID(),${menu_id},${menu_count})
     </insert>
 
+    <update id="couponUpdate" parameterType="web.baemin.store.dto.Orders">
+        UPDATE coupon SET status='사용', modified_date=NOW() WHERE coupon_id = #{coupon_id}
+    </update>
+
+    <select id="storeReviewList" parameterType="web.baemin.store.dto.Store" resultType="web.baemin.review.dto.Review">
+        SELECT T1.review_id, T2.order_id, T1.rating, T1.content, T1.created_date
+        FROM review T1
+        LEFT OUTER JOIN orders T2
+        ON T1.order_id = T2.order_id
+        WHERE T2.store_id = #{store_id}
+        ORDER BY T1.created_date DESC;
+    </select>
+
 </mapper>

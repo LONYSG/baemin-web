@@ -21,11 +21,11 @@
                 <div style="clear:both;"></div>
 
                 <div style="margin-top:20px; border:0px solid gray;">
-                    <button type="button" class="btn btn-primary" style="width:48%;">메뉴</button>
-                    <button type="button" class="btn btn-primary" style="width:48%; float:right;">리뷰</button>
+                    <button type="button" class="btn btn-primary menuBtn" style="width:48%;">메뉴</button>
+                    <button type="button" class="btn btn-primary reviewBtn" style="width:48%; float:right;">리뷰</button>
                 </div>
 
-                <div class="menu-list" style="border:1px solid black; margin-top:10px; cursor:pointer;"
+                <div class="menu-list toggleMenu" style="border:1px solid black; margin-top:10px; cursor:pointer;"
                      th:each="menu : ${menuList}">
                     <input type="hidden" name="menu_id" th:value="${menu.menu_id}" />
                     <input type="hidden" name="menu_name" th:value="${menu.menu_name}" />
@@ -40,6 +40,35 @@
                     </div>
                     <div style="clear:both;"></div>
                 </div>
+
+                <div class="menu-list toggleReview" style="border:1px solid black; margin-top:10px; cursor:pointer; display:none"
+                     th:each="storeReview : ${storeReviewList}">
+
+                    <ul style="list-style:none">
+                        <li>
+                            평점: [[${storeReview.rating}]]
+                        </li>
+                        <li>
+                            작성 일자: [[${storeReview.created_date}]]
+                        </li>
+                        <li th:each="reviewPicture : ${storeReview.reviewPictureList}">
+                            [[${reviewPicture.picture_url}]]
+                        </li>
+                        <li th:if="${storeReview.content != ''}">
+                            내용: [[${storeReview.content}]]
+                        </li>
+                        <li>
+                            주문 메뉴:
+                        </li>
+                        <li th:each="ordersMenuHistory : ${storeReview.ordersMenuHistoryList}">
+                            [[${ordersMenuHistory.menu_name}]]
+                        </li>
+
+                    </ul>
+
+                    <div style="clear:both;"></div>
+                </div>
+
             </div>
 
             <div class="jang">
@@ -70,6 +99,18 @@
                 /*]]*/
 
                 $("#storeId").val(storeId);
+
+                $("#toggleReview").hide();
+
+                $(".menuBtn").click(function () {
+                    $(".toggleReview").hide();
+                    $(".toggleMenu").show();
+                });
+
+                $(".reviewBtn").click(function () {
+                    $(".toggleMenu").hide();
+                    $(".toggleReview").show();
+                });
 
 
                 // 메뉴 추가
@@ -143,6 +184,8 @@
 
                     let coupon = $("input[name=coupon]:checked").val();
                     $("input[name=temp-coupon-id]").val(coupon); // 사용하는 쿠폰번호 세팅
+                    $("#couponId").val(coupon);
+                    console.log($("#couponId").val());
                     $("#couponModal").modal("hide"); // 모달 닫기
 
                     $(".totalPrice").text(totalPrice); // 합계 가격 변경
@@ -306,6 +349,7 @@
                             couponHtml += '<span style="float:left; margin-left:15px; cursor:pointer;">';
                             couponHtml += val["name"] + ' <br />' + val["min_delivery_price"] + '원 이상 구매시 ' + val["deducted_price"] + '원 할인 <br />사용기한 : ' + val["expired_date"].substring(0, 10);
                             couponHtml += '</span></label></div>';
+
                             $("#modalBody").html(couponHtml);
                         }
                     },
@@ -376,8 +420,8 @@
                             </div>
                             <div>
                                 <label>휴대전화번호</label>
-                                <input id="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone"
-                                       required="required">
+                                <input mid="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone"
+                                       required="required" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                             </div>
                             <div>
                                 <span>주문시 요청사항</span>
@@ -398,6 +442,7 @@
                             <div class="orderMenuList">
 
                             </div>
+                            <input type="hidden" id="couponId" name="coupon_id" value="" />
                         </div>
 
                     </div>
@@ -408,7 +453,7 @@
                     <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
                 </div>
             </form>
-<!--            <button class="btn btn-info" onclick="formTest()">form 내용</button>-->
+            <!--            <button class="btn btn-info" onclick="formTest()">form 내용</button>-->
         </div>
     </div>
     <input type="hidden" value="" name="temp-coupon-id" />

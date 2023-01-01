@@ -26,6 +26,8 @@
                             onclick="location.href='/ordershistory/list';">주문 내역</button>
                     <button th:if="${session.loginUserSession}" class="btn btn-info"
                             onclick="location.href='/review/list';">내가 쓴 리뷰 목록</button>
+                    <button th:if="${session.loginUserSession}" class="btn btn-info"
+                            onclick="location.href='/mycoupon/list';">쿠폰함</button>
                     </p>
                 </div>
 

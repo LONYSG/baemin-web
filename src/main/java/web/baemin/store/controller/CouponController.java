@@ -27,7 +27,7 @@ public class CouponController {
     public ResponseEntity<List<Coupon>> list(@SessionAttribute(name = "loginUserSession", required = false) User loginUserSession) {
         List<Coupon> couponList = storeService.couponList(Long.parseLong(loginUserSession.getLogin_id()));
 
-        return new ResponseEntity<>( couponList, HttpStatus.OK);
+        return new ResponseEntity<>(couponList, HttpStatus.OK);
     }
 
 

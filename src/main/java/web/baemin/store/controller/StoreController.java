@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import web.baemin.main.dto.StoreType;
 import web.baemin.main.service.MainService;
-import web.baemin.store.dto.Menu;
-import web.baemin.store.dto.Orders;
-import web.baemin.store.dto.OrdersMenu;
-import web.baemin.store.dto.Store;
+import web.baemin.review.dto.Review;
+import web.baemin.store.dto.*;
 import web.baemin.store.service.StoreService;
 
 import java.util.List;
@@ -37,16 +35,20 @@ public class StoreController {
         model.addAttribute("storeTypeList", storeTypeList);
         model.addAttribute("storeList", storeList);
         model.addAttribute("food_category_cd", food_category_cd);
+
     }
 
     @GetMapping("/read")
     public void read(Model model, @RequestParam String store_id) {
         Store store = storeService.storeRead(store_id);
         List<Menu> menuList = storeService.menuList(store_id);
+
+        List<Review> storeReviewList = storeService.storeReviewList(store);
         System.out.println("menuList = " + menuList);
 
         model.addAttribute("store", store);
         model.addAttribute("menuList", menuList);
+        model.addAttribute("storeReviewList", storeReviewList);
     }
 
     @PostMapping("/orders")
@@ -54,6 +56,7 @@ public class StoreController {
         System.out.println("orders = " + orders);
 
         storeService.ordersInsert(orders);
+        storeService.couponUpdate(orders);
 
         redirectAttributes.addFlashAttribute("msg", null);
 

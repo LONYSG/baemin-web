@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import web.baemin.ordershistory.mapper.OrdersHistoryMapper;
+import web.baemin.review.dto.Review;
+import web.baemin.review.mapper.ReviewMapper;
 import web.baemin.store.dto.*;
 import web.baemin.store.mapper.StoreMapper;
 
@@ -16,11 +19,30 @@ public class StoreServiceImpl implements StoreService {
 
 
     private final StoreMapper storeMapper;
+    private final ReviewMapper reviewMapper;
+    private final OrdersHistoryMapper ordersHistoryMapper;
 
     @Override
     public List<Store> storeList(String food_category_cd) {
         return storeMapper.storeList(food_category_cd);
     }
+
+    @Override
+    public List<Review> storeReviewList(Store store) {
+
+
+        List<Review> storeReviewList = storeMapper.storeReviewList(store);
+        for(int i = 0; i < storeReviewList.size(); i++)
+        {
+            Review current = storeReviewList.get(i);
+            current.setReviewPictureList(reviewMapper.reviewPictureList(current.getReview_id()));
+            current.setOrdersMenuHistoryList(ordersHistoryMapper.ordersMenuHistoryList(current.getOrder_id()));
+        }
+        System.out.println(storeReviewList);
+        return storeReviewList;
+    }
+
+
 
     @Override
     public Store storeRead(String store_id) {
@@ -47,6 +69,11 @@ public class StoreServiceImpl implements StoreService {
            storeMapper.ordersMenuInsert(ordersMenu);
         });
 
+    }
+
+    @Override
+    public void couponUpdate(Orders orders) {
+        storeMapper.couponUpdate(orders);
     }
 
 }
