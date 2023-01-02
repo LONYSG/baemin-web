@@ -5,13 +5,13 @@
 
     <th:block th:fragment="content">
 
-        <div style="width:1000px; margin:0 auto;">
+        <div class="orderForm">
 
             <div class="ju">주문 내역</div>
             <div class="jumoon" th:each="ordersHistory : ${ordersHistoryList}" style="width:80%">
                 <div style="float:left;">
 
-                    <ul style="list-style:none" >
+                    <ul style="list-style:none">
                         <li>
                             주문 일시: [[${ordersHistory.created_date}]]
                         </li>
@@ -25,7 +25,8 @@
                             주문 메뉴:
                         </li>
                         <li th:each="ordersMenuHistory : ${ordersHistory.ordersMenuHistoryList}">
-                            [[${ordersMenuHistory.menu_name}]] ([[${ordersMenuHistory.price}]]원) [[${ordersMenuHistory.menu_count}]]개
+                            [[${ordersMenuHistory.menu_name}]] ([[${ordersMenuHistory.price}]]원)
+                            [[${ordersMenuHistory.menu_count}]]개
                         </li>
                         <li>
                             <hr width="85%">
@@ -50,8 +51,10 @@
                 <form th:action="@{/review/register}" th:method="get">
                     <input type="hidden" name="order_id" th:value="${ordersHistory.order_id}" />
                     <input type="hidden" name="store_name" th:value="${ordersHistory.store_name}" />
-                    <button type=submit style="width:100%;" class="btn btn-success" th:if="${ordersHistory.review_id == null}">리뷰 작성</button>
-                    <button type=submit style="width:100%;" class="btn btn-warning" th:unless="${ordersHistory.review_id == null}" disabled>리뷰 작성 완료</button>
+                    <button type=submit style="width:100%;" class="btn btn-success"
+                            th:if="${ordersHistory.review_id == null}">리뷰 작성</button>
+                    <button type=submit style="width:100%;" class="btn btn-warning"
+                            th:unless="${ordersHistory.review_id == null}" disabled>리뷰 작성 완료</button>
                 </form>
 
             </div>

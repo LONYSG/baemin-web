@@ -4,7 +4,7 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
-
+    <div class="mainFrame">
         <div class="menu" th:each="storeType : ${storeTypeList}" >
             <div class="letter">
                 [[${storeType.food_category_name}]]
@@ -16,7 +16,7 @@
                     </a>
             </div>
         </div>
-
+    </div>
     </th:block>
 
 </th:block>

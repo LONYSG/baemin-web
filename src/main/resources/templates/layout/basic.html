@@ -7,31 +7,26 @@
 
 
         <!-- 블럭바 -->
-        <div class="header">
-
-            <!-- 해더-->
-            <hc>
+        <div class="header description">
 
                 <!--로고-->
                 <a class="logo" href="/main/index"><img src="/img/logo.png" /><span class="sr-only">(current)</span></a>
 
-                <div class="button_container">
-                    <p class="description">
-                    <button th:if="${#strings.isEmpty(session.loginUserSession)}" class="btn btn-info"
+                <div class="login_container" th:if="${#strings.isEmpty(session.loginUserSession)}">
+                    <button class="btn btn-info"
                             onclick="kakaoLogin(); return false;"><img src="/img/kakao_icon.png"
                                                                        style="width:40px; height:40px" /> KAKAO 로그인</button>
-                    <button th:if="${session.loginUserSession}" class="btn btn-info"
-                            onclick="javascript:location.href='/login/logoutProc'">로그아웃</button>
-                    <button th:if="${session.loginUserSession}" class="btn btn-info"
-                            onclick="location.href='/ordershistory/list';">주문 내역</button>
-                    <button th:if="${session.loginUserSession}" class="btn btn-info"
-                            onclick="location.href='/review/list';">내가 쓴 리뷰 목록</button>
-                    <button th:if="${session.loginUserSession}" class="btn btn-info"
-                            onclick="location.href='/mycoupon/list';">쿠폰함</button>
-                    </p>
                 </div>
-
-            </hc>
+                <div class="button_container" th:unless="${#strings.isEmpty(session.loginUserSession)}">
+                    <button class="btn btn-info"
+                            onclick="javascript:location.href='/login/logoutProc'">로그아웃</button>
+                    <button class="btn btn-info"
+                            onclick="location.href='/ordershistory/list';">주문 내역</button>
+                    <button class="btn btn-info"
+                            onclick="location.href='/review/list';">내가 쓴 리뷰 목록</button>
+                    <button class="btn btn-info"
+                            onclick="location.href='/mycoupon/list';">쿠폰함</button>
+                </div>
 
         </div>
 
@@ -93,7 +88,6 @@
     <div class="d-flex" id="wrapper">
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
 
             <script th:inline="javascript">
                     $(function () {
