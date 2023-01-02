@@ -41,7 +41,7 @@
                     <div style="clear:both;"></div>
                 </div>
 
-                <div class="menu-list toggleReview"
+                <div class="toggleReview"
                      style="border:1px solid black; margin-top:10px; cursor:pointer; display:none"
                      th:each="storeReview : ${storeReviewList}">
 
@@ -216,7 +216,6 @@
                     /*<![CDATA[*/
                     let userSession = /*[[ ${session.loginUserSession} ]]*/;
                     /*]]*/
-                    let orderUserIdHtml = '';
 
                     if ($(".totalPrice").text() == 0) {
                         alert("메뉴를 먼저 선택해주세요.");
@@ -234,23 +233,14 @@
                     if (userSession == null || userSession == "") {
                         alert("로그인이 필요한 서비스입니다.");
                         return;
-                    } else {
-                        $(".orderUserId").empty();
-
-                        orderUserIdHtml += '<input type="hidden" id="loginId" th:value="'
-                        orderUserIdHtml += userSession.login_id
-                        orderUserIdHtml += '"name="login_id" />'
-
-                        $(".orderUserId").html(orderUserIdHtml);
                     }
-                    console.log(orderUserIdHtml);
+
+                    $(".orderMenuList").empty();
 
                     $("#orderAddress").val($("#inputAddress").val());
 
                     let menuHtml = '';
                     let mapIndex = 0;
-
-                    $(".orderMenuList").empty();
 
                     for (var key of orderMenuMap.keys()) {
                         menuHtml += '<input type="hidden" '
@@ -273,12 +263,11 @@
                         mapIndex++;
                     }
 
-                    console.log(menuHtml);
                     $(".orderMenuList").html(menuHtml);
-                    console.log(orderMenuMap);
                     $('#orderModal').modal('show');
 
                 });
+
             });
 
             // 메뉴 삭제
@@ -429,48 +418,57 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 id="orderModalTitle" class="modal-title">결제 화면</h4>
+                <h4 id="orderModalTitle" class="modal-title">결제 화면 <span class="min"><img src="/img/lo.png"> </span>
+                </h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
             </div>
             <form id="orderFormId" th:action="@{/store/orders}" th:method="post">
                 <div id="ordersModalBody" class="modal-body">
-                    <div class="form-group fileForm">
-                        <span class="min">결제하기 <img src="/img/lo.png"> </span>
+                    <div>
                         <div class="bea">
                             <span>배달정보</span>
                             <div>
-                                <label>주소</label>
-                                <input id="orderAddress" type="text" name="order_address" readonly="readonly">
-                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address"
-                                       required="required">
+                                <span>주소</span>
                             </div>
                             <div>
-                                <label>휴대전화번호</label>
+                                <input id="orderAddress" type="text" name="order_address" readonly="readonly"
+                                       style="width:100%" />
+                            </div>
+                            <div>
+                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address"
+                                       required="required" style="width:100%" />
+                            </div>
+                            <div>
+                                <span>휴대전화번호</span>
+                            </div>
+                            <div>
                                 <input mid="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone"
                                        required="required" maxlength="11"
-                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                       style="width:100%" />
                             </div>
                             <div>
                                 <span>주문시 요청사항</span>
-                                <input type="text" id="requests" name="requests" placeholder="(선택)100자 이내로 입력해주세요.">
                             </div>
                             <div>
-                                <span>주문 내역</span>
-                                <input id="orderMenu" type="text" readonly="readonly" disabled="disabled">
+                                <input type="text" id="requests" name="requests" placeholder="(선택)100자 이내로 입력해주세요."
+                                       style="width:100%" />
                             </div>
                             <div>
                                 <span>총 결제 금액</span>
-                                <input id="totalPrice" class="inputTotalPrice" type="text" name="total_price"
-                                       readonly="readonly">
                             </div>
-
-                            <input type="hidden" id="storeId" name="store_id" value="" />
-                            <div class="orderUserId">
-
+                            <div>
+                                <input id="totalPrice" class="inputTotalPrice" type="text" name="total_price"
+                                       readonly="readonly" style="border:none" />
+                            </div>
+                            <div class="orderUserId" th:if="${session.loginUserSession != null}">
+                                <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}"
+                                       name="login_id" />
                             </div>
                             <div class="orderMenuList">
 
                             </div>
+                            <input type="hidden" id="storeId" name="store_id" value="" />
                             <input type="hidden" id="couponId" name="coupon_id" value="" />
                         </div>
 
@@ -482,7 +480,7 @@
                     <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
                 </div>
             </form>
-            <!--            <button class="btn btn-info" onclick="formTest()">form 내용</button>-->
+<!--            <button class="btn btn-info" onclick="formTest()">form 내용</button>-->
         </div>
     </div>
     <input type="hidden" value="" name="temp-coupon-id" />
