@@ -41,7 +41,8 @@
                     <div style="clear:both;"></div>
                 </div>
 
-                <div class="menu-list toggleReview" style="border:1px solid black; margin-top:10px; cursor:pointer; display:none"
+                <div class="menu-list toggleReview"
+                     style="border:1px solid black; margin-top:10px; cursor:pointer; display:none"
                      th:each="storeReview : ${storeReviewList}">
 
                     <ul style="list-style:none">
@@ -211,6 +212,12 @@
 
                 // 주문 버튼 클릭 이벤트
                 $(".order-button").click(function () {
+
+                    /*<![CDATA[*/
+                    let userSession = /*[[ ${session.loginUserSession} ]]*/;
+                    /*]]*/
+                    let orderUserIdHtml = '';
+
                     if ($(".totalPrice").text() == 0) {
                         alert("메뉴를 먼저 선택해주세요.");
                         $("#couponModal").modal("hide");
@@ -223,9 +230,21 @@
                         $("#orderModal").modal("hide");
                         return;
                     }
-                    // if (!confirm("주문 하시겠습니까?")) return;
-                    // alert("주문이 완료되었습니다.");
-                    // location.href = "/main/index";
+
+                    if (userSession == null || userSession == "") {
+                        alert("로그인이 필요한 서비스입니다.");
+                        return;
+                    } else {
+                        $(".orderUserId").empty();
+
+                        orderUserIdHtml += '<input type="hidden" id="loginId" th:value="'
+                        orderUserIdHtml += userSession.login_id
+                        orderUserIdHtml += '"name="login_id" />'
+
+                        $(".orderUserId").html(orderUserIdHtml);
+                    }
+                    console.log(orderUserIdHtml);
+
                     $("#orderAddress").val($("#inputAddress").val());
 
                     let menuHtml = '';
@@ -330,6 +349,13 @@
 
             // 쿠폰 목록 불러오기
             function setCouponList() {
+                /*<![CDATA[*/
+                let userSession = /*[[ ${session.loginUserSession} ]]*/;
+                /*]]*/
+
+                if (userSession == null || userSession == "") {
+                    return;
+                }
                 $.ajax({
                     url: "/coupon/list",
                     method: 'GET',
@@ -421,7 +447,8 @@
                             <div>
                                 <label>휴대전화번호</label>
                                 <input mid="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone"
-                                       required="required" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                       required="required" maxlength="11"
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                             </div>
                             <div>
                                 <span>주문시 요청사항</span>
@@ -436,9 +463,11 @@
                                 <input id="totalPrice" class="inputTotalPrice" type="text" name="total_price"
                                        readonly="readonly">
                             </div>
-                            <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}"
-                                   name="login_id" />
+
                             <input type="hidden" id="storeId" name="store_id" value="" />
+                            <div class="orderUserId">
+
+                            </div>
                             <div class="orderMenuList">
 
                             </div>
