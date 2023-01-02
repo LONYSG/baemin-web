@@ -9,43 +9,38 @@
             <input type="hidden" name="page" value="1">
         </form>
 
-        <div style="width:1000px; margin:0 auto;">
-
-            <div class="ju">리뷰 내역</div>
-            <div class="jumoon" th:each="review : ${reviewList}" th:if="${review.review_id != null}" style="width:80%">
-                <div style="float:left;">
-
-                    <ul style="list-style:none" >
-                        <li>
-                            주문번호: [[${review.order_id}]]
-                        </li>
-                        <li>
-                            가게명: [[${review.store_name}]]
-                        </li>
-                        <li>
-                            주문 메뉴:
-                        </li>
-                        <li th:each="ordersMenuHistory : ${review.ordersMenuHistoryList}">
-                            [[${ordersMenuHistory.menu_name}]]
-                        </li>
-                        <li th:each="reviewPicture : ${review.reviewPictureList}">
-                            [[${reviewPicture.picture_url}]]
-                        </li>
-                        <li>
-                            평점: [[${review.rating}]]
-                        </li>
-                        <li th:if="${review.content != ''}">
-                            내용: [[${review.content}]]
-                        </li>
-                        <li th:unless="${review.content != ''}">
-                            내용: 미입력
-                        </li>
-                        <li>
-                            작성 일자: [[${review.created_date}]]
-                        </li>
-                    </ul>
-
-                </div>
+        <div class="ju">리뷰 내역</div>
+        <div class="jumoon" th:each="review : ${reviewList}" th:if="${review.review_id != null}">
+            <div>
+                <ul style="list-style:none">
+                    <li>
+                        주문번호: [[${review.order_id}]]
+                    </li>
+                    <li>
+                        가게명: [[${review.store_name}]]
+                    </li>
+                    <li>
+                        주문 메뉴:
+                    </li>
+                    <li th:each="ordersMenuHistory : ${review.ordersMenuHistoryList}">
+                        [[${ordersMenuHistory.menu_name}]]
+                    </li>
+                    <li th:each="reviewPicture : ${review.reviewPictureList}">
+                        [[${reviewPicture.picture_url}]]
+                    </li>
+                    <li>
+                        평점: [[${review.rating}]]
+                    </li>
+                    <li th:if="${review.content != ''}">
+                        내용: [[${review.content}]]
+                    </li>
+                    <li th:unless="${review.content != ''}">
+                        내용: 미입력
+                    </li>
+                    <li>
+                        작성 일자: [[${review.created_date}]]
+                    </li>
+                </ul>
 
             </div>
 

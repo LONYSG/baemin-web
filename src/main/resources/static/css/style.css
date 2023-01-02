@@ -74,12 +74,22 @@ width:50px;
 position:relative;
 }
 
+.orderForm{
+margin: 0px 0px auto;
+}
+
+container-fluid{
+left: 300px;
+justify-content : center;
+}
+
 .d-flex{
  width:1400px;
  text-align: center;
  top-margin:50px;
  z-index:3;
  margin:0 auto;
+ font-family: "ha";
 }
 /* 메뉴 */
 .menu{
@@ -193,8 +203,9 @@ font-family: "ha";
 font-family: "ha";
 border:5px
 solid gray;
-float:left;
-margin-top:40px;
+margin: 0 auto;
+width: 50%;
+margin-top: 20px;
 }
 
 .line
@@ -208,7 +219,7 @@ margin-top:40px;
 {
  position:relative;
  bottom: 10px;
- left : 700px;
+ margin 0 auto;
 }
 
 .rene

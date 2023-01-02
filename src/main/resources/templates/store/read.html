@@ -11,11 +11,10 @@
                 <div style="float:left;">
                     <img th:src="${store.store_picture_url}" alt="첨부이미지" th:if="${store.store_picture_url != null}" />
                 </div>
-                <div style="float:left;">
-                    [[${store.store_name}]] <br />
-                    [[${store.content}]] <br />
+                <div>
+                    <span style="font-size:30px">[[${store.store_name}]]</span> <br />
+                    [[${store.content}]] <br /><br />
                     [[${store.address}]] <br />
-                    <a href="#" style="float:right">♡</a>
                 </div>
 
                 <div style="clear:both;"></div>
@@ -79,10 +78,10 @@
                 </div>
                 <hr />
                 <div>
-                    <button type="button" data-toggle="modal" class="btn btn-danger coupon-list"
-                            data-target="#couponModal">쿠폰</button>
                     합계 : <span class="totalPrice">0</span>원
                 </div>
+                <button type="button" data-toggle="modal" class="btn btn-danger coupon-list"
+                        data-target="#couponModal">쿠폰</button>
                 <button class="btn btn-success order-button" data-toggle="modal" data-target="orderModal">주문하기</button>
             </div>
         </div>
