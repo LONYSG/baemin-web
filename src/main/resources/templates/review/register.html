@@ -115,56 +115,107 @@
             </script>
 
             <script>
-                function showResult(uploadResultArr) {
+                $(".custom-file-input").on("change", function() {
 
-                    var uploadUL = $(".uploadResult ul");
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 
-                    var str = "";
+                var formData = new FormData();
 
-                    $(uploadResultArr).each(function (i, obj) {
+                var inputFile = $(this);
 
-                        str += "<li data-name='" + obj.fileName + "' data-path='" + obj.folderPath + "' data-uuid='" + obj.uuid + "'>";
-                        str + " <div>";
-                        str += "<button type='button' data-file=\'" + obj.imageURL + "\' "
-                        str += "class='btn-warning btn-sm'>X</button><br>";
-                        str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>";
-                        str += "</div>";
-                        str + "</li>";
-                    });
+                var files = inputFile[0].files;
 
-                    uploadUL.append(str);
-                }
+                var appended = false;
 
-                $(".uploadResult ").on("click", "li button", function (e) {
+                for (var i = 0; i < files.length; i++) {
 
-                    console.log("delete file");
-
-                    var targetFile = $(this).data("file");
-
-                    var targetLi = $(this).closest("li");
-
-                    $.ajax({
-                        url: '/removeFile',
-                        data: { fileName: targetFile },
-                        dataType: 'text',
-                        type: 'POST',
-                        success: function (result) {
-                            alert(result);
-
-                            targetLi.remove();
-                        }
-                    }); //$.ajax
-                });
-
-                $(".registerBtn").click(function () {
-                    if ($("input[name=rating]").val() != "") {
-                        $("#reviewForm").submit();
-                    } else{
-                        alert("별점을 매겨주세요.")
-                        return;
+                    if(!checkExtension(files[i].name, files[i].size) ){
+                        return false;
                     }
 
-                });
+                    console.log(files[i]);
+                    formData.append("uploadFiles", files[i]);
+                    appended = true;
+                }
+
+                //upload를 하지 않는다.
+                if (!appended) {return;}
+
+                for (var value of formData.values()) {
+                    console.log(value);
+                }
+
+                //실제 업로드 부분
+                //upload ajax
+                $.ajax({
+                    url: '/uploadAjax',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    type: 'POST',
+                    dataType:'json',
+                    success: function(result){
+                        console.log(result);
+                        showResult(result);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus);
+                    }
+                }); //$.ajax
+            }); //end change event
+
+
+                    function showResult(uploadResultArr) {
+
+                        var uploadUL = $(".uploadResult ul");
+
+                        var str = "";
+
+                        $(uploadResultArr).each(function (i, obj) {
+
+                            str += "<li data-name='" + obj.fileName + "' data-path='" + obj.folderPath + "' data-uuid='" + obj.uuid + "'>";
+                            str + " <div>";
+                            str += "<button type='button' data-file=\'" + obj.imageURL + "\' "
+                            str += "class='btn-warning btn-sm'>X</button><br>";
+                            str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>";
+                            str += "</div>";
+                            str + "</li>";
+                        });
+
+                        uploadUL.append(str);
+                    }
+
+                    $(".uploadResult ").on("click", "li button", function (e) {
+
+                        console.log("delete file");
+
+                        var targetFile = $(this).data("file");
+
+                        var targetLi = $(this).closest("li");
+
+                        $.ajax({
+                            url: '/removeFile',
+                            data: { fileName: targetFile },
+                            dataType: 'text',
+                            type: 'POST',
+                            success: function (result) {
+                                alert(result);
+
+                                targetLi.remove();
+                            }
+                        }); //$.ajax
+                    });
+
+                    $(".registerBtn").click(function () {
+                        if ($("input[name=rating]").val() != "") {
+                            $("#reviewForm").submit();
+                        } else{
+                            alert("별점을 매겨주세요.")
+                            return;
+                        }
+
+                    });
 
             </script>
 
