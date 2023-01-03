@@ -19,6 +19,7 @@ public class Review {
     private Long login_id;
     private String store_id;
     private String store_name;
+    private String store_picture_url;
     private String menu_id;
     private String menu_name;
     private String rating;

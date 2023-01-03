@@ -10,41 +10,78 @@
         </form>
 
         <div class="ju">리뷰 내역</div>
-        <div class="jumoon" th:each="review : ${reviewList}" th:if="${review.review_id != null}">
+        <div class="jumoon" th:each="review, index : ${reviewList}" th:if="${review.review_id != null}">
             <div>
-                <ul style="list-style:none">
-                    <li>
-                        주문번호: [[${review.order_id}]]
+                <ul style="list-style-type:none;">
+                    <li style="margin : 20px 0px 0px 0px">
+                        작성 일자: [[${review.created_date}]]
+                    </li>
+                    <li style="margin : 20px 0px 20px 0px">
+                        <a th:href="'http://localhost/store/read?store_id='+${review.store_id}" style="color:blue"><img
+                                th:src="${review.store_picture_url}" style="width:200px; height:200px;"></a>
                     </li>
                     <li>
-                        가게명: [[${review.store_name}]]
+                        <a th:href="'http://localhost/store/read?store_id='+${review.store_id}"
+                           style="font-size:30px">[[${review.store_name}]]</a>
+                    </li>
+
+                    <li class="imgList" th:attrappend="class=${index.index}" style="margin : 20px 0px 20px 0px">
+
                     </li>
                     <li>
                         주문 메뉴:
                     </li>
+
                     <li th:each="ordersMenuHistory : ${review.ordersMenuHistoryList}">
                         [[${ordersMenuHistory.menu_name}]]
                     </li>
-                    <li th:each="reviewPicture : ${review.reviewPictureList}">
-                        [[${reviewPicture.picture_url}]]
-                    </li>
+                    <hr width="85%">
                     <li>
-                        평점: [[${review.rating}]]
-                    </li>
+                        평점: ☆ [[${review.rating}]]
+                    </li><br>
                     <li th:if="${review.content != ''}">
                         내용: [[${review.content}]]
                     </li>
                     <li th:unless="${review.content != ''}">
                         내용: 미입력
                     </li>
-                    <li>
-                        작성 일자: [[${review.created_date}]]
-                    </li>
+
                 </ul>
 
             </div>
 
         </div>
+
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var reviewList = /*[[ ${reviewList} ]]*/;
+            /*]]*/
+
+            function setPath() {
+
+                for (let i = 0; i < reviewList.length; i++) {
+                    for (let j = 0; j < reviewList[i].reviewPictureList.length; j++) {
+                        let pictureInfo = reviewList[i].reviewPictureList[j];
+                        let path = encodeURIComponent(pictureInfo.uploadpath + '/' + pictureInfo.uuid + '_' + pictureInfo.filename)
+                        console.log("i: " + i + " j: " + j + " path: " + path);
+                        showImage(path.replace(new RegExp(/\\/g), "/"), i);
+                    }
+
+                }
+
+            }
+
+            function showImage(fileCallPath, index) {
+                $(".imgList" + index).append("<img style='height:100px' src='/display?fileName=" + fileCallPath + "' >")
+            }
+
+            $(function () {
+                setPath();
+            });
+
+
+
+        </script>
 
     </th:block>
 

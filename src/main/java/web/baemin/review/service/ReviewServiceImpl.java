@@ -38,7 +38,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public void reviewInsert(Review review) {
         reviewMapper.reviewInsert(review);
-        if(review.getReviewPictureList().get(0).getPicture_url() != "") {
+        if(review.getReviewPictureList().get(0).getFilename() != "") {
             review.getReviewPictureList().forEach(reviewPicture -> {
                 reviewPicture.setReview_id(review.getReview_id());
                 reviewMapper.reviewPictureInsert(reviewPicture);

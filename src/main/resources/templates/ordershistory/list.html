@@ -12,14 +12,16 @@
                 <div>
 
                     <ul style="list-style:none">
-                        <li>
+                        <li style="margin : 20px 0px 0px 0px">
                             주문 일시: [[${ordersHistory.created_date}]]
                         </li>
-                        <li>
-                            가게명: [[${ordersHistory.store_name}]]
+                        <li style="margin : 20px 0px 20px 0px">
+                            <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}"
+                               style="color:blue"><img th:src="${ordersHistory.store_picture_url}" style="width:200px; height:200px;"></a>
                         </li>
-                        <li>
-                            <img th:src="${ordersHistory.store_picture_url}" style="width:50px; height:50px;">
+                        <li style="margin : 0px 0px 20px 0px">
+                            <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}"
+                               style="font-size:30px">[[${ordersHistory.store_name}]]</a>
                         </li>
                         <li>
                             주문 메뉴:
@@ -27,15 +29,11 @@
                         <li th:each="ordersMenuHistory : ${ordersHistory.ordersMenuHistoryList}">
                             [[${ordersMenuHistory.menu_name}]] ([[${ordersMenuHistory.price}]]원)
                             [[${ordersMenuHistory.menu_count}]]개
-                        </li>
+                        </li> <br />
                         <li>
-                            <hr width="85%">
                             총 주문 금액: [[${ordersHistory.total_price}]]원
                         </li>
-                        <li>
-                            <a th:href="'http://localhost/store/read?store_id='+${ordersHistory.store_id}"
-                               style="color:blue">가게 상세보기</a>
-                        </li>
+                        <hr width="85%">
                         <li th:if="${ordersHistory.requests != ''}">
                             요청 사항: [[${ordersHistory.requests}]]
                         </li>

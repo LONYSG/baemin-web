@@ -12,7 +12,7 @@
                 <div>
                     <th:block th:switch="${myCoupon.status}">
                         <ul style="list-style:none" th:case="일반" }>
-                            <li>
+                            <li style="font-size:45px; margin:15px 0px 15px 0px">
                                 [[${myCoupon.deducted_price}]]
                             </li>
                             <li>
@@ -30,7 +30,7 @@
                         </ul>
 
                         <ul style="list-style:none; color:#808080" th:case="사용" }>
-                            <li>
+                            <li style="font-size:45px; margin:15px 0px 15px 0px">
                                 [[${myCoupon.deducted_price}]]
                             </li>
                             <li>
@@ -51,7 +51,7 @@
                         </ul>
 
                         <ul style="list-style:none; color:#B9062F" th:case="만료" }>
-                            <li>
+                            <li style="font-size:45px; margin:15px 0px 15px 0px">
                                 [[${myCoupon.deducted_price}]]
                             </li>
                             <li>

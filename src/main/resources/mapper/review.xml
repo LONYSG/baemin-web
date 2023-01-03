@@ -4,7 +4,7 @@
 
 <mapper namespace="web.baemin.review.mapper.ReviewMapper">
     <select id="reviewList" parameterType="web.baemin.review.dto.Review" resultType="web.baemin.review.dto.Review">
-        SELECT T1.review_id, T1.order_id, T1.rating, T1.content, T1.created_date, T2.user_id, T3.store_name
+        SELECT T1.review_id, T1.order_id, T1.rating, T1.content, T1.created_date, T2.user_id, T3.store_name, T3.store_picture_url, T3.store_id
         FROM review T1
         LEFT OUTER JOIN orders T2
         ON T1.order_id=T2.order_id
@@ -15,7 +15,7 @@
     </select>
 
     <select id="reviewPictureList" parameterType="long" resultType="web.baemin.review.dto.ReviewPicture">
-        SELECT T1.review_id, T1.uuid, T1.filename, T1.filetype, T1.uploadpath, T1.picture_url
+        SELECT T1.review_id, T1.uuid, T1.filename, T1.filetype, T1.uploadpath
         FROM review_picture T1
         WHERE T1.review_id = #{review_id}
     </select>
@@ -26,7 +26,7 @@
     </insert>
 
     <insert id="reviewPictureInsert" parameterType="web.baemin.review.dto.ReviewPicture">
-        INSERT INTO review_picture(review_id, picture_url, uuid, filename, filetype, uploadpath) VALUES(LAST_INSERT_ID(), #{picture_url}, #{uuid}, #{filename}, #{filetype}, #{uploadpath})
+        INSERT INTO review_picture(review_id, uuid, filename, filetype, uploadpath) VALUES(LAST_INSERT_ID(), #{uuid}, #{filename}, #{filetype}, #{uploadpath})
     </insert>
 
     <update id="reviewDelete" parameterType="web.baemin.review.dto.Review">

@@ -13,6 +13,7 @@
                 </div>
                 <div>
                     <span style="font-size:30px">[[${store.store_name}]]</span> <br />
+                    평점 : ☆ [[${store.rating}]] <br />
                     [[${store.content}]] <br /><br />
                     [[${store.address}]] <br />
                 </div>
@@ -40,22 +41,15 @@
                     <div style="clear:both;"></div>
                 </div>
 
-                <div class="toggleReview"
-                     style="border:1px solid black; margin-top:10px; cursor:pointer; display:none"
-                     th:each="storeReview : ${storeReviewList}">
+                <div class="toggleReview" style="border:1px solid black; margin-top:10px; cursor:pointer; display:none"
+                     th:each="storeReview, index : ${storeReviewList}">
 
                     <ul style="list-style:none">
-                        <li>
-                            평점: [[${storeReview.rating}]]
-                        </li>
                         <li>
                             작성 일자: [[${storeReview.created_date}]]
                         </li>
                         <li th:each="reviewPicture : ${storeReview.reviewPictureList}">
-                            [[${reviewPicture.picture_url}]]
-                        </li>
-                        <li th:if="${storeReview.content != ''}">
-                            내용: [[${storeReview.content}]]
+
                         </li>
                         <li>
                             주문 메뉴:
@@ -63,7 +57,15 @@
                         <li th:each="ordersMenuHistory : ${storeReview.ordersMenuHistoryList}">
                             [[${ordersMenuHistory.menu_name}]]
                         </li>
+                        <li class="imgList" th:attrappend="class=${index.index}">
 
+                        </li>
+                        <li>
+                            평점: ☆ [[${storeReview.rating}]]
+                        </li>
+                        <li th:if="${storeReview.content != ''}">
+                            내용: [[${storeReview.content}]]
+                        </li>
                     </ul>
 
                     <div style="clear:both;"></div>
@@ -87,12 +89,38 @@
         </div>
 
         <script th:inline="javascript">
+
+            /*<![CDATA[*/
+            var reviewList = /*[[ ${storeReviewList} ]]*/;
+            /*]]*/
+
+             function setPath () {
+
+                for (let i = 0; i < reviewList.length; i++) {
+                    for (let j = 0; j < reviewList[i].reviewPictureList.length; j++) {
+                        let pictureInfo = reviewList[i].reviewPictureList[j];
+                        let path = encodeURIComponent(pictureInfo.uploadpath + '/' + pictureInfo.uuid + '_' + pictureInfo.filename)
+                        console.log("i: " + i + " j: " + j + " path: " + path);
+                        showImage(path.replace(new RegExp(/\\/g), "/"), i);
+                    }
+
+                }
+
+            }
+
+            function showImage(fileCallPath, index) {
+                $(".imgList" + index).append("<img style='height:100px' src='/display?fileName=" + fileCallPath + "' >")
+            }
+
+        </script>
+
+        <script th:inline="javascript">
             var orderMenuMap = new Map();
             var menuCnt = 0;
 
 
             $(function () {
-
+                setPath();
                 setCouponList();
                 /*<![CDATA[*/
                 var storeId = /*[[ ${menuList[0].store_id} ]]*/;
@@ -393,7 +421,7 @@
 
 </script>
 <script type="text/javascript">
-    function orderSuc(){
+    function orderSuc() {
         alert('주문이 완료되었습니다!');
     }
 </script>
@@ -487,7 +515,7 @@
                     <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
                 </div>
             </form>
-<!--            <button class="btn btn-info" onclick="formTest()">form 내용</button>-->
+            <!--            <button class="btn btn-info" onclick="formTest()">form 내용</button>-->
         </div>
     </div>
     <input type="hidden" value="" name="temp-coupon-id" />
