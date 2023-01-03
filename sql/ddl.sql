@@ -118,7 +118,11 @@ CREATE TABLE `order_menu` (
 
 CREATE TABLE `review_picture` (
 	`review_id`	bigint(20)	NOT NULL,
-	`picture_url`	text	NOT NULL
+	`uuid`	varchar(200)	NULL,
+	`uploadpath`	varchar(200)	NULL,
+	`filename`	varchar(100)	NULL,
+	`filetype`	char(1)	NULL	DEFAULT 'I',
+	`picture_url`	text	NULL
 );
 
 ALTER TABLE `store_type` ADD CONSTRAINT `PK_STORE_TYPE` PRIMARY KEY (

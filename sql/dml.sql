@@ -94,11 +94,3 @@ INSERT INTO store_type VALUES('12','도시락');
 INSERT INTO store_type VALUES('13','분식');
 INSERT INTO store_type VALUES('14','카페/디저트');
 INSERT INTO store_type VALUES('15','패스트푸드');
-
-INSERT INTO review_picture VALUES('8001', 'picture1.jpg');
-INSERT INTO review_picture VALUES('8002', 'picture1');
-INSERT INTO review_picture VALUES('8003', 'picture1');
-INSERT INTO review_picture VALUES('8004', 'picture1');
-INSERT INTO review_picture VALUES('8005', 'picture1');
-INSERT INTO review_picture VALUES('8001', 'picture2.jpg');
-INSERT INTO review_picture VALUES('8001', 'picture3.jpg');

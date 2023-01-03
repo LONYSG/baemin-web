@@ -15,7 +15,7 @@
     </select>
 
     <select id="reviewPictureList" parameterType="long" resultType="web.baemin.review.dto.ReviewPicture">
-        SELECT T1.picture_url, T1.review_id
+        SELECT T1.review_id, T1.uuid, T1.filename, T1.filetype, T1.uploadpath, T1.picture_url
         FROM review_picture T1
         WHERE T1.review_id = #{review_id}
     </select>
@@ -26,11 +26,15 @@
     </insert>
 
     <insert id="reviewPictureInsert" parameterType="web.baemin.review.dto.ReviewPicture">
-        INSERT INTO review_picture(review_id, picture_url) VALUES(LAST_INSERT_ID(), #{picture_url})
+        INSERT INTO review_picture(review_id, picture_url, uuid, filename, filetype, uploadpath) VALUES(LAST_INSERT_ID(), #{picture_url}, #{uuid}, #{filename}, #{filetype}, #{uploadpath})
     </insert>
 
     <update id="reviewDelete" parameterType="web.baemin.review.dto.Review">
         UPDATE review SET user_id=#{user_id}, content=#{content} WHERE id = #{review_id}
     </update>
+
+    <delete id="reviewPictureDelete">
+        DELETE FROM review_picture WHERE uuid = #{uuid}
+    </delete>
 
 </mapper>

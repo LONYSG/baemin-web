@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import web.baemin.ordershistory.dto.OrdersHistory;
 import web.baemin.ordershistory.mapper.OrdersHistoryMapper;
 import web.baemin.review.dto.Review;
+import web.baemin.review.dto.ReviewPicture;
 import web.baemin.review.mapper.ReviewMapper;
 
 import java.util.List;
@@ -49,4 +50,10 @@ public class ReviewServiceImpl implements ReviewService{
     public void reviewDelete(Review review) {
         reviewMapper.reviewDelete(review);
     }
+
+    @Override
+    public List<ReviewPicture> reviewPictureList(Long review_id) {
+        return reviewMapper.reviewPictureList(review_id);
+    }
+
 }

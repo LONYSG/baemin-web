@@ -11,4 +11,9 @@ public class ReviewPicture {
 
     private Long review_id;
     private String picture_url;
+
+    private String uuid;
+    private String uploadpath;
+    private String filename;
+    private boolean filetype;
 }
