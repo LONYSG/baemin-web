@@ -255,6 +255,24 @@ width:700px;
  bottom: 20px;
 
 }
+
+.input-file-button{
+  padding: 6px 25px;
+  background-color:#FF6600;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.submit-file-button{
+  padding: 6px 25px;
+  background-color:#0080FF;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  border-style: none;
+}
+
 .sajin
 {
  position:relative;

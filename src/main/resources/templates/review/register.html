@@ -5,16 +5,15 @@
 
     <th:block th:fragment="content">
 
-        <h2 class="line">
+        <div class="ju">리뷰 쓰기</div>
+        <div class="jumoon">
 
-            <h1 class="mt-4">리뷰 쓰기</h1>
+            <form role="form" id="reviewForm" th:action="@{/review/register}" th:method="post">
 
-            <form role="form" id="reviewForm" class="re" th:action="@{/review/register}" th:method="post">
-
-                <input class="rene" type="hidden" id="order_id" th:value="${review.order_id}" name="order_id"
+                <input type="hidden" id="order_id" th:value="${review.order_id}" name="order_id"
                        readonly><br>
 
-                <div class="form-group">
+                <div>
                     <label>음식은 어떠셨어요?</label>
                     <div class='starrr'></div>
 
@@ -28,45 +27,31 @@
                 </div>
 
                 <div>
-                    <label class="con">[[${review.store_name}]]</label>
-                    <div class="custom-file">
-                        <textarea name="content" style="width:100%; height:100px"
-                                  placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요.(선택)"></textarea>
+                    <label >[[${review.store_name}]]</label>
+                    <div>
+                            <textarea name="content" style="width:100%; height:100px"
+                                      placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요.(선택)"></textarea>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary registerBtn">등록</button>
+                <button type="submit" class="submit-file-button registerBtn">등록</button>
+                <label class="input-file-button" for="uploadBtn">업로드</label>
             </form>
 
-        </h2>
+                            <div class="uploadDiv">
+                                <input style="display:none" id="uploadBtn" type="file" name='uploadFile' multiple>
+                            </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
+                            <div class='uploadResult'>
+                                <ul style="list-style-type:none;">
 
-                    <div class="panel-heading">File Attach</div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="form-group uploadDiv">
-                            <input type="file" name='uploadFile' multiple>
-                        </div>
+                                </ul>
+                            </div>
 
-                        <div class='uploadResult'>
-                            <ul>
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-                    <!--  end panel-body -->
-
-                </div>
-                <!--  end panel-body -->
-            </div>
-            <!-- end panel -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
+
+
 
         <script>
 
@@ -183,7 +168,7 @@
                             str + " ><div>";
                             str += "<span> " + obj.filename + "</span>";
                             str += "<button type='button' data-file=\'" + fileCallPath + "\' "
-                            str += "data-type='filetype' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+                            str += "data-type='filetype' class='btn'><i class='fa fa-times'></i></button><br>";
                             str += "<img src='/display?fileName=" + fileCallPath + "'>";
                             str += "</div>";
                             str + "</li>";
@@ -195,7 +180,7 @@
                             str += "data-path='" + obj.uploadpath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.filename + "' data-type='" + obj.filetype + "' ><div>";
                             str += "<span> " + obj.filename + "</span>";
                             str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file' "
-                            str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+                            str += "class='btn'><i class='fa fa-times'></i></button><br>";
                             str += "<img src='/img/attach.png'></a>";
                             str += "</div>";
                             str + "</li>";
