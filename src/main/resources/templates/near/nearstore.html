@@ -73,7 +73,7 @@
                 // 지도 중심좌표를 접속위치로 변경합니다
                 setTimeout(function () {
                     map.setCenter(locPosition);
-                }, 310);
+                }, 1510);
 
             }
 
@@ -124,7 +124,7 @@
                         }
                         resolve();
                         //reject('setAddress fail');
-                    }, 200);
+                    }, 300);
                 });
             };
 
@@ -143,12 +143,12 @@
                                 title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                                 image: markerImage // 마커 이미지
                             });
-                            setTimeout(setMarkerInfo(i), 200);
+                            setTimeout(setMarkerInfo(i), 100);
 
                         }
                         resolve();
                         //reject('setMarker fail');
-                    }, 300);
+                    }, 1500);
                 });
             };
             var setMarkerInfo = function (j) {

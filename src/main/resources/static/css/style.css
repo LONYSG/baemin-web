@@ -159,7 +159,7 @@ font-family: "ha";
 
 }
 
-.li
+.storelist
 {
 border:5px
 solid gray;
@@ -167,11 +167,12 @@ float:left;
 margin-left:150px;
 margin-top:10px;
 width:380px;
+height: 400px;
 }
 
-.lis img
+.list img
 {
-width:110px;
+margin:20px
 }
 
 .address

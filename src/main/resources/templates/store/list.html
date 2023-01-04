@@ -26,18 +26,17 @@
             <div style="clear:both;"></div>
 
 
-
-            <div class="li" th:each="store : ${storeList}" >
-                <div style="float:left;">
-                    <a class="lis"th:href="@{/store/read(store_id = ${store.store_id} )}"> <img th:src="${store.store_picture_url}" alt="첨부이미지" th:if="${store.store_picture_url != null}" /></a>
+            <div class="storelist" th:each="store : ${storeList}" >
+                <div>
+                    <a class="list" th:href="@{/store/read(store_id = ${store.store_id} )}"> <img style="height:170px;" th:src="${store.store_picture_url}" alt="첨부이미지" th:if="${store.store_picture_url != null}" /></a>
                 </div>
 
-                <div style="float:left;">
-                    <a  th:href="@{/store/read(store_id = ${store.store_id} )}">
+                <div>
+                    <a th:href="@{/store/read(store_id = ${store.store_id} )}">
                        <te class="shop"> [[${store.store_name}]] </te> <br />
                     </a>
-                    <span>평점 : ☆ [[${store.rating}]]</span><br />
-                    <te class="oder"> [[${store.content}]] </te> <br />
+                    <span>평점 : ☆ [[${store.rating}]]</span><br /><br/>
+                    <te class="oder"> [[${store.content}]] </te> <br /><br/>
                     <te class="juso"> [[${store.address}]] </te>
                 </div>
 

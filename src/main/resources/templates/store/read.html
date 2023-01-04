@@ -9,9 +9,10 @@
 
             <div style="float:left; width:600px; margin:0 auto; margin-top:20px;">
                 <div style="float:left;">
-                    <img th:src="${store.store_picture_url}" alt="첨부이미지" th:if="${store.store_picture_url != null}" />
+                    <img style="height:200px" th:src="${store.store_picture_url}" alt="첨부이미지" th:if="${store.store_picture_url != null}" />
                 </div>
                 <div>
+                    <br/>
                     <span style="font-size:30px">[[${store.store_name}]]</span> <br />
                     평점 : ☆ [[${store.rating}]] <br />
                     [[${store.content}]] <br /><br />
@@ -34,8 +35,8 @@
                         <img th:src="${menu.menu_url}" alt="첨부이미지" th:if="${menu.menu_url != null}"
                              style="width:243px; height:207px;" />
                     </div>
-                    <div style="float:left;">
-                        [[${menu.menu_name}]] <br />
+                    <div style="text-align:center;margin 0px 0px 0px 0px;font-size:25px">
+                        <br>[[${menu.menu_name}]] <br /><br/>
                         [[${menu.price}]]
                     </div>
                     <div style="clear:both;"></div>
