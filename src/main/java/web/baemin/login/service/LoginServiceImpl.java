@@ -3,6 +3,7 @@ package web.baemin.login.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.baemin.login.dto.User;
 import web.baemin.login.mapper.LoginMapper;
 
@@ -25,8 +26,10 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    @Transactional
     public void userInsert(User user) {
         loginMapper.userInsert(user);
+        loginMapper.couponInsert(user);
     }
 
 

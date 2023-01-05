@@ -12,5 +12,5 @@ public interface LoginMapper {
 
     void userInsert(User user);
 
-
+    void couponInsert(User user);
 }

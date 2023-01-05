@@ -59,7 +59,12 @@ public class ReviewController {
 
     }
 
+    @PostMapping("/delete")
+    public String delete(RedirectAttributes redirectAttributes, Review review){
 
+        reviewService.reviewDelete(review);
 
+        return "redirect:/review/list";
+    }
 
 }

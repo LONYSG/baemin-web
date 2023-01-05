@@ -18,14 +18,14 @@ CREATE TABLE `users` (
     `status` varchar(255) NULL DEFAULT '일반' COMMENT '일반/휴면/탈퇴/정지'
 );
 
-CREATE TABLE `address` (
-    `address_id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `user_id` bigint(20) NOT NULL,
-    `address` varchar(255) NOT NULL,
-    `created_date` date NOT NULL,
-    `modified_date` date NOT NULL,
-    `status` varchar(255) NOT NULL DEFAULT '일반'
-);
+#CREATE TABLE `address` (
+#    `address_id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+#    `user_id` bigint(20) NOT NULL,
+#    `address` varchar(255) NOT NULL,
+#    `created_date` date NOT NULL,
+#    `modified_date` date NOT NULL,
+#    `status` varchar(255) NOT NULL DEFAULT '일반'
+#);
 
 CREATE TABLE `orders` (
     `order_id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -82,17 +82,17 @@ CREATE TABLE `coupon` (
     `created_date` timestamp NOT NULL,
     `expired_date` timestamp NOT NULL,
     `modified_date` timestamp NOT NULL,
-    `status` varchar(255) NOT NULL DEFAULT '가능'
-);
-
-CREATE TABLE `dibs` (
-    `dibs_id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `user_id` bigint(20) NOT NULL,
-    `store_id` bigint(20) NOT NULL,
-    `created_date` timestamp NOT NULL,
-    `modified_date` timestamp NOT NULL,
     `status` varchar(255) NOT NULL DEFAULT '일반'
 );
+
+#CREATE TABLE `dibs` (
+#    `dibs_id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+#    `user_id` bigint(20) NOT NULL,
+#    `store_id` bigint(20) NOT NULL,
+#    `created_date` timestamp NOT NULL,
+#    `modified_date` timestamp NOT NULL,
+#    `status` varchar(255) NOT NULL DEFAULT '일반'
+#);
 
 CREATE TABLE `review` (
     `review_id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,

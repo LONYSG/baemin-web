@@ -12,6 +12,10 @@
         <div class="ju">리뷰 내역</div>
         <div class="jumoon" th:each="review, index : ${reviewList}" th:if="${review.review_id != null}">
             <div>
+                <form id="reviewDelId" th:action="@{/review/delete}" th:method="post" onsubmit="deleteSuc()">
+                    <input type="hidden" name="review_id" th:value="${review.review_id}">
+                    <button type="button" id="submitBtn" class="btn btn-danger" style="float:right; margin-right:20px">삭제</button>
+                </form>
                 <ul style="list-style-type:none;">
                     <li style="margin : 20px 0px 0px 0px">
                         작성 일자: [[${review.created_date}]]
@@ -53,31 +57,41 @@
         </div>
 
         <script th:inline="javascript">
-            /*<![CDATA[*/
-            var reviewList = /*[[ ${reviewList} ]]*/;
-            /*]]*/
+      /*<![CDATA[*/
+      var reviewList = /*[[ ${reviewList} ]]*/;
+      /*]]*/
 
-            function setPath() {
+      function setPath() {
 
-                for (let i = 0; i < reviewList.length; i++) {
-                    for (let j = 0; j < reviewList[i].reviewPictureList.length; j++) {
-                        let pictureInfo = reviewList[i].reviewPictureList[j];
-                        let path = encodeURIComponent(pictureInfo.uploadpath + '/' + pictureInfo.uuid + '_' + pictureInfo.filename)
-                        console.log("i: " + i + " j: " + j + " path: " + path);
-                        showImage(path.replace(new RegExp(/\\/g), "/"), i);
-                    }
+        for (let i = 0; i < reviewList.length; i++) {
+          for (let j = 0; j < reviewList[i].reviewPictureList.length; j++) {
+            let pictureInfo = reviewList[i].reviewPictureList[j];
+            let path = encodeURIComponent(pictureInfo.uploadpath + '/' + pictureInfo.uuid + '_' + pictureInfo.filename)
+            console.log("i: " + i + " j: " + j + " path: " + path);
+            showImage(path.replace(new RegExp(/\\/g), "/"), i);
+          }
 
-                }
+        }
 
-            }
+      }
 
-            function showImage(fileCallPath, index) {
-                $(".imgList" + index).append("<img style='height:100px' src='/display?fileName=" + fileCallPath + "' >")
-            }
+      function showImage(fileCallPath, index) {
+        $(".imgList" + index).append("<img style='height:100px' src='/display?fileName=" + fileCallPath + "' >")
+      }
 
-            $(function () {
-                setPath();
-            });
+      $(function () {
+        setPath();
+      });
+
+      function deleteSuc() {
+        alert('삭제 되었습니다.');
+      }
+      $("#submitBtn").click(function(e) {
+	    e.preventDefault();
+	    if(!confirm('정말로 삭제하시겠습니까?')) return;
+	    $('#reviewDelId')[0].submit();
+      });
+    </script>
 
 
 

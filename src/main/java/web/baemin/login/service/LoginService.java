@@ -10,6 +10,4 @@ public interface LoginService {
     Optional<User> loginCheckUser(User user);
 
     void userInsert(User user);
-
-
 }

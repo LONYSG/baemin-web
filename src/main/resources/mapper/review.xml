@@ -11,6 +11,7 @@
         LEFT OUTER JOIN store T3
         ON T2.store_id=T3.store_id
         WHERE T2.user_id = (SELECT user_id FROM users WHERE login_id = #{login_id})
+          AND T1.status = '일반'
         ORDER BY T1.created_date DESC;
     </select>
 
@@ -30,7 +31,7 @@
     </insert>
 
     <update id="reviewDelete" parameterType="web.baemin.review.dto.Review">
-        UPDATE review SET user_id=#{user_id}, content=#{content} WHERE id = #{review_id}
+        UPDATE review SET status='삭제' WHERE review_id = #{review_id}
     </update>
 
     <delete id="reviewPictureDelete">

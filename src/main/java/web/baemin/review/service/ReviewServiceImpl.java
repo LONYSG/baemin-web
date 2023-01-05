@@ -34,15 +34,22 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
 
-    @Transactional
     @Override
     public void reviewInsert(Review review) {
         reviewMapper.reviewInsert(review);
-        if(review.getReviewPictureList().get(0).getFilename() != "") {
-            review.getReviewPictureList().forEach(reviewPicture -> {
-                reviewPicture.setReview_id(review.getReview_id());
-                reviewMapper.reviewPictureInsert(reviewPicture);
-            });
+        System.out.println("reviewInsert 진행됨.");
+//        System.out.println(review.getReviewPictureList().isEmpty());
+        if(review.getReviewPictureList() != null) {
+            if (!review.getReviewPictureList().isEmpty()) {
+                review.getReviewPictureList().forEach(reviewPicture -> {
+                    System.out.println("for문 진입");
+                    reviewPicture.setReview_id(review.getReview_id());
+                    System.out.println("setReview_id 진행 중.");
+                    reviewMapper.reviewPictureInsert(reviewPicture);
+                    System.out.println("사진 픽쳐 인서트 됨");
+                });
+            }
+            System.out.println("끝");
         }
     }
 
