@@ -172,7 +172,9 @@ height: 400px;
 
 .list img
 {
-margin:20px
+margin:20px;
+height:170px;
+max-width:350px;
 }
 
 .address
