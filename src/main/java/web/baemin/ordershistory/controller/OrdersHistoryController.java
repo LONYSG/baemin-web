@@ -6,9 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.baemin.login.dto.User;
-import web.baemin.main.service.MainService;
 import web.baemin.ordershistory.dto.OrdersHistory;
-import web.baemin.ordershistory.dto.OrdersMenuHistory;
 import web.baemin.ordershistory.service.OrdersHistoryService;
 
 import java.util.List;

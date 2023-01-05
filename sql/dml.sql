@@ -6685,7 +6685,7 @@ VALUES
         '3',
         '탐나종합어시장',
         '경기도 안양시 만안구 전파로 53',
-        'https://ldb-phinf.pstatic.net/20200818_136/1597718813301LE5XB_JPEG/BHF0BRf6aIb_ca5YTfD5a1RU.jpg',
+        'https://cdn.gokorea.kr/news/photo/202103/702023_14727_167.jpg',
         '021234566',
         '매일매일 공수되는 신선한 횟감으로 저렴하고 맛있는 음식을 제공해드리겠습니다.',
         '20000',

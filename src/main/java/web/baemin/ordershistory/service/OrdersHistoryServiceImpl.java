@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import web.baemin.ordershistory.dto.OrdersHistory;
-import web.baemin.ordershistory.dto.OrdersMenuHistory;
 import web.baemin.ordershistory.mapper.OrdersHistoryMapper;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Service

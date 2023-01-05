@@ -18,6 +18,7 @@
                     평점 : ☆ [[${store.rating}]] <br />
                     [[${store.content}]] <br /><br />
                     [[${store.address}]] <br />
+                    [[${store.phone}]]
                 </div>
 
                 <div style="clear:both;"></div>
@@ -92,334 +93,334 @@
 
         <script th:inline="javascript">
 
-      /*<![CDATA[*/
-      var reviewList = /*[[ ${storeReviewList} ]]*/;
-      /*]]*/
+            /*<![CDATA[*/
+            var reviewList = /*[[ ${storeReviewList} ]]*/;
+            /*]]*/
 
-      function setPath() {
+            function setPath() {
 
-        for (let i = 0; i < reviewList.length; i++) {
-          for (let j = 0; j < reviewList[i].reviewPictureList.length; j++) {
-            let pictureInfo = reviewList[i].reviewPictureList[j];
-            let path = encodeURIComponent(pictureInfo.uploadpath + '/' + pictureInfo.uuid + '_' + pictureInfo.filename)
-            console.log("i: " + i + " j: " + j + " path: " + path);
-            showImage(path.replace(new RegExp(/\\/g), "/"), i);
-          }
+                for (let i = 0; i < reviewList.length; i++) {
+                    for (let j = 0; j < reviewList[i].reviewPictureList.length; j++) {
+                        let pictureInfo = reviewList[i].reviewPictureList[j];
+                        let path = encodeURIComponent(pictureInfo.uploadpath + '/' + pictureInfo.uuid + '_' + pictureInfo.filename)
+                        console.log("i: " + i + " j: " + j + " path: " + path);
+                        showImage(path.replace(new RegExp(/\\/g), "/"), i);
+                    }
 
-        }
+                }
 
-      }
+            }
 
-      function showImage(fileCallPath, index) {
-        $(".imgList" + index).append("<img style='height:100px' src='/display?fileName=" + fileCallPath + "' >")
-      }
+            function showImage(fileCallPath, index) {
+                $(".imgList" + index).append("<img style='height:100px' src='/display?fileName=" + fileCallPath + "' >")
+            }
 
-    </script>
+        </script>
 
         <script th:inline="javascript">
-      var orderMenuMap = new Map();
-      var menuCnt = 0;
+            var orderMenuMap = new Map();
+            var menuCnt = 0;
 
 
-      $(function () {
-        setPath();
-        setCouponList();
-        /*<![CDATA[*/
-        var storeId = /*[[ ${menuList[0].store_id} ]]*/;
-        /*]]*/
+            $(function () {
+                setPath();
+                setCouponList();
+                /*<![CDATA[*/
+                var storeId = /*[[ ${menuList[0].store_id} ]]*/;
+                /*]]*/
 
-        $("#storeId").val(storeId);
+                $("#storeId").val(storeId);
 
-        $("#toggleReview").hide();
+                $("#toggleReview").hide();
 
-        $(".menuBtn").click(function () {
-          $(".toggleReview").hide();
-          $(".toggleMenu").show();
-        });
+                $(".menuBtn").click(function () {
+                    $(".toggleReview").hide();
+                    $(".toggleMenu").show();
+                });
 
-        $(".reviewBtn").click(function () {
-          $(".toggleMenu").hide();
-          $(".toggleReview").show();
-        });
+                $(".reviewBtn").click(function () {
+                    $(".toggleMenu").hide();
+                    $(".toggleReview").show();
+                });
 
 
-        // 메뉴 추가
-        $(".menu-list").click(function () {
-          let name = $(this).find("input[name=menu_name]").val();
-          let price = $(this).find("input[name=price]").val();
-          let menuId = $(this).find("input[name=menu_id]").val();
+                // 메뉴 추가
+                $(".menu-list").click(function () {
+                    let name = $(this).find("input[name=menu_name]").val();
+                    let price = $(this).find("input[name=price]").val();
+                    let menuId = $(this).find("input[name=menu_id]").val();
 
-          if (orderMenuMap.has(menuId)) {
-            orderMenuMap.set(menuId, orderMenuMap.get(menuId) + 1);
-            $('#' + menuId + 'Cnt').text(Number($('#' + menuId + 'Cnt').text()) + 1);
-            $('#' + menuId + 'Price').text(Number($('#' + menuId + 'Price').text()) + Number(price));
-          } else {
-            orderMenuMap.set(menuId, 1);
+                    if (orderMenuMap.has(menuId)) {
+                        orderMenuMap.set(menuId, orderMenuMap.get(menuId) + 1);
+                        $('#' + menuId + 'Cnt').text(Number($('#' + menuId + 'Cnt').text()) + 1);
+                        $('#' + menuId + 'Price').text(Number($('#' + menuId + 'Price').text()) + Number(price));
+                    } else {
+                        orderMenuMap.set(menuId, 1);
 
-            let orderMenuList;
+                        let orderMenuList;
 
-            orderMenuList = "<ul style='list-style:none; padding-left:0px;'><li>"
-            orderMenuList += name;
-            orderMenuList += " <button onclick='deleteMenu(this)'>삭제</button></li><li><button onclick='decCount(this)'>-</button><span id='";
-            orderMenuList += menuId + "Cnt";
-            orderMenuList += "'>1</span><button onclick='incCount(this)'>+</button></li><li>가격:<span class='price' id='";
-            orderMenuList += menuId + "Price";
-            orderMenuList += "'>"
-            orderMenuList += price;
-            orderMenuList += "</span>원</li><li style='display:none'><span class='menuId'>";
-            orderMenuList += menuId;
-            orderMenuList += "</span></li></ul>";
+                        orderMenuList = "<ul style='list-style:none; padding-left:0px;'><li>"
+                        orderMenuList += name;
+                        orderMenuList += " <button onclick='deleteMenu(this)'>삭제</button></li><li><button onclick='decCount(this)'>-</button><span id='";
+                        orderMenuList += menuId + "Cnt";
+                        orderMenuList += "'>1</span><button onclick='incCount(this)'>+</button></li><li>가격:<span class='price' id='";
+                        orderMenuList += menuId + "Price";
+                        orderMenuList += "'>"
+                        orderMenuList += price;
+                        orderMenuList += "</span>원</li><li style='display:none'><span class='menuId'>";
+                        orderMenuList += menuId;
+                        orderMenuList += "</span></li></ul>";
 
-            console.log(orderMenuList);
+                        console.log(orderMenuList);
 
-            $(".order-menu-list").append(orderMenuList);
-          }
+                        $(".order-menu-list").append(orderMenuList);
+                    }
 
-          let totalPrice = Number($(".totalPrice").text()) + Number(price);
-          $(".totalPrice").text(totalPrice);
-          $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
+                    let totalPrice = Number($(".totalPrice").text()) + Number(price);
+                    $(".totalPrice").text(totalPrice);
+                    $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
 
-        });
+                });
 
-        // 쿠폰 적용 버튼 클릭 이벤트
-        $(".use-coupon").click(function () {
-          if (!$("input[name=coupon]:checked").val()) {
-            alert("쿠폰을 선택해주세요.");
-            return;
-          }
-          if ($(".totalPrice").text() == 0) {
-            alert("메뉴를 먼저 선택해주세요.");
-            $("#couponModal").modal("hide");
-            return;
-          }
+                // 쿠폰 적용 버튼 클릭 이벤트
+                $(".use-coupon").click(function () {
+                    if (!$("input[name=coupon]:checked").val()) {
+                        alert("쿠폰을 선택해주세요.");
+                        return;
+                    }
+                    if ($(".totalPrice").text() == 0) {
+                        alert("메뉴를 먼저 선택해주세요.");
+                        $("#couponModal").modal("hide");
+                        return;
+                    }
 
-          let deductedPrice = Number($("input[name=coupon]:checked").siblings("input[name=coupon-deducted_price]").val()); // 할인금액
-          let min_delivery_price = Number($("input[name=coupon]:checked").siblings("input[name=min_delivery_price]").val()); // 쿠폰 사용 조건
-          let totalPrice = $(".totalPrice").text(); // 합계
+                    let deductedPrice = Number($("input[name=coupon]:checked").siblings("input[name=coupon-deducted_price]").val()); // 할인금액
+                    let min_delivery_price = Number($("input[name=coupon]:checked").siblings("input[name=min_delivery_price]").val()); // 쿠폰 사용 조건
+                    let totalPrice = $(".totalPrice").text(); // 합계
 
-          console.log($("input[name=coupon]").val());
-          console.log(min_delivery_price);
-          // 주문금액과 쿠폰의 사용조건 비교
-          if (min_delivery_price > totalPrice) {
-            alert(min_delivery_price + "원 이상 구매시 사용이 가능합니다.");
-            return;
-          }
+                    console.log($("input[name=coupon]").val());
+                    console.log(min_delivery_price);
+                    // 주문금액과 쿠폰의 사용조건 비교
+                    if (min_delivery_price > totalPrice) {
+                        alert(min_delivery_price + "원 이상 구매시 사용이 가능합니다.");
+                        return;
+                    }
 
-          // 할인이 많이 들어가서 0원 이하일 경우 0원으로 처리
-          if (totalPrice <= 0) {
-            totalPrice = 0;
-          }
+                    // 할인이 많이 들어가서 0원 이하일 경우 0원으로 처리
+                    if (totalPrice <= 0) {
+                        totalPrice = 0;
+                    }
 
-          totalPrice = totalPrice - Number(deductedPrice); // 쿠폰이 적용된 합계
+                    totalPrice = totalPrice - Number(deductedPrice); // 쿠폰이 적용된 합계
 
-          let coupon = $("input[name=coupon]:checked").val();
-          $("input[name=temp-coupon-id]").val(coupon); // 사용하는 쿠폰번호 세팅
-          $("#couponId").val(coupon);
-          console.log($("#couponId").val());
-          $("#couponModal").modal("hide"); // 모달 닫기
+                    let coupon = $("input[name=coupon]:checked").val();
+                    $("input[name=temp-coupon-id]").val(coupon); // 사용하는 쿠폰번호 세팅
+                    $("#couponId").val(coupon);
+                    console.log($("#couponId").val());
+                    $("#couponModal").modal("hide"); // 모달 닫기
 
-          $(".totalPrice").text(totalPrice); // 합계 가격 변경
-          $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
-          $(".coupon-list").hide(); // 쿠폰 버튼 감추기
+                    $(".totalPrice").text(totalPrice); // 합계 가격 변경
+                    $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
+                    $(".coupon-list").hide(); // 쿠폰 버튼 감추기
 
-          alert("쿠폰이 적용되었습니다.");
-        });
+                    alert("쿠폰이 적용되었습니다.");
+                });
 
-        // 적용 쿠폰 확인
-        $(".coupon-list").click(function () {
-          let tempCouponId = $("input[name=temp-coupon-id]").val();
-          if (!tempCouponId) {
-            $("input[name=coupon]").prop("checked", false);
-            return;
-          }
-          $("#modalBody input").each(function () {
-            if ($(this).val() == tempCouponId) {
-              $(this).prop("checked", true);
+                // 적용 쿠폰 확인
+                $(".coupon-list").click(function () {
+                    let tempCouponId = $("input[name=temp-coupon-id]").val();
+                    if (!tempCouponId) {
+                        $("input[name=coupon]").prop("checked", false);
+                        return;
+                    }
+                    $("#modalBody input").each(function () {
+                        if ($(this).val() == tempCouponId) {
+                            $(this).prop("checked", true);
+                        }
+                    });
+                });
+
+                // 주문 버튼 클릭 이벤트
+                $(".order-button").click(function () {
+
+                    /*<![CDATA[*/
+                    let userSession = /*[[ ${session.loginUserSession} ]]*/;
+                    /*]]*/
+
+                    if ($(".totalPrice").text() == 0) {
+                        alert("메뉴를 먼저 선택해주세요.");
+                        $("#couponModal").modal("hide");
+                        $("#orderModal").modal("hide");
+                        return;
+                    }
+                    if ($("#inputAddress").val() == null || $("#inputAddress").val() == "") {
+                        alert("주소를 입력해주세요.");
+                        $("#couponModal").modal("hide");
+                        $("#orderModal").modal("hide");
+                        return;
+                    }
+
+                    if (userSession == null || userSession == "") {
+                        alert("로그인이 필요한 서비스입니다.");
+                        return;
+                    }
+
+                    $(".orderMenuList").empty();
+
+                    $("#orderAddress").val($("#inputAddress").val());
+
+                    let menuHtml = '';
+                    let mapIndex = 0;
+
+                    for (var key of orderMenuMap.keys()) {
+                        menuHtml += '<input type="hidden" '
+                        menuHtml += 'id="menu_id'
+                        menuHtml += mapIndex
+                        menuHtml += '" name="ordersMenuList['
+                        menuHtml += mapIndex;
+                        menuHtml += '].menu_id" value="'
+                        menuHtml += key
+                        menuHtml += '" />'
+                        menuHtml += '<input type="hidden" '
+                        menuHtml += 'id="menu_count'
+                        menuHtml += mapIndex
+                        menuHtml += '" name="ordersMenuList['
+                        menuHtml += mapIndex;
+                        menuHtml += '].menu_count" value="'
+                        menuHtml += orderMenuMap.get(key);
+                        menuHtml += '" />'
+
+                        mapIndex++;
+                    }
+
+                    $(".orderMenuList").html(menuHtml);
+                    $('#orderModal').modal('show');
+
+                });
+
+            });
+
+            // 메뉴 삭제
+            function deleteMenu(obj) {
+
+                let spanMenuId = $(obj).parents("li").next().next().next().find(".menuId").text();
+                let price = $(obj).parents("li").next().next().find(".price").text();
+
+                let totalPrice = Number($(".totalPrice").text()) - Number(price);
+
+                if (totalPrice < 0) {
+                    totalPrice = 0;
+                }
+
+                orderMenuMap.delete(spanMenuId);
+
+                $(".totalPrice").text(totalPrice);
+                $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
+                $(obj).parents("ul").remove();
+
+                if ($(".order-menu-list").find("ul").length <= 0) {
+                    $(".coupon-list").show();
+                    $("input[name=temp-coupon-id]").val("");
+                }
             }
-          });
-        });
 
-        // 주문 버튼 클릭 이벤트
-        $(".order-button").click(function () {
+            //수량 줄이기
+            function decCount(obj) {
+                let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
+                let setPrice = $(obj).parents("li").next().find(".price");
+                let price = $(obj).parents("li").next().find(".price").text();
+                let OriginPrice = Number(price) / Number(orderMenuMap.get(spanMenuId));
 
-          /*<![CDATA[*/
-          let userSession = /*[[ ${session.loginUserSession} ]]*/;
-          /*]]*/
-
-          if ($(".totalPrice").text() == 0) {
-            alert("메뉴를 먼저 선택해주세요.");
-            $("#couponModal").modal("hide");
-            $("#orderModal").modal("hide");
-            return;
-          }
-          if ($("#inputAddress").val() == null || $("#inputAddress").val() == "") {
-            alert("주소를 입력해주세요.");
-            $("#couponModal").modal("hide");
-            $("#orderModal").modal("hide");
-            return;
-          }
-
-          if (userSession == null || userSession == "") {
-            alert("로그인이 필요한 서비스입니다.");
-            return;
-          }
-
-          $(".orderMenuList").empty();
-
-          $("#orderAddress").val($("#inputAddress").val());
-
-          let menuHtml = '';
-          let mapIndex = 0;
-
-          for (var key of orderMenuMap.keys()) {
-            menuHtml += '<input type="hidden" '
-            menuHtml += 'id="menu_id'
-            menuHtml += mapIndex
-            menuHtml += '" name="ordersMenuList['
-            menuHtml += mapIndex;
-            menuHtml += '].menu_id" value="'
-            menuHtml += key
-            menuHtml += '" />'
-            menuHtml += '<input type="hidden" '
-            menuHtml += 'id="menu_count'
-            menuHtml += mapIndex
-            menuHtml += '" name="ordersMenuList['
-            menuHtml += mapIndex;
-            menuHtml += '].menu_count" value="'
-            menuHtml += orderMenuMap.get(key);
-            menuHtml += '" />'
-
-            mapIndex++;
-          }
-
-          $(".orderMenuList").html(menuHtml);
-          $('#orderModal').modal('show');
-
-        });
-
-      });
-
-      // 메뉴 삭제
-      function deleteMenu(obj) {
-
-        let spanMenuId = $(obj).parents("li").next().next().next().find(".menuId").text();
-        let price = $(obj).parents("li").next().next().find(".price").text();
-
-        let totalPrice = Number($(".totalPrice").text()) - Number(price);
-
-        if (totalPrice < 0) {
-          totalPrice = 0;
-        }
-
-        orderMenuMap.delete(spanMenuId);
-
-        $(".totalPrice").text(totalPrice);
-        $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
-        $(obj).parents("ul").remove();
-
-        if ($(".order-menu-list").find("ul").length <= 0) {
-          $(".coupon-list").show();
-          $("input[name=temp-coupon-id]").val("");
-        }
-      }
-
-      //수량 줄이기
-      function decCount(obj) {
-        let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
-        let setPrice = $(obj).parents("li").next().find(".price");
-        let price = $(obj).parents("li").next().find(".price").text();
-        let OriginPrice = Number(price) / Number(orderMenuMap.get(spanMenuId));
-
-        let totalPrice = Number($(".totalPrice").text()) - Number(OriginPrice);
-        if (totalPrice < 0) {
-          totalPrice = 0;
-        }
-        if (orderMenuMap.get(spanMenuId) > 1) {
-          orderMenuMap.set(spanMenuId, orderMenuMap.get(spanMenuId) - 1);
-          setPrice.text(Number(price) - Number(OriginPrice));
-          $('#' + spanMenuId + 'Cnt').text(Number($('#' + spanMenuId + 'Cnt').text()) - 1);
-        } else {
-          orderMenuMap.delete(spanMenuId);
-          $(obj).parents("ul").remove();
-        }
+                let totalPrice = Number($(".totalPrice").text()) - Number(OriginPrice);
+                if (totalPrice < 0) {
+                    totalPrice = 0;
+                }
+                if (orderMenuMap.get(spanMenuId) > 1) {
+                    orderMenuMap.set(spanMenuId, orderMenuMap.get(spanMenuId) - 1);
+                    setPrice.text(Number(price) - Number(OriginPrice));
+                    $('#' + spanMenuId + 'Cnt').text(Number($('#' + spanMenuId + 'Cnt').text()) - 1);
+                } else {
+                    orderMenuMap.delete(spanMenuId);
+                    $(obj).parents("ul").remove();
+                }
 
 
-        $(".totalPrice").text(totalPrice);
-        $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
-      }
-
-      //수량 늘리기
-      function incCount(obj) {
-        let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
-        let setPrice = $(obj).parents("li").next().find(".price");
-        let price = $(obj).parents("li").next().find(".price").text();
-        let OriginPrice = Number(price) / Number(orderMenuMap.get(spanMenuId));
-
-        let totalPrice = Number($(".totalPrice").text()) + Number(OriginPrice);
-
-        orderMenuMap.set(spanMenuId, orderMenuMap.get(spanMenuId) + 1);
-        setPrice.text(Number(price) + Number(OriginPrice));
-        $('#' + spanMenuId + 'Cnt').text(Number($('#' + spanMenuId + 'Cnt').text()) + 1);
-
-        $(".totalPrice").text(totalPrice);
-        $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
-      }
-
-      // 쿠폰 목록 불러오기
-      function setCouponList() {
-        /*<![CDATA[*/
-        let userSession = /*[[ ${session.loginUserSession} ]]*/;
-        /*]]*/
-
-        if (userSession == null || userSession == "") {
-          return;
-        }
-        $.ajax({
-          url: "/coupon/list",
-          method: 'GET',
-          contentType: 'application/json',
-          success: function (data) {
-            //console.log(data);
-            let couponHtml = '';
-
-            for (let val of data) {
-              couponHtml += '<div style="clear:both;  border-top:1px solid gray;">';
-              couponHtml += '<label>';
-              couponHtml += '<span style="float:left; padding-top:25px;">';
-              couponHtml += '<input type="radio" name="coupon" value="' + val["coupon_id"] + '">';
-              couponHtml += '<input type="hidden" name="min_delivery_price" value="' + val["min_delivery_price"] + '">';
-              couponHtml += '<input type="hidden" name="coupon-deducted_price" value="' + val["deducted_price"] + '">';
-              couponHtml += '</span>';
-              couponHtml += '<span style="float:left; margin-left:15px; cursor:pointer;">';
-              couponHtml += val["name"] + ' <br />' + val["min_delivery_price"] + '원 이상 구매시 ' + val["deducted_price"] + '원 할인 <br />사용기한 : ' + val["expired_date"].substring(0, 10);
-              couponHtml += '</span></label></div>';
-
-              $("#modalBody").html(couponHtml);
+                $(".totalPrice").text(totalPrice);
+                $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
             }
-          },
-          error: function (e) {
-            console.log(e);
-          }
-        });
-      }
 
-    </script>
+            //수량 늘리기
+            function incCount(obj) {
+                let spanMenuId = $(obj).parents("li").next().next().find(".menuId").text();
+                let setPrice = $(obj).parents("li").next().find(".price");
+                let price = $(obj).parents("li").next().find(".price").text();
+                let OriginPrice = Number(price) / Number(orderMenuMap.get(spanMenuId));
+
+                let totalPrice = Number($(".totalPrice").text()) + Number(OriginPrice);
+
+                orderMenuMap.set(spanMenuId, orderMenuMap.get(spanMenuId) + 1);
+                setPrice.text(Number(price) + Number(OriginPrice));
+                $('#' + spanMenuId + 'Cnt').text(Number($('#' + spanMenuId + 'Cnt').text()) + 1);
+
+                $(".totalPrice").text(totalPrice);
+                $(".inputTotalPrice").val(totalPrice); // 모달 합계 가격 변경
+            }
+
+            // 쿠폰 목록 불러오기
+            function setCouponList() {
+                /*<![CDATA[*/
+                let userSession = /*[[ ${session.loginUserSession} ]]*/;
+                /*]]*/
+
+                if (userSession == null || userSession == "") {
+                    return;
+                }
+                $.ajax({
+                    url: "/coupon/list",
+                    method: 'GET',
+                    contentType: 'application/json',
+                    success: function (data) {
+                        //console.log(data);
+                        let couponHtml = '';
+
+                        for (let val of data) {
+                            couponHtml += '<div style="clear:both;  border-top:1px solid gray;">';
+                            couponHtml += '<label>';
+                            couponHtml += '<span style="float:left; padding-top:25px;">';
+                            couponHtml += '<input type="radio" name="coupon" value="' + val["coupon_id"] + '">';
+                            couponHtml += '<input type="hidden" name="min_delivery_price" value="' + val["min_delivery_price"] + '">';
+                            couponHtml += '<input type="hidden" name="coupon-deducted_price" value="' + val["deducted_price"] + '">';
+                            couponHtml += '</span>';
+                            couponHtml += '<span style="float:left; margin-left:15px; cursor:pointer;">';
+                            couponHtml += val["name"] + ' <br />' + val["min_delivery_price"] + '원 이상 구매시 ' + val["deducted_price"] + '원 할인 <br />사용기한 : ' + val["expired_date"].substring(0, 10);
+                            couponHtml += '</span></label></div>';
+
+                            $("#modalBody").html(couponHtml);
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            }
+
+        </script>
 
     </th:block>
 
 </th:block>
 
 <script type="text/javascript">
-  function formTest() {
-    var x = document.getElementById("orderFormId");
-    for (var i = 0; i < x.length; i++) {
-      document.write(x.elements[i].id);
-      document.write(" --> ");
-      document.write(x.elements[i].value);
-      document.write("<br />");
-      document.write("<br />");
+    function formTest() {
+        var x = document.getElementById("orderFormId");
+        for (var i = 0; i < x.length; i++) {
+            document.write(x.elements[i].id);
+            document.write(" --> ");
+            document.write(x.elements[i].value);
+            document.write("<br />");
+            document.write("<br />");
+        }
     }
-  }
 
 </script>
 
@@ -459,18 +460,20 @@
                                 <span>주소</span>
                             </div>
                             <div>
-                                <input id="orderAddress" type="text" name="order_address" readonly="readonly" style="width:100%" />
+                                <input id="orderAddress" type="text" name="order_address" readonly="readonly"
+                                       style="width:100%" />
                             </div>
                             <div>
-                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address" required
-                                       style="width:100%" />
+                                <input type="text" id="detailAddress" placeholder="(필수)상세주소 입력" name="detail_address"
+                                       required style="width:100%" />
                             </div>
                             <br>
                             <div>
                                 <span>휴대전화번호</span>
                             </div>
                             <div>
-                                <input id="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone" required maxlength="11"
+                                <input id="orderPhone" placeholder="(필수)휴대전화 번호 입력" name="order_phone" required
+                                       maxlength="11"
                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                        style="width:100%" />
                             </div>
@@ -487,11 +490,12 @@
                                 <span style="font-size:20px;">총 결제 금액</span>
                             </div>
                             <div>
-                                <input id="totalPrice" class="inputTotalPrice" type="text" name="total_price" readonly="readonly"
-                                       style="border:none; font-size:20px;" />
+                                <input id="totalPrice" class="inputTotalPrice" type="text" name="total_price"
+                                       readonly="readonly" style="border:none; font-size:20px;" />
                             </div>
                             <div class="orderUserId" th:if="${session.loginUserSession != null}">
-                                <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}" name="login_id" />
+                                <input type="hidden" id="loginId" th:value="${session.loginUserSession.login_id}"
+                                       name="login_id" />
                             </div>
                             <div class="orderMenuList">
 
@@ -515,20 +519,20 @@
 </div>
 
 <script>
-  $("#orderBtn").click(function (e) {
-    e.preventDefault();
-    console.log();
-    if ($("#detailAddress").val() == '') {
-      alert("상세 주소를 입력해주세요.");
-      $('#detailAddress').focus();
-      return;
-    } else if ($("#orderPhone").val() == '') {
-      alert("전화 번호를 입력해주세요.");
-      $('#orderPhone').focus();
-      return;
-    }
+    $("#orderBtn").click(function (e) {
+        e.preventDefault();
+        console.log();
+        if ($("#detailAddress").val() == '') {
+            alert("상세 주소를 입력해주세요.");
+            $('#detailAddress').focus();
+            return;
+        } else if ($("#orderPhone").val() == '') {
+            alert("전화 번호를 입력해주세요.");
+            $('#orderPhone').focus();
+            return;
+        }
 
-    if (!confirm('주문을 진행하시겠습니까?')) return;
-    $('#orderFormId')[0].submit();
-  });
+        if (!confirm('주문을 진행하시겠습니까?')) return;
+        $('#orderFormId')[0].submit();
+    });
 </script>

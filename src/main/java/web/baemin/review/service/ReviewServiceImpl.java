@@ -3,8 +3,6 @@ package web.baemin.review.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import web.baemin.ordershistory.dto.OrdersHistory;
 import web.baemin.ordershistory.mapper.OrdersHistoryMapper;
 import web.baemin.review.dto.Review;
 import web.baemin.review.dto.ReviewPicture;
