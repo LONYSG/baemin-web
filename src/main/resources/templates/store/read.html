@@ -84,7 +84,7 @@
                     합계 : <span class="totalPrice">0</span>원
                 </div>
                 <button type="button" data-toggle="modal" class="btn btn-danger coupon-list"
-                        data-target="#couponModal">쿠폰</button>
+                        data-target="#couponModal" th:if="${session.loginUserSession}">쿠폰</button>
                 <button class="btn btn-success order-button" data-toggle="modal" data-target="orderModal">주문하기</button>
             </div>
         </div>
