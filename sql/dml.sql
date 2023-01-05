@@ -588,7 +588,7 @@ VALUES
         '4002',
         '9002',
         '왕족발+쟁반국수',
-        '3400',
+        '34000',
         'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210727_252%2F1627355216819teLpc_JPEG%2F1WxNWKsEZRXRXliFMA5IgvogcBQ1C6u2NIUeufhQYOw%253D.jpg&type=h166',
         '2022-12-06',
         '2022-12-06',
@@ -5763,7 +5763,7 @@ VALUES
     (
         '9075',
         '최고급 세지 멜론',
-        '3200',
+        '16000',
         'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211220_275%2F1639987160055kCyxw_JPEG%2FtT1yFDkVgxaQKSABA1_GUEip0UCrfODBvloCAFno0CI%253D.jpg&type=h166',
         NOW(),
         NOW()
