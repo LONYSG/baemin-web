@@ -5402,16 +5402,16 @@ VALUES
 (
         '9001',
         '0',
-        '혼밥하기 좋은날1',
+        '혼밥실록',
         '서울 영등포구 영중로 125',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        'https://ldb-phinf.pstatic.net/20190611_161/1560213630118R1T8b_JPEG/FLu3A5MU8knGyzAO7ypiFSG7.jpg',
         '021234566',
-        '안녕하세요. 맛있게 드세요!',
+        '마음편이 든든한 한끼 식사를 할 수 있는 가게입니다.',
         '10000',
         null,
         null,
         NULL,
-        '3.5',
+        '4.0',
         '1253',
         '126',
         '2022-12-06',
@@ -5423,13 +5423,82 @@ INSERT INTO
     store
 VALUES
 (
+        '9083',
+        '0',
+        '사우나멘동',
+        '서울 영등포구 영등포로62길 42',
+        'https://ldb-phinf.pstatic.net/20210506_86/1620277552820x48yG_JPEG/K2MXfon6aGJEehBvVHZYxco0.jpg',
+        '021234566',
+        '고객님들의 관심과 사랑에 늘 정성과 진심으로 보답하는 사우나 멘동이 되겠습니다.',
+        '8500',
+        null,
+        null,
+        NULL,
+        '4.82',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9084',
+        '0',
+        '한식세끼1인김치찜&부대찌개',
+        '서울 영등포구 영신로20길 6-1',
+        'https://ldb-phinf.pstatic.net/20220615_249/1655269303258XmXNp_JPEG/KakaoTalk_20220611_135059225_05.jpg',
+        '021234566',
+        '항상 맛있고 든든한 한 끼 식사 하실 수 있도록 노력하겠습니다!!',
+        '10000',
+        null,
+        null,
+        NULL,
+        '4.9',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9085',
+        '0',
+        '한식밥상',
+        '서울 영등포구 경인로 900',
+        'https://ldb-phinf.pstatic.net/20220204_237/1643935573386vw25c_PNG/D95E3DFB-26F3-421E-90AE-0ECDD34574FD.png',
+        '021234566',
+        '주문과 동시에 조리하여, 하나하나 정성을 다해 만듭니다^-^',
+        '7900',
+        null,
+        null,
+        NULL,
+        '4.6',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
         '9002',
         '1',
         '장수 왕족발/보쌈',
         '서울 영등포구 여의도동 15-22',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        'https://ldb-phinf.pstatic.net/20200402_193/1585811556709JQQJ7_JPEG/Z-DmdcDbKYAjIlx4jT2iFEJV.jpeg.jpg',
         '021234566',
-        '안녕하세요. 맛있게 드세요!',
+        '★소비자가 선정한 서울3대족발 ★국내산 생족만 사용',
         '11000',
         null,
         null,
@@ -5446,22 +5515,182 @@ INSERT INTO
     store
 VALUES
 (
-        '9003',
-        '2',
-        '제일 김치찌개',
-        '서울 영등포구 여의도동 37',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        '9086',
+        '1',
+        '원할머니보쌈족발',
+        '서울 영등포구 도신로 228',
+        'https://ldb-phinf.pstatic.net/20220629_217/1656468133987K2rpD_JPEG/%BF%F8%BD%D3_%BD%E6%B3%D7%C0%CF_2.jpg',
         '021234566',
-        '안녕하세요. 맛있게 드세요!',
-        '12000',
+        '원할머니보쌈족발을 찾아주셔서 감사합니다^^',
+        '18000',
         null,
         null,
         NULL,
-        '2.5',
+        '4.2',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9087',
+        '1',
+        '구구족',
+        '서울 영등포구 도림동 87-2',
+        'https://ldb-phinf.pstatic.net/20200914_82/1600069174771dFtTE_JPEG/7GePRHuTNtjWlGxgDj_n_So-.jpg',
+        '021234566',
+        '세상에서 가장 착한 족발! 족발은 구구족!',
+        '19000',
+        null,
+        null,
+        NULL,
+        '4.5',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9088',
+        '1',
+        '마왕족발',
+        '서울 영등포구 도신로29사길 25-1',
+        'https://ldb-phinf.pstatic.net/20220715_206/1657848363285fmdFm_PNG/%B8%DE%C0%CE%C0%CC%B9%CC%C1%F6.png',
+        '021234566',
+        '4계절 내내 따뜻하게 드실 수 있도록 보온팩과 담아 보내드립니다~',
+        '10000',
+        null,
+        null,
+        NULL,
+        '5.0',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9003',
+        '2',
+        '백채김치찌개',
+        '서울 영등포구 여의도동 37',
+        'https://ldb-phinf.pstatic.net/20220706_22/1657108747486IXuFA_JPEG/%B5%C5%C1%F6%B1%E8%C4%A1%C2%EE%B0%B3.JPG',
+        '021234566',
+        '항상 내 가족이 먹을 음식처럼 조리하겠습니다!',
+        '16000',
+        null,
+        null,
+        NULL,
+        '4.0',
         '13',
         '712',
         '2022-12-06',
         '2022-12-06',
+        '일반'
+    );
+INSERT INTO
+    store
+VALUES
+(
+        '9089',
+        '2',
+        '봉추찜닭',
+        '서울 영등포구 영신로19길 17',
+        'https://ldb-phinf.pstatic.net/20210512_117/1620778752484PJMcK_PNG/PIZm4zXLohPwDKrWMM15byqi.png',
+        '021234566',
+        '안녕하세요. 맛있게 드세요!',
+        '10000',
+        null,
+        null,
+        NULL,
+        '4.5',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9090',
+        '2',
+        '청년감자탕',
+        '서울 영등포구 문래로28길 25',
+        'https://ldb-phinf.pstatic.net/20200826_154/15983929675889oj8o_JPEG/Bbiw-G5j3JQaLioD4YF6WDdq.jpg',
+        '021234566',
+        '서비스,응대,배달 등이 마음에 들지 않으시면 언제든 매장으로 연락주시기 바랍니다. 언제나 감사합니다.',
+        '7000',
+        null,
+        null,
+        NULL,
+        '4.5',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9091',
+        '2',
+        '땅스부대찌개',
+        '서울 영등포구 국제금융로6길 33',
+        'https://ldb-phinf.pstatic.net/20201030_136/1604035825915oHVg2_JPEG/feyms-tYgCEzfEKgLqgdJMzM.jpg',
+        '021234566',
+        '가격거품을 뺀 가성비 최고의 테이크아웃 전문점입니다.',
+        '14000',
+        null,
+        null,
+        NULL,
+        '4.5',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9092',
+        '2',
+        '신신매운갈비찜',
+        '서울 영등포구 의사당대로 83',
+        'https://ldb-phinf.pstatic.net/20211015_6/1634233072446Nu52b_JPEG/bvzbVcHG_UjRguRRRoENnkFq.jpg',
+        '021234566',
+        '항상 건강 조심하시고 늘 행복하세요 ^^',
+        '8000',
+        null,
+        null,
+        NULL,
+        '5.0',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
         '일반'
     );
 
@@ -5473,10 +5702,10 @@ VALUES
         '3',
         '명동 왕돈까스',
         '서울 영등포구 신길동 464-1',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        'https://fastly.4sqi.net/img/general/600x600/80330371_S3Iy4qmnWUBc3zrmsu3RLrEjS-E46n9ocp-xRSbTUwE.jpg',
         '021234566',
-        '안녕하세요. 맛있게 드세요!',
-        '13000',
+        '항상 최선을 다하는 "명동 왕돈까스" 되겠습니다.',
+        '9000',
         null,
         null,
         NULL,
@@ -5492,11 +5721,80 @@ INSERT INTO
     store
 VALUES
 (
+        '9093',
+        '3',
+        '훈카츠',
+        '서울 영등포구 의사당대로 82',
+        'https://ldb-phinf.pstatic.net/20220610_204/1654840778879u78ae_JPEG/EA9792B6-4644-492C-98D3-52B484A48D44.jpeg',
+        '021234566',
+        '신선한 냉장육을 숙성고에서 충분히.숙성후 당일작업 당일판매를 원칙으로 하고있습니다!',
+        '12000',
+        null,
+        null,
+        NULL,
+        '4.5',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9094',
+        '3',
+        '스시마루',
+        '서울 영등포구 의사당대로 8',
+        'https://ldb-phinf.pstatic.net/20220415_179/1649998033371Snll5_JPEG/1649733994692-1.jpg',
+        '021234566',
+        '**모든메뉴 밥양조절가능합니다 **모든메뉴는 시장사입과 매장사정에 따라 구성이 달라질 수 있습니다*',
+        '12000',
+        null,
+        null,
+        NULL,
+        '4.5',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9095',
+        '3',
+        '탐나종합어시장',
+        '경기도 안양시 만안구 전파로 53',
+        'https://ldb-phinf.pstatic.net/20200818_136/1597718813301LE5XB_JPEG/BHF0BRf6aIb_ca5YTfD5a1RU.jpg',
+        '021234566',
+        '매일매일 공수되는 신선한 횟감으로 저렴하고 맛있는 음식을 제공해드리겠습니다.',
+        '20000',
+        null,
+        null,
+        NULL,
+        '5.0',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
         '9005',
         '4',
-        '웃음꽃 피자',
+        '비스트로 피자',
         '서울 영등포구 신길동 4945',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        'https://ldb-phinf.pstatic.net/20221118_88/1668778286954QX5kq_JPEG/90020804-FB14-4C76-907E-ED6B87D34559.jpeg',
         '021234566',
         '안녕하세요. 맛있게 드세요!',
         '14000',
@@ -5510,6 +5808,99 @@ VALUES
         '2022-12-06',
         '일반'
     );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9096',
+        '4',
+        '반올림피자',
+        '경기도 안양시 만안구 전파로24번길 93',
+        'https://handmadepizza.co.kr/resources/mobile/image/contents/brandStory/img_BrandLogo_blue.jpg',
+        '021234566',
+        '고객님 사랑 매일매일 감사합니다♡',
+        '15900',
+        null,
+        null,
+        NULL,
+        '4.8',
+        '143',
+        '1256',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9097',
+        '4',
+        '피자알볼로',
+        '경기 안양시 만안구 안양동 517-43',
+        'https://pds.saramin.co.kr/company/logo/201910/07/pyzqne_j8ok-2rxeer_logo.jpg',
+        '021234566',
+        '★단체주문 5판 이상 전화주시면 10% 할인해드려요★',
+        '16000',
+        null,
+        null,
+        NULL,
+        '4.0',
+        '1253',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9098',
+        '4',
+        '잭슨피자',
+        '경기도 안양시 만안구 안양로 145-1',
+        'https://www.foodnjob.com/upload/upload/offer_user/202207/1658483071_mem.jpg',
+        '021234566',
+        '잭슨피자에서 미국느낌을 물씬 느껴보세요!!',
+        '15000',
+        null,
+        null,
+        NULL,
+        '4.8',
+        '253',
+        '1126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
+INSERT INTO
+    store
+VALUES
+(
+        '9099',
+        '4',
+        '피자헤븐',
+        '경기도 안양시 만안구 안양로 115',
+        'https://www.pizzaheaven.co.kr/resources/images/heavenstory/bi01.png',
+        '021234566',
+        '신선한 재료와 숙성 도우로 최고의 피자를 선보이는 피자헤븐입니다.',
+        '15000',
+        null,
+        null,
+        NULL,
+        '4.9',
+        '43',
+        '126',
+         NOW(),
+         NOW(),
+        '일반'
+    );
+
 
 INSERT INTO
     store
