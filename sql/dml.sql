@@ -412,9 +412,9 @@ VALUES
 (
         '4001',
         '9001',
-        '1인용 찜닭',
-        '12000',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        '짜글이찌개',
+        '9000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220315_8%2F16472764321176Bt3S_JPEG%2FzIDMVIQ7DxEUo4TFQcvcvV6u5nNDSH_gwhAnhsc9SFQJ7kFhXWd7cMCHfKTmursG.jpg&type=h166',
         '2022-12-06',
         '2022-12-06',
         '일반'
@@ -426,9 +426,9 @@ VALUES
 (
         '4006',
         '9001',
-        '혼밥갈비찜',
-        '15000',
-        'https://recipe1.ezmember.co.kr/cache/recipe/2019/02/09/9377ac695a85566adfda9817b73438f31.jpg',
+        '순두부찌개',
+        '9500',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220315_130%2F1647276431750q6hsA_JPEG%2FzIDMVIQ7DxEUo4TFQcvcveKoOPnXdpiMJCYU_pfUbitIQVmB2iWgcYQz0DgPCb8r.jpg&type=h166g',
         '2022-12-06',
         '2022-12-06',
         '일반'
@@ -440,12 +440,145 @@ VALUES
 (
         '4007',
         '9001',
-        '김치찌개 정식',
+        '소불고기',
         '13000',
-        'https://img-cf.kurly.com/shop/data/goodsview/20211223/gv10000260857_1.jpg',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220315_210%2F1647276431562gdSUl_JPEG%2FzIDMVIQ7DxEUo4TFQcvcvR-JwiZ9xE9SHD2SAE3ZPOp9dyxXtl7OKDpcYIGFDuFC.jpg&type=h166',
         '2022-12-28',
         '2022-12-28',
         '일반'
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9083',
+        '마제소바',
+        '10000',
+        'https://ldb-phinf.pstatic.net/20210123_18/1611380251112aIagT_JPEG/PLN63f-qMRCpXG3qDskqO7MR.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9083',
+        '호르몬동',
+        '14000',
+        'https://ldb-phinf.pstatic.net/20210123_108/1611380292361aYSFY_JPEG/gMF2yqg4hgqQjqTbImxdqHPq.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9084',
+        '햄만땅 부대찌개',
+        '15500',
+        'https://ldb-phinf.pstatic.net/20220728_236/1659002826817i88DT_JPEG/Screenshot_20220728-190514.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9084',
+        '1등김치찜',
+        '15000',
+        'https://ldb-phinf.pstatic.net/20220728_239/1659002803366VQ3MN_JPEG/Screenshot_20220728-190453.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9085',
+        '돼지고기 김치찌개',
+        '8500',
+        'https://ldb-phinf.pstatic.net/20220517_202/1652772912851zw6nK_JPEG/v148ZBvmVHw0QqhRxNgkysztimDcOfWlyvLWl4Pu9DjQ4eaz71N2MHr_by1qYqctASjdBAjvXg6ug6_G.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9085',
+        '우삼겹된장찌개',
+        '8500',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220517_127%2F16527732897002qn8a_JPEG%2FbiAsZaNjNirftidIG_4RTN4z-ztgV7E9y9fqxZ1Gn0aH5QOR6yZ9t6itzDFWD8-omZWVjagVqJTLA_sC.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9085',
+        '콩나물우삼겹볶음',
+        '9000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220517_163%2F1652773406717IlAWC_JPEG%2FZepbFXSX5j1wUzESTJpqDhuCqOqWYdZ1mzjP_HjvAHQuPA7i9lb8Ncm23AdGLElMbFVopyJXWvdkK_09.jpg&type=h166',
+        NOW(),
+        NOW()
     );
 
 INSERT INTO
@@ -454,12 +587,183 @@ VALUES
 (
         '4002',
         '9002',
-        '족발',
-        '22000',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        '왕족발+쟁반국수',
+        '3400',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210727_252%2F1627355216819teLpc_JPEG%2F1WxNWKsEZRXRXliFMA5IgvogcBQ1C6u2NIUeufhQYOw%253D.jpg&type=h166',
         '2022-12-06',
         '2022-12-06',
         '일반'
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9002',
+        '반반족발+쟁반국수',
+        '37000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220414_208%2F1649896330555s7ecF_JPEG%2FSB1zmtdcKpuvu22XqZKxr1aMa-lUkuI2k5XyFJ809vo%253D.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9086',
+        '맛보쌈',
+        '35000',
+        'https://ldb-phinf.pstatic.net/20220331_297/16487170905584IKNh_JPEG/%B8%C0%BA%B8%BD%D3.jpg?type=f459_345_60_sharpen',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9086',
+        '보족원쌈',
+        '48000',
+        'https://naverbooking-phinf.pstatic.net/20220401_159/1648772769131JvNkM_JPEG/%BA%B8%C1%B7%BF%F8%BD%D3.jpg?type=f459_345_60_sharpen',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9087',
+        '족발은 구구족',
+        '23900',
+        'https://ldb-phinf.pstatic.net/20220127_204/1643273725778VpdQD_JPEG/%BF%C2%C1%B7%B9%DF.jpg?type=f459_345_60_sharpen',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9087',
+        '싹쓰리 순살족발',
+        '27900',
+        'https://ldb-phinf.pstatic.net/20220127_231/1643273766199hoJkj_PNG/%BD%CF%BE%B2%B8%AE%C1%B7%B9%DF.png?type=f459_345_60_sharpen',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9087',
+        '순살매운양념족발',
+        '23900',
+        'https://ldb-phinf.pstatic.net/20220127_186/16432737480738IHQU_JPEG/%B8%C5%BF%EE%BE%E7%B3%E4%C1%B7%B9%DF.jpg?type=f459_345_60_sharpen',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9088',
+        '마왕불족발',
+        '36000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20220715_221%2F16578203383744yesD_JPEG%2Fimage.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9088',
+        '마왕통구이',
+        '30000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20220715_209%2F1657818232611KaPrB_JPEG%2Fimage.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9088',
+        '마왕갈릭족발',
+        '36000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20220715_150%2F1657821445840jk0iA_JPEG%2Fimage.jpg&type=h166',
+        NOW(),
+        NOW()
     );
 
 INSERT INTO
@@ -468,13 +772,185 @@ VALUES
 (
         '4003',
         '9003',
-        '김치찌개',
-        '15000',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        '백채김치찌개(1인분)',
+        '8000',
+        'https://ldb-phinf.pstatic.net/20191122_128/15743870050401P2my_JPEG/jyu4C6v3GtUc',
         '2022-12-06',
         '2022-12-06',
         '일반'
     );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9003',
+        '달걀말이',
+        '12000',
+        'https://ldb-phinf.pstatic.net/20191122_227/1574387033202DmpJy_JPEG/6qSlQN_3PRW-FQYO2hxoi3go.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9089',
+        '봉추찜닭',
+        '24000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211224_284%2F1640354862133m0UXY_JPEG%2Fcbc3FsTSJhFV_RtFaci5y9R6wcM9xajAc-__w9ulsqSAKH2o_KEjF577hi-7eTRH.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9089',
+        '봉추치즈찜닭',
+        '28000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200928_265%2F160128281258129D9V_JPEG%2Fu1XaK8p9-MRENqt-u6DOn3u8emwJ-JZmgVJJ8vxyiWkdrbXW8gtZugY5LbRXy8zS.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9090',
+        '청년감자탕',
+        '28000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220803_1%2F1659497341626V0BHB_JPEG%2FF3Bixr_onKqm3PL3YhkDDE9WvEqeL5UY2kbMSVN9E2o%253D.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9090',
+        '묵은지감자탕',
+        '30000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220803_45%2F1659511357865ltQIX_JPEG%2FULzG3NngpbzjT_EAcpLaEHMk_Ibgk0gvn_bjndFYzfA%253D.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9091',
+        '오리지널 부대찌개',
+        '14000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220919_83%2F1663546905653PhKJS_JPEG%2FxYiXr7Va2FeryWgQ1MX4qrgEFYHJ9vyRVLBsgOIt9eewbwyGdym3g-V79REDwuGUv-eRf9Q4JnRq9T2n.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9091',
+        '치즈 부대찌개',
+        '15000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221223_17%2F1671755052339hc16j_JPEG%2FWeWW1q2y2sCooRTDrFz1I0VEMJozQdCshA5rZ2bL6tpTKi5tG-WSbf2peE0vi8Zhkzd3U3Ce0aFZNB37.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9092',
+        '매운소갈비찜',
+        '26000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211208_88%2F1638898474730fSOps_JPEG%2FJ6dqVvplBEIbvRm41JgCXoLq_PENBEqhbB_oEPaCXJU%253D.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9092',
+        '매운돼지갈비찜',
+        '29000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211208_198%2F1638898474720U4n3k_JPEG%2F88TiRctEU0GuS3LFAlUYayZIgCxqwQIE3l1vVIMcHGM%253D.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
 
 INSERT INTO
     menu
@@ -483,11 +959,201 @@ VALUES
         '4004',
         '9004',
         '왕돈까스',
-        '13000',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        '9000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210126_46%2F1611623492425DP3wg_JPEG%2FbOpT1hx2l3H-_27G6RENYbruI1l-N7p4CAYNQNSYcYtE8NC0XC2hxgyrIlQejGiC.jpg&type=h166',
         '2022-12-06',
         '2022-12-06',
         '일반'
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9004',
+        '생선까스',
+        '9500',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220222_126%2F1645490270359W75UT_JPEG%2FbOpT1hx2l3H-_27G6RENYdCVTyG0Ifjort48Wd4Yup6ibN0K7rz0MlGERC1f7cLC.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9004',
+        '치즈돈까스',
+        '10500',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220222_67%2F1645490270035I5gcI_JPEG%2FbOpT1hx2l3H-_27G6RENYbr_aic1pyl9JtnqwBcnXXdUT28OyxkaLIFMI87Plv4v.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9093',
+        '등심돈카츠',
+        '10500',
+        'https://ldb-phinf.pstatic.net/20220610_155/1654840016744Kw570_JPEG/6A2420FB-392C-4172-99BD-F15F1F339920.jpeg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9093',
+        '치즈돈카츠',
+        '12000',
+        'https://ldb-phinf.pstatic.net/20220610_298/1654840080240F1siA_JPEG/806B7D3D-8B10-4D70-9089-9FB7D3B0243E.jpeg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9094',
+        '모듬초밥',
+        '14000',
+        'https://ldb-phinf.pstatic.net/20220416_240/1650079438478sNDnp_JPEG/1650079427352.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9094',
+        '마루특초밥',
+        '20000',
+        'https://ldb-phinf.pstatic.net/20220407_250/1649305678315CbUOP_JPEG/1649305652492-1.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9094',
+        '스페셜초밥',
+        '19000',
+        'https://ldb-phinf.pstatic.net/20220407_236/1649305507886hv6Vq_JPEG/1649305488151-1.jpg',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9095',
+        '광우연(광어+우럭+연어)',
+        '48000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201123_132%2F1606111846076e8Hlb_JPEG%2F7vK_sY_6TH0vOVi7Gy-uPVdigQGsrIesSw96nI45DkrniGBChcKyx53x6NHNdzGV.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9095',
+        '광우세트(광어+우럭)',
+        '36000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201123_206%2F1606111846195tDyBG_JPEG%2F7vK_sY_6TH0vOVi7Gy-uPX7cFbtsUoLlHvCowhvpz8cXxTTUBNE_06l5lX_BCgWG.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9095',
+        '연광이(연어+광어)',
+        '36000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211202_165%2F1638435899363TQHJ7_JPEG%2F7vK_sY_6TH0vOVi7Gy-uPasaNGMy5r5TrBpbBCOv61m4NdGSuIBNnhgS7lljTaO1.jpg&type=h166',
+        NOW(),
+        NOW()
     );
 
 INSERT INTO
@@ -496,14 +1162,262 @@ VALUES
 (
         '4005',
         '9005',
-        '포테이토 피자',
-        '18000',
-        'https://i.pinimg.com/564x/49/70/31/4970315bc64284052adc2dd17cfa1d03.jpg',
+        '페퍼로니 피자',
+        '16900',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_57%2F1653634641765WrUzy_JPEG%2Fo4-U0F6923W4iNN9QOF6LFqFe3TcM9Xx6W9hXsXyc-5yqhoWEq09L9uR36La8I8KFm4Ayc-3N8jhTF8l.jpg&type=h166',
         '2022-12-06',
         '2022-12-06',
         '일반'
     );
 
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9005',
+        '[우리동네 1등피자]4비트피자]',
+        '21900',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_179%2F1653634623537KK0gl_JPEG%2FLdUsbD5q8OE8uXE1zdFhClrzWSMxC6ucRb7niJ7W4cjdnTFirQX3YkeyiOZZ5_ZvL8my39DvgFbnY9lY.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9005',
+        '(사장님이 추천하는)함박웃으새우피자',
+        '23900',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_97%2F165363464170468OMT_JPEG%2Fps8wFm2d_PJBwsez_4dUBMNlvJaUEfGLFA5oaY8oY0SLZRGLITyThvhx2cuDdUzGxEBGeB8haU3qQAvA.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9096',
+        '반올림고구마피자',
+        '20000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20200806_239%2F15966759394408yoW7_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9096',
+        '통마늘불고기피자',
+        '21000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20200806_135%2F1596675940502OOA0X_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9096',
+        '핫치킨&쉬림프피자',
+        '23000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20200806_256%2F1596675941655MYCgd_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9097',
+        '어깨피자+콜라',
+        '28000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20200814_277%2F1597386551101vYY0j_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9097',
+        '꿈을피자+콜라',
+        '28000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20200814_275%2F1597386550904r4jJX_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9097',
+        '날개피자+콜라',
+        '28000',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20220203_88%2F1643821447443AJCWo_JPEG%2Fimage.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9098',
+        '파이브치즈',
+        '19300',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211007_15%2F1633549811322N6BMd_JPEG%2FJaym8zk4XaWfNPUMarQLjRjWiIRA6FS7CG7CuZ7xUlXPmWNAQWXllWN5toOl-ZlB.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9098',
+        '하와이안피자',
+        '20800',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211224_237%2F1640338720101OTGDX_JPEG%2FJaym8zk4XaWfNPUMarQLjW-6CxEOXFYhDEgKGLNFQivjb1smQPGDADdQx6TlSk-o.jpg&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9099',
+        '사대천왕',
+        '24900',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20210401_12%2F16172143994411eTzP_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9099',
+        '헤븐스페셜',
+        '19900',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20210401_286%2F16172164114567dKo5_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+
+INSERT INTO
+    menu (
+        store_id,
+        menu_name,
+        price,
+        menu_url,
+        created_date,
+        modified_date
+    )
+VALUES
+    (
+        '9099',
+        '더블포테이토',
+        '2190',
+        'https://search.pstatic.net/common/?autoRotate=true&quality=95&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20210401_52%2F1617214537074G5WM3_PNG%2Fimage.png&type=h166',
+        NOW(),
+        NOW()
+    );
+    
 INSERT INTO
     menu (
         store_id,
